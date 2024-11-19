@@ -4,6 +4,7 @@ import './globals.css';
 
 import Header from './_components/Header';
 import Footer from './_components/Footer';
+import Sidebar from "./_components/Sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,24 +17,24 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  // metadataBase: new URL('url'),
-  // title: {
-  //   template: '%s | subtitle',
-  //   default: 'default title',
-  // },
-  // description:
-  //   'description',
-  // openGraph: {
-  //   title: 'title',
-  //   description:
-  //     'description',
-  //   images: ['/ogp.png'],
-  // },
-  // alternates: {
-  //   canonical: 'url',
-  // },
-};
+// export const metadata: Metadata = {
+//   metadataBase: new URL('url'),
+//   title: {
+//     template: '%s | subtitle',
+//     default: 'default title',
+//   },
+//   description:
+//     'description',
+//   openGraph: {
+//     title: 'title',
+//     description:
+//       'description',
+//     images: ['/ogp.png'],
+//   },
+//   alternates: {
+//     canonical: 'url',
+//   },
+// };
 
 export default function RootLayout({
   children,
@@ -43,7 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
+        {/* <Header /> */}
+        <Sidebar />
         {children}
         <Footer />
       </body>

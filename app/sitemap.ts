@@ -1,19 +1,24 @@
 import { MetadataRoute } from 'next';
-import { getAllCategoryList, getAllNewsList } from './_libs/microcms';
+import { getAllCategoryList, getAllWorksList, getAllBlogsList } from './_libs/microcms';
 
 const buildUrl = (path?: string) => `http://localhost:3000${path ?? ''}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const newsContents = await getAllNewsList();
+  const worksContents = await getAllWorksList();
+  const blogsContents = await getAllBlogsList();
   const categoryContents = await getAllCategoryList();
 
-  const newsUrls: MetadataRoute.Sitemap = newsContents.map((content) => ({
-    url: buildUrl(`/news/${content.id}`),
+  const worksUrls: MetadataRoute.Sitemap = worksContents.map((content) => ({
+    url: buildUrl(`/works/${content.id}`),
+    lastModified: content.revisedAt,
+  }));
+  const blogsUrls: MetadataRoute.Sitemap = blogsContents.map((content) => ({
+    url: buildUrl(`/blogs/${content.id}`),
     lastModified: content.revisedAt,
   }));
   const categoryUrls: MetadataRoute.Sitemap = categoryContents.map(
     (content) => ({
-      url: buildUrl(`/news/category/${content.id}`),
+      url: buildUrl(`/works/category/${content.id}`),
       lastModified: content.revisedAt,
     })
   );
@@ -26,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
     },
     {
-      url: buildUrl('/members'),
+      url: buildUrl('/category'),
       lastModified: now,
     },
     {
@@ -34,10 +39,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
     },
     {
-      url: buildUrl('/news'),
+      url: buildUrl('/works'),
       lastModified: now,
     },
-    ...newsUrls,
+    {
+      url: buildUrl('/blogs'),
+      lastModified: now,
+    },
+    ...worksUrls,
+    ...blogsUrls,
     ...categoryUrls,
   ];
 }
