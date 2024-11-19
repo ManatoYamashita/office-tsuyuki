@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 export default function Sidebar() {
   const [isShrinkView, setIsShrinkView] = useState(false);
@@ -85,7 +86,7 @@ export default function Sidebar() {
         </div>
         <ul className={styles["sidebar-list"]}>
           <li className={`${styles["sidebar-listItem"]} ${styles.active}`}>
-            <a className={styles.anchorlink}>
+            <Link className={styles.anchorlink} href="/works">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -99,11 +100,11 @@ export default function Sidebar() {
                 <rect x="3" y="3" rx="2" ry="2" />
                 <path d="M3 9h18M9 21V9" />
               </svg>
-              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>Dashboard</span>
-            </a>
+              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>works</span>
+            </Link>
           </li>
           <li className={styles["sidebar-listItem"]}>
-            <a className={styles.anchorlink}>
+            <Link className={styles.anchorlink} href="/contact">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -117,11 +118,11 @@ export default function Sidebar() {
                 <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
                 <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
               </svg>
-              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>Inbox</span>
-            </a>
+              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>Contact</span>
+            </Link>
           </li>
           <li className={styles["sidebar-listItem"]}>
-            <a className={styles.anchorlink}>
+            <Link className={styles.anchorlink} href="/blogs">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -137,8 +138,8 @@ export default function Sidebar() {
                 <line x1="8" y1="2" x2="8" y2="6" />
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
-              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>Calendar</span>
-            </a>
+              <span className={`${styles["sidebar-listItemText"]} ${styles.span}`}>News</span>
+            </Link>
           </li>
           <li className={styles["sidebar-listItem"]}>
             <a className={styles.anchorlink}>

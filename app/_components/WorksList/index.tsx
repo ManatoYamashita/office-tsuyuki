@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './index.module.scss';
-import Category from '../Category';
+// import Category from '../Category';
 import Date from '../Date';
 import { Works } from '@/app/_libs/microcms';
 
@@ -39,7 +39,7 @@ export default function WorksList({ works }: Props) {
             <dl className={styles.content}>
               <dt className={styles.title}>{article.title}</dt>
               <dd className={styles.meta}>
-                <Category category={article.category} />
+                {/* <Category category={article.category} /> */}
                 <Date date={article.publishedAt ?? article.createdAt} />
               </dd>
             </dl>

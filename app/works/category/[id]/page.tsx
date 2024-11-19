@@ -2,7 +2,7 @@ import { getCategoryDetail, getWorksList } from '@/app/_libs/microcms';
 import { notFound } from 'next/navigation';
 import WorksList from '@/app/_components/WorksList';
 import Pagination from '@/app/_components/Pagination';
-import Category from '@/app/_components/Category';
+// import Category from '@/app/_components/Category';
 import { WORKS_LIST_LIMIT } from '@/app/_constants';
 
 type Props = {
@@ -21,9 +21,9 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <p>
+      {/* <p>
         <Category category={category} /> の一覧
-      </p>
+      </p> */}
       <WorksList works={works} />
       <Pagination
         totalCount={totalCount}
