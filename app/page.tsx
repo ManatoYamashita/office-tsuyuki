@@ -6,6 +6,7 @@ import { TOP_WORKS_LIMIT } from '@/app/_constants'
 import WorksList from '@/app/_components/WorksList'
 import Link from "next/link";
 import ButtonNeumorfism from "./ButtonNeumorfism";
+import HeaderCard from "./HeaderCard";
 
 export const revalidate = 60
 
@@ -19,14 +20,17 @@ export default async function Home() {
     <main className={styles.main}>
       <section className={`${styles.section} ${styles.banner} ${styles['banner-section']}`}>
         <div className={`${styles.container} ${styles['banner-column']}`}>
-          <Image
+          {/* <Image
             className={styles['banner-image']}
             src="/images/placeholder.webp"
             alt="banner"
             width={500}
             height={500}
 
-          />
+          /> */}
+          <section className={styles['banner-image']}>
+            <HeaderCard />
+          </section>
           <div className={styles['banner-inner']}>
             <h1 className={styles['heading-xl']}>
               Office <br />
