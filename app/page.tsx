@@ -5,6 +5,7 @@ import { getWorksList } from '@/app/_libs/microcms'
 import { TOP_WORKS_LIMIT } from '@/app/_constants'
 import WorksList from '@/app/_components/WorksList'
 import Link from "next/link";
+import ButtonNeumorfism from "./ButtonNeumorfism";
 
 export const revalidate = 60
 
@@ -35,9 +36,7 @@ export default async function Home() {
             建築に関するあらゆることをデジタルツールで解決する。
             <small>Solving everything related to architecture using digital tools.</small>
             </p>
-            <button type="button" className={`${styles.btn} ${styles['btn-darken']} ${styles['btn-inline']}`}>
-              詳しくみる<i className="bx bx-right-arrow-alt"></i>
-            </button>
+            <ButtonNeumorfism label="詳しくみる" />
           </div>
           <div className={styles['banner-links']}>
             <Link className={styles.links} href="#" title="">

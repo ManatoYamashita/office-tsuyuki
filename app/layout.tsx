@@ -5,6 +5,7 @@ import './globals.css';
 import Header from './_components/Header';
 import Footer from './_components/Footer';
 import Sidebar from "./_components/Sidebar";
+import { NeumorphicSidebar } from "./_components/nuemorphicSidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -44,8 +45,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* <Header /> */}
-        <Sidebar />
+        <Header />
+        <section className="sidebarContainer">
+          {/* <Sidebar /> */}
+          <NeumorphicSidebar />
+        </section>
         {children}
         <Footer />
       </body>

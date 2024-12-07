@@ -1,5 +1,9 @@
 .main {
   overflow: hidden;
+  min-height: 100vh;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .links,
@@ -82,7 +86,6 @@
 // Banner Section
 .banner {
   &-column {
-    position: relative;
     display: grid;
     align-items: center;
     row-gap: 3rem;

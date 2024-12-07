@@ -6,18 +6,20 @@ import Menu from '../Menu';
 export default function Header() {
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logoLink}>
-        {/* <Image
-          src="/logo.svg"
-          alt="SIMPLE"
-          className={styles.logo}
-          width={348}
-          height={133}
-          priority
-        /> */}
-        Office-TSUYUKI
-      </Link>
-      <Menu />
+      <div className={styles.headerInner}>
+        <Link href="/" className={styles.logoLink}>
+          {/* <Image
+            src="/logo.svg"
+            alt="SIMPLE"
+            className={styles.logo}
+            width={348}
+            height={133}
+            priority
+          /> */}
+          <h1 className={styles.logoText}>Office-TSUYUKI</h1>
+        </Link>
+        <Menu />
+      </div>
     </header>
   );
 }

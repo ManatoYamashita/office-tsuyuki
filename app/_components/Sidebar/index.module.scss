@@ -1,6 +1,9 @@
 .sidebar {
     font-family: 'Poppins', sans-serif;
     transition: .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    height: 100svh;
     &-wrapper {
       display: flex;
       flex-direction: column;
@@ -17,10 +20,11 @@
       border-radius: 10px;
       padding: 16px;
       transition: width .3s ease-in-out;
-      position: relative;
+      position: absolute;
       width: 240px;
       height: 100vh;
       max-height: 600px;
+      z-index: 3;
     
       &.shrink {
         width: 92px;
