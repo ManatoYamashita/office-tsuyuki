@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from "react"
-import { ChevronsLeft, ChevronsRight, Home, Mail, Calendar, Settings } from 'lucide-react'
+import { Menu, X, ChevronsLeft, ChevronsRight, Home, Mail, Calendar, Settings } from 'lucide-react'
 import { cn } from "@/app/_libs/utils"
 import {
   Sidebar,
@@ -16,16 +16,42 @@ import {
 
 export function NeumorphicSidebar() {
   const [isOpen, setIsOpen] = React.useState(false)
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+
+//   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <SidebarProvider defaultOpen={false}>
+      {/* ハンバーガーメニューボタン（モバイル用） */}
+      <button
+        type="button"
+        onClick={toggleSidebar}
+        className="fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
+        aria-label="Toggle menu"
+      >
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      {/* オーバーレイ（モバイル用） */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={toggleSidebar}
+        />
+      )}
+
+      {/* サイドバー */}
       <Sidebar
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen w-64 transform transition-all duration-300 ease-in-out",
+          "fixed left-0 top-0 z-40 h-screen w-64 transform transition-all duration-300 ease-in-out p-4",
           "bg-white dark:bg-gray-800",
-          "shadow-[inset_-10px_-10px_20px_rgba(255,255,255,0.5),inset_10px_10px_20px_rgba(0,0,0,0.05)]",
-          "dark:shadow-[inset_-10px_-10px_20px_rgba(255,255,255,0.1),inset_10px_10px_20px_rgba(0,0,0,0.3)]",
-          isOpen ? "translate-x-0" : "-translate-x-56"
+          "shadow-neumorphic dark:shadow-neumorphic-dark",
+        //   isOpen ? "translate-x-0" : "-translate-x-56",
+          isOpen ? "translate-x-0" : "-translate-x-full md:left-4"
         )}
       >
         <SidebarHeader className="p-4">
@@ -43,19 +69,18 @@ export function NeumorphicSidebar() {
           <p className="text-sm text-gray-500">© 2023 Your Company</p>
         </SidebarFooter>
         <SidebarTrigger
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleSidebar}
           className={cn(
-            "absolute -right-4 top-4 z-50",
+            "absolute -right-4 top-1/2 transform -translate-y-1/2 z-50",
             "flex h-8 w-8 items-center justify-center",
             "rounded-full bg-white text-gray-600",
-            "shadow-[5px_5px_10px_rgba(0,0,0,0.05),-5px_-5px_10px_rgba(255,255,255,0.5)]",
-            "dark:bg-gray-700 dark:text-gray-200",
-            "dark:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.1)]",
+            "shadow-neumorphic dark:shadow-neumorphic-dark",
             "transition-all duration-300 ease-in-out",
-            "hover:bg-gray-100 dark:hover:bg-gray-600"
+            "hover:bg-gray-100 dark:hover:bg-gray-600",
+            "hidden md:flex" // デスクトップでのみ表示
           )}
         >
-          {isOpen ? <ChevronsLeft size={16} /> : <ChevronsRight size={16} />}
+          {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}
         </SidebarTrigger>
       </Sidebar>
     </SidebarProvider>

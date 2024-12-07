@@ -117,6 +117,7 @@ const SidebarTrigger = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => (
   <button
+    type="button"
     ref={ref}
     className={cn(
       "inline-flex items-center justify-center rounded-md text-sm font-medium",
