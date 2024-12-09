@@ -66,7 +66,7 @@
     margin-bottom: 8px;
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: var(--breakpoint-md)) {
     .success {
       text-align: left;
     }

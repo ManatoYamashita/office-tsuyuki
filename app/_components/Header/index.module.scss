@@ -1,36 +1,37 @@
 .header {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 24px 0;
-  }
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
   
-  .headerInner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+.headerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoLink {
+  display: flex;
+  text-decoration: none;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .header {
+    position: relative;
+    padding: 16px;
   }
-  
-  .logoLink {
-    display: flex;
-    text-decoration: none;
-  }
-  
+
   .logoText {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+    font-size: 20px;
   }
-  
-  @media (max-width: 640px) {
-    .header {
-      padding: 16px;
-    }
-  
-    .logoText {
-      font-size: 20px;
-    }
-  }
+}
   

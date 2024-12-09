@@ -1,5 +1,4 @@
-.main {
-  overflow: hidden;
+.heroSection {
   min-height: 100vh;
   margin-left: 100px;
   display: flex;
@@ -16,7 +15,7 @@
 	padding: 0.5rem;
 }
 
-.main::before {
+.heroSection::before {
 	--line: color-mix(in lch, canvasText 25%, transparent);
 	--size: 60px;
 	content: '';
@@ -53,6 +52,7 @@
   max-width: 100%;
   height: auto;
   object-fit: cover;
+  justify-content: space-around;
 }
 
 // Element Section
@@ -74,6 +74,7 @@
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -1px;
+    white-space: nowrap;
   }
 }
 
@@ -121,12 +122,12 @@
     align-items: center;
     row-gap: 3rem;
 
-    @media only screen and (min-width: 48rem) {
+    @media only screen and (min-width: 48rem) { // 画面の幅が48rem以上の場合に適用されます。
       grid-template-columns: repeat(2, minmax(0, 1fr));
       justify-content: center;
     }
 
-    @media only screen and (min-width: 64rem) {
+    @media only screen and (min-width: 64rem) { // 画面の幅が64rem以上の場合
       grid-template-columns: 1fr max-content;
       column-gap: 4rem;
       margin-top: 3rem;
@@ -134,21 +135,11 @@
   }
 
   &-image {
-    display: block;
-    max-width: 18rem;
-    height: auto;
+    display: flex;
     margin-top: 2rem;
-    object-fit: cover;
-    justify-self: center;
 
     @media only screen and (min-width: 48rem) {
       order: 1;
-      max-width: 20rem;
-    }
-
-    @media only screen and (min-width: 64rem) {
-      max-width: 25rem;
-      margin-right: 5rem;
     }
   }
 
@@ -159,43 +150,43 @@
     row-gap: 1.75rem;
   }
 
-  &-links {
-    position: absolute;
-    top: 30%;
-    right: 1.5rem;
-    display: grid;
-    justify-items: center;
-    row-gap: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
+  // &-links {
+  //   position: absolute;
+  //   top: 30%;
+  //   right: 1.5rem;
+  //   display: grid;
+  //   justify-items: center;
+  //   row-gap: 0.5rem;
+  //   opacity: 0;
+  //   visibility: hidden;
 
-    @media only screen and (min-width: 64rem) {
-      opacity: 1;
-      visibility: visible;
-    }
+  //   @media only screen and (min-width: 64rem) {
+  //     opacity: 1;
+  //     visibility: visible;
+  //   }
 
-    & > * {
-      font-size: 1.25rem;
-      line-height: 1.25;
-      color: var(--color-white-100);
-    }
+  //   & > * {
+  //     font-size: 1.25rem;
+  //     line-height: 1.25;
+  //     color: var(--color-white-100);
+  //   }
 
-    &::before,
-    &::after {
-      position: absolute;
-      content: "";
-      width: 4rem;
-      height: 1.5px;
-      transform: rotate(90deg);
-      background: var(--color-white-100);
-    }
+  //   &::before,
+  //   &::after {
+  //     position: absolute;
+  //     content: "";
+  //     width: 4rem;
+  //     height: 1.5px;
+  //     transform: rotate(90deg);
+  //     background: var(--color-white-100);
+  //   }
 
-    &::before {
-      top: -3rem;
-    }
+  //   &::before {
+  //     top: -3rem;
+  //   }
 
-    &::after {
-      bottom: -3rem;
-    }
-  }
+  //   &::after {
+  //     bottom: -3rem;
+  //   }
+  // }
 }

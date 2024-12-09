@@ -5,8 +5,10 @@ import { getWorksList } from '@/app/_libs/microcms'
 import { TOP_WORKS_LIMIT } from '@/app/_constants'
 import WorksList from '@/app/_components/WorksList'
 import Link from "next/link";
-import ButtonNeumorfism from "./ButtonNeumorfism";
-import HeaderCard from "./HeaderCard";
+import ButtonNeumorfism from "./_components/NeumorficButton";
+import HeaderCard from "@/app/_components/HeaderCard";
+import CEOProfile from "./_components/CEOprofile";
+import BusinessContent from "./_components/BusinessContent";
 
 export const revalidate = 60
 
@@ -17,8 +19,8 @@ export default async function Home() {
   })
 
   return (
-    <main className={styles.main}>
-      <section className={`${styles.section} ${styles.banner} ${styles['banner-section']}`}>
+    <main className={`${styles.main} flex flex-col items-center`}>
+      <section className={`${styles.heroSection} ${styles.banner} ${styles['banner-section']} max-w-4xl`}>
         <div className={`${styles.container} ${styles['banner-column']}`}>
           {/* <Image
             className={styles['banner-image']}
@@ -33,31 +35,26 @@ export default async function Home() {
           </section>
           <div className={styles['banner-inner']}>
             <h1 className={styles['heading-xl']}>
-              Office <br />
-              TSUYUKI
+              オフィス露木
             </h1>
             <p className={styles.paragraph}>
             建築に関するあらゆることをデジタルツールで解決する。
             <small>Solving everything related to architecture using digital tools.</small>
             </p>
-            <ButtonNeumorfism label="詳しくみる" />
-          </div>
-          <div className={styles['banner-links']}>
-            <Link className={styles.links} href="#" title="">
-              <i className="bx bxl-facebook"></i>
-            </Link>
-            <Link className={styles.links} href="#" title="">
-              <i className="bx bxl-instagram"></i>
-            </Link>
-            <Link className={styles.links} href="#" title="">
-              <i className="bx bxl-twitter"></i>
-            </Link>
-            <Link className={styles.links} href="#" title="">
-              <i className="bx bxl-youtube"></i>
-            </Link>
+            <ButtonNeumorfism label="詳しくみる" url="/about" />
           </div>
         </div>
       </section>
+      <section className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <CEOProfile/>
+      </div>
+    </section>
+    <section className="bg-background py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <BusinessContent/>
+      </div>
+    </section>
     </main>
   );
 }

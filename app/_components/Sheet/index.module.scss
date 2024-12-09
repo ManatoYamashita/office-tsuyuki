@@ -13,7 +13,7 @@
     }
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: var(--breakpoint-md)) {
     .container {
       width: calc(100% - 32px);
       padding: 40px 16px;

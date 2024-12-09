@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 // @import 'normalize.css';
 
 // *,
@@ -17,7 +17,7 @@
 // }
 
 .article {
-	width: 500px;
+	width: 40vw;
 	aspect-ratio: 2 / 1.1;
 	max-height: calc(100svh - 2rem);
 /*	max-height: 100px;*/
@@ -26,11 +26,13 @@
 /*	border-radius: 4em;*/
 /*	clip-path: inset(0 0 0 0 round 4em);*/
 	// max-width: calc(100% - 2rem);
-    max-width: 18rem;
+    // max-width: 18rem;
+	min-width: 300px;
 }
 
 @media(orientation: portrait) {
 	.article {
+		width: 80vw;
 		min-height: 330px;
 	}
 }

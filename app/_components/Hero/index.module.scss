@@ -54,7 +54,7 @@
     z-index: -1;
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: var(--breakpoint-md)) {
     .container {
       padding: 100px 0 60px;
     }
