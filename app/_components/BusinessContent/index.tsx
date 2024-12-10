@@ -1,3 +1,5 @@
+"use client";   
+
 import Image from 'next/image'
 import NuemorficButton from '../NeumorficButton'
 
@@ -24,12 +26,12 @@ export default function BusinessContent() {
         <div className="flex-1 w-full relative">
         <div className="aspect-w-1 aspect-h-1 lg:w-full lg:max-w-full w-3/4  max-w-3/4 mx-auto">
             <video
-            src="/images/solutions_triangle.webm"
-            title="革新的なソリューションのイメージ"
-            autoPlay
-            muted
-            playsInline
-            className="w-full h-full object-cover"
+                src="/images/solutions_triangle.webm"
+                title="革新的なソリューションのイメージ"
+                autoPlay
+                muted
+                playsInline
+                className="w-full h-full object-cover"
             />
         </div>
         </div>

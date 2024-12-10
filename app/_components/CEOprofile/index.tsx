@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Globe, Facebook } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ProfileComponent() {
   return (
@@ -49,58 +51,47 @@ export default function ProfileComponent() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">経歴 & 資格</h3>
-              <ul className="space-y-2">
-                {[
-                  "武蔵工業大学建築学科卒（現東京都市大学）",
-                  "一級建築士",
-                  "CASBEE元審査員、現建築、戸建及び不動産評価員",
-                  "認定ファシリティマネージャー（CFMJ）資格者",
-                  "第二種情報処理技術者",
-                  "空気調和衛生工学会会員"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Badge variant="outline" className="w-2 h-2 p-0 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Button asChild className="w-full mt-4">
-                <a href="mailto:tsuyuki@pom.jp">
-                  メールを送る
-                </a>
-              </Button>
-            </div>
-            
-            <div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">経歴 & 資格</h3>
-              <ul className="space-y-2">
-                {[
-                  "武蔵工業大学建築学科卒（現東京都市大学）",
-                  "一級建築士",
-                  "CASBEE元審査員、現建築、戸建及び不動産評価員",
-                  "認定ファシリティマネージャー（CFMJ）資格者",
-                  "第二種情報処理技術者",
-                  "空気調和衛生工学会会員"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Badge variant="outline" className="w-2 h-2 p-0 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Button asChild className="w-full mt-4">
-                <a href="mailto:tsuyuki@pom.jp">
-                  メールを送る
-                </a>
-              </Button>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div className="space-y-4">
+    <h3 className="text-lg font-semibold">経歴 & 資格</h3>
+    <ul className="space-y-2">
+      {[
+        "武蔵工業大学建築学科卒（現東京都市大学）",
+        "一級建築士",
+        "CASBEE元審査員、現建築、戸建及び不動産評価員",
+        "認定ファシリティマネージャー（CFMJ）資格者",
+        "第二種情報処理技術者",
+        "空気調和衛生工学会会員",
+      ].map((item, index) => (
+        <li key={index} className="flex items-center gap-2">
+          <Badge variant="outline" className="w-2 h-2 p-0 rounded-full" />
+          {item}
+        </li>
+      ))}
+    </ul>
+    <Button asChild className="w-full mt-4">
+      <a href="mailto:tsuyuki@pom.jp">メールを送る</a>
+    </Button>
+  </div>
 
-          </div>
+  <div>
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold">SNS</h3>
+      <div className="flex space-x-4">
+        <Link href="https://www.facebook.com/hiromi.tsuyuki.5" target="_blank" rel="noopener noreferrer">
+          <Facebook size={24} />
+        </Link>
+        <Link href="https://example2.com" target="_blank" rel="noopener noreferrer">
+          <Globe size={24} />
+        </Link>
+        <Link href="https://example3.com" target="_blank" rel="noopener noreferrer">
+          <Globe size={24} />
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
+
         </CardContent>
       </Card>
     </div>

@@ -130,6 +130,10 @@ a {
   text-decoration: none;
 }
 
+video::-webkit-media-controls-start-playback-button {
+  display: none !important; /* Safariの再生ボタンを非表示 */
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

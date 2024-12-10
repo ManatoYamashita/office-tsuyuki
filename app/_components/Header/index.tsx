@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './index.module.scss';
@@ -7,16 +9,11 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link href="/" className={styles.logoLink}>
-          {/* <Image
-            src="/logo.svg"
-            alt="SIMPLE"
-            className={styles.logo}
-            width={348}
-            height={133}
-            priority
-          /> */}
-          <h1 className={styles.logoText}>Office-TSUYUKI</h1>
+        <Link href="/" className={styles.logoAnime}>
+        <video title='オフィス露木' muted playsInline autoPlay>
+          <source src="/images/logo.mov" type="video/quicktime" />
+          <source src='/images/logo.webm' type='video/webm' />
+        </video>
         </Link>
         <Menu />
       </div>

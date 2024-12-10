@@ -8,14 +8,18 @@
   
 .headerInner {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 16px;
 }
 
-.logoLink {
+.logoAnime {
   display: flex;
   text-decoration: none;
+  width: 300px;
+
+  -webkit-media-controls-start-playback-button {
+    display: none !important; /* Safariの再生ボタンを非表示 */
+  }
 }
 
 .logoText {
@@ -28,6 +32,10 @@
   .header {
     position: relative;
     padding: 16px;
+  }
+
+  .headerInner {
+    flex-direction: column;
   }
 
   .logoText {
