@@ -24,10 +24,10 @@
       width: 240px;
       height: 100vh;
       max-height: 600px;
-      z-index: 3;
     
       &.shrink {
         width: 92px;
+        z-index: 3;
       }
     }
     
