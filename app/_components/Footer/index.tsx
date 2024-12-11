@@ -90,7 +90,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center">
               {/* <span className="text-2xl font-bold">ロゴ</span> */}
-              <video title='オフィス露木' muted autoPlay playsInline >
+              <video title='オフィス露木' muted autoPlay playsInline poster='/logo.webp'>
                 <source src="/images/logo-white.mov" type="video/quicktime" />
                 <source src='/images/logo-white.webm' type='video/webm' />
               </video>

@@ -28,6 +28,12 @@
 	// max-width: calc(100% - 2rem);
     // max-width: 18rem;
 	min-width: 300px;
+	transition: transform border-radius 0.5s;
+}
+.article:hover {
+	transform: scale(1.02);
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 @media(orientation: portrait) {

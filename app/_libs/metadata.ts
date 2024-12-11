@@ -27,6 +27,13 @@ export interface JsonLD {
     publisher?: string;
     datePublished?: string;
     dateModified?: string;
+    headline?: string;
+    articleBody?: string;
+    keywords?: string[];
+    inLanguage?: string;
+    license?: string;
+    mainEntityOfPage?: string;
+    dateCreated?: string;
 }
 
 export interface Metadata {

@@ -10,7 +10,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <Link href="/" className={styles.logoAnime}>
-        <video title='オフィス露木' muted playsInline autoPlay>
+        <video title='オフィス露木' muted playsInline autoPlay poster="/logo.webp">
           <source src="/images/logo.mov" type="video/quicktime" />
           <source src='/images/logo.webm' type='video/webm' />
         </video>

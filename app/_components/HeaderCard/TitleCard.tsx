@@ -1,18 +1,24 @@
 import React from "react";
 import styles from "./index.module.scss";
+import Image from "next/image";
+import Link from "next/link";
 
 const TitleCard: React.FC = () => {
   return (
-    <article className={styles.article}>
+    <Link href="https://maps.app.goo.gl/hU3hXDCyZKvDzQ9L7" className={styles.article}>
       <div className={styles.assets}>
-        <img
-          src="https://assets.codepen.io/605876/do-not-copy-osaka-sky.jpeg"
-          alt=""
+        <Image
+          src="/images/bluesky.jpg"
+          alt="bluesky"
+          width={500}
+          height={500}
         />
-        <h3>Osaka</h3>
-        <img
-          src="https://assets.codepen.io/605876/do-not-copy-osaka-tower.png"
-          alt=""
+        <h3>pom.jp</h3>
+        <Image
+          src="/images/office-t.png"
+          alt="office-tsuyuki"
+          width={300}
+          height={500}
         />
       </div>
       <div className={styles.blur}>
@@ -37,11 +43,11 @@ const TitleCard: React.FC = () => {
               clipRule="evenodd"
             />
           </svg>
-          <span>Osaka Castle</span>
+          <span>ハイネスロワイヤル 501</span>
         </p>
-        <p>Osaka, Japan</p>
+        <p>Shinjuku, Tokyo, Japan</p>
       </div>
-    </article>
+    </Link>
   );
 };
 
