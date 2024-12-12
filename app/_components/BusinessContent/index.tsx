@@ -7,15 +7,15 @@ export default function BusinessContent() {
   return (
     <section className="space-y-6 container mx-auto px-4 py-12 md:py-24">
     <h1 className="text-4xl md:text-5xl font-bold tracking-tighter">
-        革新的なソリューション
+        建築DXソリューション
     </h1>
     <h2 className="text-2xl md:text-3xl text-muted-foreground">
-        ビジネスの未来を形作る
+        興味あることはなんでも徹底的に
     </h2>
     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 space-y-6">
         <p className="text-lg text-muted-foreground">
-            私たちの最先端テクノロジーは、効率性を高め、生産性を向上させ、競争力を強化します。未来のビジネスを今日から始めましょう。
+            建築とコンピュータ利用を中心に幅広く「興味あることはなんでも徹底的にやってみよう」精神で活動しております。従いまして、その業務内容はバラエティに富んでいます。
         </p>
         <div className="flex flex-wrap gap-4">
             <NuemorficButton label="建築設計デザイン" url="/" />

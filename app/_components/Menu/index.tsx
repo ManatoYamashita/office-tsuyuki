@@ -22,7 +22,7 @@ export default function Menu() {
             <Link href="/about">オフィス露木について</Link>
           </li>
           <li>
-            <Link href="/contact">お問い合わせ</Link>
+            <Link href="http://www.pom.jp/hotbiz/hotbiz.cgi">社内連絡</Link>
           </li>
         </ul>
         <button type='button' className={cx(styles.button, styles.close)} onClick={close} aria-label="Close">

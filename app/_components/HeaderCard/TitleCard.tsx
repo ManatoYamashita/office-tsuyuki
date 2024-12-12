@@ -13,7 +13,7 @@ const TitleCard: React.FC = () => {
           width={500}
           height={500}
         />
-        <h3>pom.jp</h3>
+        <h3>TSUYUKI</h3>
         <Image
           src="/images/office-t.png"
           alt="office-tsuyuki"
