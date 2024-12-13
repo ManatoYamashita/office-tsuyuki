@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 
-interface NuemorficButtonProps {
+interface NeumorficButtonProps {
     label: string;
     url?: string;
   }
   
-  export default function NuemorficButton({ label, url }: NuemorficButtonProps) {
+  export default function NeumorficButton({ label, url }: NeumorficButtonProps) {
     return (
       <>
         {url ? (

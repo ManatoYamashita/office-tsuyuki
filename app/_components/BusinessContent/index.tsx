@@ -1,7 +1,7 @@
 "use client";   
 
 import { useEffect, useRef } from 'react';
-import NuemorficButton from '../NeumorficButton';
+import NeumorficButton from '../NeumorphicButton';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -136,9 +136,9 @@ export default function BusinessContent() {
             className="flex flex-wrap gap-4"
             style={{ opacity: 0 }}
           >
-            <NuemorficButton label="建築設計デザイン" url="/" />
-            <NuemorficButton label="建築研究開発コンサル" url="/" />
-            <NuemorficButton label="建築DX" url="/" />
+            <NeumorficButton label="建築設計デザイン" url="/" />
+            <NeumorficButton label="建築研究開発コンサル" url="/" />
+            <NeumorficButton label="建築DX" url="/" />
           </div>
         </div>
         <div 

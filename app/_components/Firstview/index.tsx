@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import styles from "./index.module.scss";
-import NuemorficButton from "@/app/_components/NeumorficButton";
+import NeumorficButton from "@/app/_components/NeumorphicButton";
 import HeaderCard from "@/app/_components/HeaderCard";
 
 // テキストを1文字ずつ分割するユーティリティ関数
@@ -101,7 +101,7 @@ export default function HeroSection() {
               {splitText(subText)}
             </small>
           </p>
-          <NuemorficButton label="詳しくみる" url="/about" />
+          <NeumorficButton label="詳しくみる" url="/about" />
         </div>
       </div>
     </section>

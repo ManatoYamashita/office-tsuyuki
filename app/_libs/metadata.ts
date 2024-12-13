@@ -38,6 +38,7 @@ export interface JsonLD {
 }
 
 export interface Metadatas extends Metadata {
+    metadataBase?: URL; 
     title: string;
     description: string;
     icons: {
@@ -64,5 +65,10 @@ export interface Metadatas extends Metadata {
 }
 
 export function generateCommonMetadata(metadata: Metadatas): Metadatas {
-    return metadata;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    
+    return {
+        ...metadata,
+        metadataBase: new URL(baseUrl),
+    };
 }

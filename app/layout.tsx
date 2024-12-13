@@ -3,7 +3,7 @@ import './globals.css';
 
 import Header from '@/app/_components/Header';
 import Footer from '@/app/_components/Footer';
-import NeumorphicSidebar from "@/app/_components/NuemorphicSidebar";
+import NeumorphicSidebar from "@/app/_components/NeumorphicSidebar";
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 
 export function generateMetadata(): Metadatas {
