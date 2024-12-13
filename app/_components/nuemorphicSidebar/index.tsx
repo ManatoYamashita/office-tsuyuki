@@ -12,7 +12,7 @@ import {
   SidebarNavItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/app/_components/ui/sidebar"
+} from "@/components/ui/sidebar"
 import Link from "next/link"
 
 export default function NeumorphicSidebar() {
