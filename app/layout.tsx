@@ -1,9 +1,9 @@
 import localFont from "next/font/local";
 import './globals.css';
 
-import Header from './_components/Header';
-import Footer from './_components/Footer';
-import { NeumorphicSidebar } from "./_components/NuemorphicSidebar";
+import Header from '@/app/_components/Header';
+import Footer from '@/app/_components/Footer';
+import { NeumorphicSidebar } from "@/app/_components/NuemorphicSidebar";
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 
 export function generateMetadata(): Metadatas {
