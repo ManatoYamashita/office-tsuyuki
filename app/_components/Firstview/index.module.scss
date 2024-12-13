@@ -1,0 +1,145 @@
+.heroSection {
+    height: 70svh;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+        place-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height:min-content;
+        touch-action: none;
+        font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+            Helvetica, Arial, sans-serif, system-ui;
+        margin: 0;
+        padding: 0.5rem;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+    }
+}
+
+.heroSection::before {
+    --line: color-mix(in lch, canvasText 25%, transparent);
+    --size: 60px;
+    content: '';
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: linear-gradient(
+                90deg,
+                var(--line) 1px,
+                transparent 1px var(--size)
+            )
+            0 -5vmin / var(--size) var(--size),
+        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 0 -5vmin / var(
+                --size
+            ) var(--size);
+    mask: linear-gradient(-15deg, transparent 60%, white);
+    top: 0;
+    z-index: -1;
+}
+
+.banner-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    justify-content: space-around;
+}
+
+// Element Section
+.section {
+  margin: 0 auto;
+  padding: 6rem 0 1rem;
+}
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.heading {
+  &-xl {
+    font-family: inherit;
+    font-size: clamp(2.648rem, 6vw, 4.241rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    white-space: nowrap;
+  }
+}
+
+.paragraph {
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--color-white-200);
+}
+
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  text-transform: unset;
+  transition: all 0.3s ease-in-out;
+
+  &-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+  }
+
+  &-darken {
+    padding: 0.75rem 2rem;
+    color: var(--color-white-100);
+    background-color: var(--color-black-200);
+    box-shadow: var(--shadow-medium);
+  }
+}
+
+// Banner Section
+.banner {
+  &-column {
+    display: grid;
+    align-items: center;
+    row-gap: 3rem;
+
+    @media only screen and (min-width: 48rem) { // 画面の幅が48rem以上の場合に適用されます。
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: center;
+    }
+
+    @media only screen and (min-width: 64rem) { // 画面の幅が64rem以上の場合
+      grid-template-columns: 1fr max-content;
+      column-gap: 4rem;
+      margin-top: 3rem;
+    }
+  }
+
+  &-image {
+    display: flex;
+    margin-top: 2rem;
+
+    @media only screen and (min-width: 48rem) {
+      margin-top: 0;
+      order: 1;
+    }
+  }
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.75rem;
+  }
+}

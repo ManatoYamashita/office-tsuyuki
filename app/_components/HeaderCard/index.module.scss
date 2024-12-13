@@ -1,47 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-// @import 'normalize.css';
-
-// *,
-// *:after,
-// *:before {
-// 	box-sizing: border-box;
-// }
-
-// :root {
-// 	--x: 0;
-// 	--y: 0;
-// }
-
-// html {
-// 	color-scheme: light only;
-// }
 
 .article {
 	width: 40vw;
 	aspect-ratio: 2 / 1.1;
 	max-height: calc(100svh - 2rem);
-/*	max-height: 100px;*/
 	position: relative;
 	overflow: hidden;
-/*	border-radius: 4em;*/
-/*	clip-path: inset(0 0 0 0 round 4em);*/
-	// max-width: calc(100% - 2rem);
-    // max-width: 18rem;
 	min-width: 300px;
 	transition: border-radius 0.2s;
 }
 .article:hover {
 	border-radius: 2rem;
-	// box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
-@media(orientation: portrait) {
-	.article {
-		width: 80vw;
-		min-height: 330px;
-	}
-}
 .assets {
+	position: absolute;
+	inset: 0;
+	// border-radius: 4em;
+	overflow: hidden;
     transform: scale(1.2);
 }
 .assets > img {
@@ -145,13 +121,6 @@
 		#fff 15%,
 		#0000 calc((15 + var(--stop)) * 1%)
 	);
-}
-
-.assets {
-	position: absolute;
-	inset: 0;
-	// border-radius: 4em;
-	overflow: hidden;
 }
 
 :where(.x-link, .bear-link):is(:hover, :focus-visible) {

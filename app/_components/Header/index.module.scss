@@ -1,9 +1,9 @@
 .header {
-  position: absolute;
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  height: 30svh;
 }
   
 .headerInner {
@@ -31,7 +31,8 @@
 @media (max-width: 768px) {
   .header {
     position: relative;
-    padding: 16px;
+    padding: 16px 0;
+    height: auto;
   }
 
   .headerInner {

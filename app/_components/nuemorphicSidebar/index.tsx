@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from "react"
-import { Menu, X, ChevronsLeft, ChevronsRight, Home, Mail, Calendar, Settings } from 'lucide-react'
+import { Menu, X, ChevronsLeft, ChevronsRight, Home, Tent, Brush, CodeXml } from 'lucide-react'
 import { cn } from "@/app/_libs/utils"
 import {
   Sidebar,
@@ -13,6 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/app/_components/ui/sidebar"
+import Link from "next/link"
 
 export function NeumorphicSidebar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -47,22 +48,28 @@ export function NeumorphicSidebar() {
       {/* サイドバー */}
       <Sidebar
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen w-64 transform transition-all duration-300 ease-in-out p-4",
+          "fixed left-0 top-0 z-40 h-screen w-72 transform transition-all duration-300 ease-in-out p-4",
           "bg-white dark:bg-gray-800",
           "shadow-neumorphic dark:shadow-neumorphic-dark",
-        //   isOpen ? "translate-x-0" : "-translate-x-56",
           isOpen ? "translate-x-0" : "-translate-x-full md:left-4"
         )}
       >
         <SidebarHeader className="p-4">
+          <Link href="http://www.pom.jp" aria-label="pomJP" className="logo-animation-container">
+            <video autoPlay muted playsInline className="w-full h-full object-cover" poster="/images/pomjp.svg">
+              <source src="/images/pomjp.webm" type="video/webm" />
+              <source src="/images/pomjp.mp4" type="video/mp4" />
+              お使いのブラウザはvideoタグをサポートしていません。
+            </video>
+          </Link>
           <h2 className="text-lg font-semibold">Menu</h2>
         </SidebarHeader>
         <SidebarContent>
           <SidebarNav>
-            <SidebarNavItem icon={<Home size={20} />}>Home</SidebarNavItem>
-            <SidebarNavItem icon={<Mail size={20} />}>Messages</SidebarNavItem>
-            <SidebarNavItem icon={<Calendar size={20} />}>Calendar</SidebarNavItem>
-            <SidebarNavItem icon={<Settings size={20} />}>Settings</SidebarNavItem>
+            <SidebarNavItem icon={<Tent size={20} />}>FMデータサポート</SidebarNavItem>
+            <SidebarNavItem icon={<Home size={20} />}>株式会社オフィス露木</SidebarNavItem>
+            <SidebarNavItem icon={<Brush size={20} />}>環コラボレイトデザイン</SidebarNavItem>
+            <SidebarNavItem icon={<CodeXml size={20} />}>なかの</SidebarNavItem>
           </SidebarNav>
         </SidebarContent>
         <SidebarFooter className="p-4">

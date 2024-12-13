@@ -3,14 +3,17 @@ import './globals.css';
 
 import Header from './_components/Header';
 import Footer from './_components/Footer';
-import Sidebar from "./_components/Sidebar";
-import { NeumorphicSidebar } from "./_components/nuemorphicSidebar";
-import { Metadata, generateCommonMetadata } from '@/app/_libs/metadata';
+import { NeumorphicSidebar } from "./_components/NuemorphicSidebar";
+import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 
-export function generateMetadata(): Metadata {
+export function generateMetadata(): Metadatas {
   return generateCommonMetadata({
     title: 'オフィス露木 - officeTSUYUKI',
     description: '株式会社オフィス露木は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。',
+    icons: {
+      icon: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
+    },
     openGraph: {
       title: 'オフィス露木',
       description: '株式会社オフィス露木は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。',
@@ -81,11 +84,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         <section className="sidebarContainer">
-          {/* <Sidebar /> */}
           <NeumorphicSidebar />
         </section>
         {children}

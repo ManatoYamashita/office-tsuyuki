@@ -1,71 +1,107 @@
 "use client";
 
-// import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
-import styles from "./index.module.scss";
 import TitleCard from "./TitleCard";
 
-interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
-  requestPermission?: () => Promise<'granted' | 'denied'>;
-}
+const MOBILE_BREAKPOINT = 768;
 
 export default function HeaderCard() {
+  const [isMobile, setIsMobile] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    // 初期表示のアニメーション
+    gsap.fromTo(elementRef.current,
+      {
+        y: 100,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.2,
+      }
+    );
+
+    // 画面幅でのモバイル判定
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+
+    // 初回チェック
+    checkIfMobile();
+
+    // リサイズ時の判定更新
+    window.addEventListener('resize', checkIfMobile);
+
     const update = ({ x, y }: MouseEvent) => {
+      if (isMobile) return;
+
       gsap.set(document.documentElement, {
         "--x": gsap.utils.mapRange(0, window.innerWidth, -1, 1, x),
         "--y": gsap.utils.mapRange(0, window.innerHeight, -1, 1, y),
       });
     };
 
-    const handleOrientation = ({ beta, gamma }: DeviceOrientationEvent) => {
-      const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-      gsap.set(document.documentElement, {
-        "--x": gsap.utils.clamp(
-          -1,
-          1,
-          isLandscape
-            ? gsap.utils.mapRange(-45, 45, -1, 1, beta || 0)
-            : gsap.utils.mapRange(-45, 45, -1, 1, gamma || 0)
-        ),
-        "--y": gsap.utils.clamp(
-          -1,
-          1,
-          isLandscape
-            ? gsap.utils.mapRange(20, 70, 1, -1, Math.abs(gamma || 0))
-            : gsap.utils.mapRange(20, 70, 1, -1, beta || 0)
-        ),
-      });
-    };
-
-    const start = () => {
-      if (
-        (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS)?.requestPermission &&
-        typeof (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission === "function"
-      ) {
-        (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission?.().then((result) => {
-          if (result === "granted") {
-            window.addEventListener("deviceorientation", handleOrientation);
-          }
-        });
-      } else {
-        window.addEventListener("deviceorientation", handleOrientation);
-      }
-    };
-
     window.addEventListener("mousemove", update);
-    document.body.addEventListener("click", start, { once: true });
 
     return () => {
       window.removeEventListener("mousemove", update);
-      window.removeEventListener("deviceorientation", handleOrientation);
+      window.removeEventListener('resize', checkIfMobile);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <div 
+        ref={elementRef}
+        style={{
+          opacity: 0,
+          transform: 'translateY(100px)',
+          width: '100%',
+          height: '100%',
+          position: 'relative'
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'relative',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        >
+          <source src="/images/tsuyuki-video.webm" type="video/webm" />
+        </video>
+      </div>
+    );
+  }
 
   return (
-    <>
-    <TitleCard />
-    </>
+    <div 
+      ref={elementRef}
+      style={{
+        opacity: 0,
+        transform: 'translateY(100px)',
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <TitleCard />
+    </div>
   );
 }

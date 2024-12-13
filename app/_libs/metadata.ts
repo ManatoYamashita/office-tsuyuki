@@ -1,4 +1,5 @@
 // lib/metadata.ts
+import { Metadata } from 'next'
 export interface OpenGraphImage {
     url: string;
     width?: number;
@@ -36,9 +37,13 @@ export interface JsonLD {
     dateCreated?: string;
 }
 
-export interface Metadata {
+export interface Metadatas extends Metadata {
     title: string;
     description: string;
+    icons: {
+        icon: string,
+        apple: string,
+      }
     openGraph?: OpenGraph;
     twitter?: {
         card?: string;
@@ -58,6 +63,6 @@ export interface Metadata {
     tags?: string[];
 }
 
-export function generateCommonMetadata(metadata: Metadata): Metadata {
+export function generateCommonMetadata(metadata: Metadatas): Metadatas {
     return metadata;
 }

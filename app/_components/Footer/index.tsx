@@ -84,7 +84,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-black text-white border-t footer-section">
+    <footer className="bg-black text-white border-t footer-section p-3">
       <div className="container px-4 py-8 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
@@ -102,7 +102,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-3">
             <div>
               <h3 className="mb-6 text-sm font-semibold uppercase">会社情報</h3>
-              <ul className="space-y-4">
+              <ul className="space-y-4 pl-4">
                 <li>
                   <Link href="/about" className="text-sm hover:text-muted-foreground">
                     会社概要
@@ -122,7 +122,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="mb-6 text-sm font-semibold uppercase">サービス</h3>
-              <ul className="space-y-4">
+              <ul className="space-y-4 pl-4">
                 <li>
                   <Link href="/services" className="text-sm hover:text-muted-foreground">
                     サービス一覧
@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="mb-6 text-sm font-semibold uppercase">法的情報</h3>
-              <ul className="space-y-4">
+              <ul className="space-y-4 pl-4">
                 <li>
                   <Link href="/privacy" className="text-sm hover:text-muted-foreground">
                     プライバシーポリシー
