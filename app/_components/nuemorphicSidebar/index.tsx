@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import * as React from "react"
 import { Menu, X, ChevronsLeft, ChevronsRight, Home, Tent, Brush, CodeXml } from 'lucide-react'
@@ -15,7 +15,7 @@ import {
 } from "@/app/_components/ui/sidebar"
 import Link from "next/link"
 
-export function NeumorphicSidebar() {
+export default function NeumorphicSidebar() {
   const [isOpen, setIsOpen] = React.useState(false)
 //   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
@@ -93,4 +93,3 @@ export function NeumorphicSidebar() {
     </SidebarProvider>
   )
 }
-
