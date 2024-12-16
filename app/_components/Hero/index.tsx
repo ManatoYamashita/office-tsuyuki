@@ -15,8 +15,8 @@ export default function Hero({ title, sub }: Props) {
       </div>
       <Image
         className={styles.bgimg}
-        src="/img-mv.jpg"
-        alt=""
+        src="/images/placeholder.webp"
+        alt="backgground"
         width={4000}
         height={1200}
       />

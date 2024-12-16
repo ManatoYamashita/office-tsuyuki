@@ -9,20 +9,26 @@ export type Category = {
   name: string;
 } & MicroCMSListContent;
 
-export type Works = {
+// 共通のベース型を定義
+export type ContentBase = {
   title: string;
   description: string;
   content: string;
-  category: Category;
   thumbnail: MicroCMSImage;
 } & MicroCMSListContent;
 
-export type Blogs = {
-  title: string;
-  description: string;
-  content: string;
-  thumbnail: MicroCMSImage;
-} & MicroCMSListContent;
+// Blogsの型定義（ベース型をそのまま使用）
+export type Blogs = ContentBase;
+
+// Worksの型定義（ベース型に category を追加）
+export type Works = ContentBase & {
+  category: Category[];
+};
+
+// 汎用的なArticleコンポーネントで使用する型
+export type ArticleContent = ContentBase & {
+  category?: Category[];
+};
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error('MICROCMS_SERVICE_DOMAIN is required. （MICROCMS_SERVICE_DOMAINは必須です。）');

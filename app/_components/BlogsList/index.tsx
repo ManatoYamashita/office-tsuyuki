@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import Date from '../Date';
 import { Blogs } from '@/app/_libs/microcms';
+// import Category from '../Category';
 
 type Props = {
   blogs: Blogs[];

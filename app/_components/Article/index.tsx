@@ -1,24 +1,37 @@
 import Image from 'next/image';
-import type { Blogs } from '@/app/_libs/microcms';
+import Link from 'next/link';
+import type { ArticleContent, Category } from '@/app/_libs/microcms';
 import Date from '../Date';
 import styles from './index.module.scss';
 
 type Props = {
-  data: Blogs;
+  data: ArticleContent;
+  contentType: 'works' | 'blogs';
 };
 
-export default function Article({ data }: Props) {
+const CategoryLabel = ({ category }: { category: Category }) => (
+  <span className={styles.category}>{category.name}</span>
+);
+
+export default function Article({ data, contentType }: Props) {
   return (
     <main>
       <h1 className={styles.title}>{data.title}</h1>
       <p className={styles.description}>{data.description}</p>
       <div className={styles.meta}>
-        {/* <Link
-          href={`/blogs/category/${data.category.id}`}
-          className={styles.categoryLink}
-        >
-          <Category category={data.category} />
-        </Link> */}
+        {'category' in data && data.category && data.category.length > 0 && (
+          <div className={styles.categories}>
+            {data.category.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/${contentType}/category/${cat.id}`}
+                className={styles.categoryLink}
+              >
+                <CategoryLabel category={cat} />
+              </Link>
+            ))}
+          </div>
+        )}
         <Date date={data.publishedAt ?? data.createdAt} />
       </div>
       {data.thumbnail && (

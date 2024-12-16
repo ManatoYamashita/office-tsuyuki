@@ -21,7 +21,7 @@ export default async function Page({ params }: Props) {
   const category = await getCategoryDetail(params.id).catch(notFound);
 
   const { contents: works, totalCount } = await getWorksList({
-    filters: `category[equals]${category.id}`,
+    filters: `category[contains]${params.id}`, // equals から contains に変更
     limit: WORKS_LIST_LIMIT,
     offset: WORKS_LIST_LIMIT * (current - 1),
   });
