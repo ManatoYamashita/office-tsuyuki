@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import styles from "./index.module.scss";
-import NeumorficButton from "@/app/_components/NeumorphicButton";
+import Btn from "@/app/_components/Btn";
 import HeaderCard from "@/app/_components/HeaderCard";
 
 // テキストを1文字ずつ分割するユーティリティ関数
@@ -83,7 +83,7 @@ export default function HeroSection() {
           style={{ overflow: 'hidden' }}
         >
           {/* <div ref={heroSectionRef} style={{ opacity: 1, transform: 'translateY(0)' }}> */}
-            <HeaderCard />
+            {/* <HeaderCard /> */}
           {/* </div> */}
         </section>
         <div className={styles['banner-inner']}>
@@ -101,7 +101,7 @@ export default function HeroSection() {
               {splitText(subText)}
             </small>
           </p>
-          <NeumorficButton label="詳しくみる" url="/about" />
+          <Btn label="詳しくみる" url="/about" />
         </div>
       </div>
     </section>

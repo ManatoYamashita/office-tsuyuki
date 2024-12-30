@@ -8,6 +8,14 @@ import Firstview from "./_components/Firstview";
 import CEOProfile from "./_components/CEOprofile";
 import BusinessContent from "./_components/BusinessContent";
 import Book from "./_components/Book";
+import CompanyInfo from "./_components/CompanyInfo";
+import Stakeholders from "./_components/Stakeholders";
+
+const logos = [
+  { id: 1, src: "/logo.webp", alt: "Company 1" },
+  { id: 2, src: "/images/placeholder.webp", alt: "Company 2" },
+  { id: 3, src: "/images/placeholder.webp", alt: "Company 3" },
+];
 
 export const revalidate = 60
 
@@ -20,6 +28,23 @@ export default async function Home() {
   return (
     <main className={`${styles.main} flex flex-col items-center`}>
       <Firstview/>
+      <section className="relative h-full max-w-4xl mx-auto bg-background py-12 px-8 sm:px-6 sm:pl-12 lg:px-8">
+        <div className="flex items-center justify-center">
+          <CompanyInfo
+            name="テックイノベーション株式会社"
+            logo="/images/tsuyuki-hiromi.webp"
+            foundedYear={2010}
+            employees={250}
+            description="当社は、最先端のAI技術とIoTソリューションを提供する企業です。持続可能な未来の創造に向けて、革新的な製品とサービスの開発に取り組んでいます。クラウドコンピューティング、ビッグデータ分析、スマートホームテクノロジーなど、幅広い分野でソリューションを展開しています。お客様のニーズに合わせたカスタマイズ可能なプラットフォームを提供し、業務効率化と新たな価値創造をサポートしています。また、環境に配慮した技術開発にも力を入れ、エネルギー効率の高い製品やリサイクル可能な材料の使用にも積極的に取り組んでいます。"
+            website="https://www.techinnovation.co.jp"
+            ceo="山田 太郎"
+            address="〒100-0004 東京都千代田区大手町1-1-1 テックイノベーションビル"
+          />
+        </div>
+        <div className="w-full">
+          <Stakeholders logos={logos} />
+        </div>
+      </section>
       <section className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <CEOProfile/>

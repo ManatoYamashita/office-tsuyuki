@@ -98,7 +98,7 @@ export default function HeaderCard() {
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
       <TitleCard />

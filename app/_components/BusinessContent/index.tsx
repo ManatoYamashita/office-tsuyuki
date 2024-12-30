@@ -1,7 +1,7 @@
 "use client";   
 
 import { useEffect, useRef } from 'react';
-import NeumorficButton from '../NeumorphicButton';
+import Btn from '../Btn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -126,25 +126,22 @@ export default function BusinessContent() {
         <div className="flex-1 space-y-6">
           <p 
             ref={textContentRef}
-            className="text-lg text-muted-foreground"
-            style={{ opacity: 0 }}
+            className="text-lg text-muted-foreground opacity-0"
           >
             建築とコンピュータ利用を中心に幅広く「興味あることはなんでも徹底的にやってみよう」精神で活動しております。従いまして、その業務内容はバラエティに富んでいます。
           </p>
           <div 
             ref={buttonsRef}
-            className="flex flex-wrap gap-4"
-            style={{ opacity: 0 }}
+            className="flex flex-wrap gap-6 opacity-0"
           >
-            <NeumorficButton label="建築設計デザイン" url="/" />
-            <NeumorficButton label="建築研究開発コンサル" url="/" />
-            <NeumorficButton label="建築DX" url="/" />
+            <Btn label="建築設計デザイン" url="/" />
+            <Btn label="建築研究開発コンサル" url="/" />
+            <Btn label="建築DX" url="/" />
           </div>
         </div>
         <div 
           ref={videoRef}
-          className="flex-1 w-full relative"
-          style={{ opacity: 0 }}
+          className="flex-1 w-full relative opacity-0"
         >
           <div className="aspect-w-1 aspect-h-1 lg:w-full lg:max-w-full w-3/4 max-w-3/4 mx-auto">
             <video
