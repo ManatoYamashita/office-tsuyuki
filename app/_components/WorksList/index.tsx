@@ -12,7 +12,7 @@ type Props = {
 
 export default function WorksList({ works }: Props) {
   if (works.length === 0) {
-    return <p>記事がありません。</p>;
+    return <p>事例・実績が取得できませんでした。</p>;
   }
   return (
     <ul>

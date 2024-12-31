@@ -1,48 +1,38 @@
 import styles from "./page.module.scss";
 
-import { getWorksList } from '@/app/_libs/microcms'
-import { TOP_WORKS_LIMIT } from '@/app/_constants'
-import WorksList from '@/app/_components/WorksList'
+import { getBlogsList } from '@/app/_libs/microcms'
+import { TOP_BLOGS_LIMIT } from '@/app/_constants'
+import BlogsList from '@/app/_components/BlogsList'
 import Link from "next/link";
 import Firstview from "./_components/Firstview";
 import CEOProfile from "./_components/CEOprofile";
 import BusinessContent from "./_components/BusinessContent";
 import Book from "./_components/Book";
 import CompanyInfo from "./_components/CompanyInfo";
-import Stakeholders from "./_components/Stakeholders";
-
-const logos = [
-  { id: 1, src: "/logo.webp", alt: "Company 1" },
-  { id: 2, src: "/images/placeholder.webp", alt: "Company 2" },
-  { id: 3, src: "/images/placeholder.webp", alt: "Company 3" },
-];
 
 export const revalidate = 60
 
 export default async function Home() {
 
-  const data = await getWorksList({
-    limit: TOP_WORKS_LIMIT,
-  })
+  const { contents: blogs } = await getBlogsList({
+    limit: TOP_BLOGS_LIMIT,
+  });
 
   return (
     <main className={`${styles.main} flex flex-col items-center`}>
       <Firstview/>
+      <BlogsList blogs={blogs} />
       <section className="relative h-full max-w-4xl mx-auto bg-background py-12 px-8 sm:px-6 sm:pl-12 lg:px-8">
         <div className="flex items-center justify-center">
           <CompanyInfo
-            name="テックイノベーション株式会社"
+            name="株式会社オフィス露木"
             logo="/images/tsuyuki-hiromi.webp"
             foundedYear={2010}
             employees={250}
-            description="当社は、最先端のAI技術とIoTソリューションを提供する企業です。持続可能な未来の創造に向けて、革新的な製品とサービスの開発に取り組んでいます。クラウドコンピューティング、ビッグデータ分析、スマートホームテクノロジーなど、幅広い分野でソリューションを展開しています。お客様のニーズに合わせたカスタマイズ可能なプラットフォームを提供し、業務効率化と新たな価値創造をサポートしています。また、環境に配慮した技術開発にも力を入れ、エネルギー効率の高い製品やリサイクル可能な材料の使用にも積極的に取り組んでいます。"
-            website="https://www.techinnovation.co.jp"
-            ceo="山田 太郎"
-            address="〒100-0004 東京都千代田区大手町1-1-1 テックイノベーションビル"
+            website="https://www.pom.jp/o-tsuyuki"
+            ceo="露木博視"
+            address="〒160-0023 東京都新宿区西新宿3-7-26 ハイネスロワイヤル-501号室"
           />
-        </div>
-        <div className="w-full">
-          <Stakeholders logos={logos} />
         </div>
       </section>
       <section className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
