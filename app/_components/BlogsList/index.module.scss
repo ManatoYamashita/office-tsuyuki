@@ -52,33 +52,8 @@
     }
   }
   
-  // BlogsList.module.scss
-.blogCard {
-  opacity: 0;
-  transform: translateY(20px);
-  
-  &:hover {
-    .thumbnail {
-      transform: scale(1.05);
-    }
-    
-    .overlay {
-      opacity: 1;
-    }
-    
-    .title {
-      color: #2563eb;
-    }
-  }
-}
-
 // BlogsList.module.scss
 .blogItem {
   opacity: 0;
   transform: translateY(20px);
-}
-
-.loadMore {
-  opacity: 0;
-  transform: translateY(10px);
 }
