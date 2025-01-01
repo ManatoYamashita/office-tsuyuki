@@ -76,7 +76,7 @@ export default function CompanyInfo({
         </div>
 
         <div className="w-full lg:w-1/2 space-y-6">
-          <h1 className="text-3xl font-bold lg:mt-0">{name}</h1>
+          <h1 className="text-3xl font-bold lg:mt-0 px-6">{name}</h1>
           
           <div className="bg-white rounded-lg shadow-md p-6">
             <ul className="divide-y divide-gray-200">

@@ -3,18 +3,20 @@
     margin-left: 100px;
     display: flex;
     align-items: center;
-        place-items: center;
+    place-items: center;
     flex-direction: column;
     justify-content: flex-start;
     min-height:min-content;
-        touch-action: none;
-        font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+    touch-action: none;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
             Helvetica, Arial, sans-serif, system-ui;
-        margin: 0;
-        padding: 0.5rem;
+    margin: 0;
+    padding: 0;
+    padding-left: 2rem;
 
     @media screen and (max-width: 768px) {
         margin-left: 0;
+        padding: 0;
     }
 }
 
@@ -45,18 +47,24 @@
     height: auto;
     object-fit: cover;
     justify-content: space-around;
+    
+    @media screen and (max-width: 768px) {
+      .heroImage {
+        width: 100vw;
+      }
+    }
 }
 
 // Element Section
 .section {
   margin: 0 auto;
-  padding: 6rem 0 1rem;
+  // padding: 6rem 0 1rem;
 }
 
 .container {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  gap: 1rem;
 }
 
 .heading {
@@ -141,5 +149,9 @@
     flex-direction: column;
     align-items: flex-start;
     row-gap: 1.75rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 0 1.25rem;
+    }
   }
 }

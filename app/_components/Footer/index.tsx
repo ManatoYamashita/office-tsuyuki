@@ -85,10 +85,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white border-t footer-section p-3">
-      <div className="container px-4 py-8 mx-auto">
+      <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center max-w-xl">
               {/* <span className="text-2xl font-bold">ロゴ</span> */}
               <video title='オフィス露木' muted autoPlay playsInline poster='/logo.webp'>
                 <source src="/images/logo-white.mov" type="video/quicktime" />
@@ -96,7 +96,7 @@ export default function Footer() {
               </video>
             </Link>
             <p className="mt-4 text-sm">
-              当社は、革新的なソリューションを提供し、お客様のビジネスの成功をサポートします。
+              pom.jpにご興味をお持ちの方はぜひご連絡をお待ちしております。
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-3">

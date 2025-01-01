@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import styles from "./index.module.scss";
 import Btn from "@/app/_components/Btn";
-import HeaderCard from "@/app/_components/HeaderCard";
+import Image from "next/image";
 
 // テキストを1文字ずつ分割するユーティリティ関数
 const splitText = (text: string) => {
@@ -25,24 +25,9 @@ const splitText = (text: string) => {
 export default function HeroSection() {
   const mainTextRef = useRef<HTMLParagraphElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-//   const heroSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
-
-    // ヘッダーカードのアニメーション
-    // tl.fromTo(heroSectionRef.current,
-    //   {
-    //     y: 100,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     y: 0,
-    //     opacity: 1,
-    //     duration: 1.2,
-    //     ease: "power3.out",
-    //   },
-    // );
 
     // h1のアニメーション
     tl.fromTo(headingRef.current,
@@ -82,9 +67,9 @@ export default function HeroSection() {
           className={styles['banner-image']}
           style={{ overflow: 'hidden' }}
         >
-          {/* <div ref={heroSectionRef} style={{ opacity: 1, transform: 'translateY(0)' }}> */}
-            {/* <HeaderCard /> */}
-          {/* </div> */}
+          <div style={{ opacity: 1, transform: 'translateY(0)' }}>
+            <Image className={styles.heroImage} src="/images/placeholder.webp" alt="hero image" width={500} height={315} />
+          </div>
         </section>
         <div className={styles['banner-inner']}>
           <h1 

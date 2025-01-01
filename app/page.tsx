@@ -1,28 +1,22 @@
 import styles from "./page.module.scss";
-
-import { getBlogsList } from '@/app/_libs/microcms'
-import { TOP_BLOGS_LIMIT } from '@/app/_constants'
-import BlogsList from '@/app/_components/BlogsList'
-import Link from "next/link";
 import Firstview from "./_components/Firstview";
+import { Suspense } from 'react';
+import TopBlogsSection from "./_components/TopBlogsSection";
 import CEOProfile from "./_components/CEOprofile";
 import BusinessContent from "./_components/BusinessContent";
 import Book from "./_components/Book";
 import CompanyInfo from "./_components/CompanyInfo";
 
-export const revalidate = 60
-
 export default async function Home() {
-
-  const { contents: blogs } = await getBlogsList({
-    limit: TOP_BLOGS_LIMIT,
-  });
 
   return (
     <main className={`${styles.main} flex flex-col items-center`}>
-      <Firstview/>
-      <BlogsList blogs={blogs} />
-      <section className="relative h-full max-w-4xl mx-auto bg-background py-12 px-8 sm:px-6 sm:pl-12 lg:px-8">
+      <Firstview />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <TopBlogsSection />
+      </Suspense>
+      <section className="relative h-full max-w-4xl mx-auto bg-background py-12 sm:pl-12">
         <div className="flex items-center justify-center">
           <CompanyInfo
             name="株式会社オフィス露木"
