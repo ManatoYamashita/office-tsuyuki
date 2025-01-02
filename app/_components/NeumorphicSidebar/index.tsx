@@ -73,7 +73,7 @@ export default function NeumorphicSidebar() {
           </SidebarNav>
         </SidebarContent>
         <SidebarFooter className="p-4">
-          <p className="text-sm text-gray-500">© 2023 Your Company</p>
+          <p className="text-sm text-gray-500">© 2024 pom.jp - オフィス露木</p>
         </SidebarFooter>
         <SidebarTrigger
           onClick={toggleSidebar}
@@ -84,7 +84,7 @@ export default function NeumorphicSidebar() {
             "shadow-neumorphic dark:shadow-neumorphic-dark",
             "transition-all duration-300 ease-in-out",
             "hover:bg-gray-100 dark:hover:bg-gray-600",
-            "hidden md:flex" // デスクトップでのみ表示
+            "hidden md:flex"
           )}
         >
           {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}

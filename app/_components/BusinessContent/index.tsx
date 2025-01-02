@@ -84,19 +84,19 @@ export default function BusinessContent() {
     );
 
     // 動画セクションのアニメーション
-    tl.fromTo(videoRef.current,
-      {
-        x: 50,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: .5,
-        ease: "power3.out",
-      },
-      "-=0.8"
-    );
+    // tl.fromTo(videoRef.current,
+    //   {
+    //     x: 50,
+    //     opacity: 0,
+    //   },
+    //   {
+    //     x: 0,
+    //     opacity: 1,
+    //     duration: .5,
+    //     ease: "power3.out",
+    //   },
+    //   "-=0.8"
+    // );
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -113,7 +113,7 @@ export default function BusinessContent() {
         className="text-4xl md:text-5xl font-bold tracking-tighter"
         style={{ opacity: 0 }}
       >
-        建築DXソリューション
+        事業領域
       </h1>
       <h2 
         ref={subHeadingRef}
@@ -134,9 +134,9 @@ export default function BusinessContent() {
             ref={buttonsRef}
             className="flex flex-wrap gap-6 opacity-0"
           >
-            <Btn label="建築設計デザイン" url="/" />
-            <Btn label="建築研究開発コンサル" url="/" />
-            <Btn label="建築DX" url="/" />
+            <Btn label="建築DX" url="/works/category/fm-dx" />
+            <Btn label="建築設計デザイン" url="/works/category/planning-design" />
+            <Btn label="建築研究開発コンサル" url="/works/category/research-dev-consulting" />
           </div>
         </div>
         <div 
@@ -146,7 +146,7 @@ export default function BusinessContent() {
           <div className="aspect-w-1 aspect-h-1 lg:w-full lg:max-w-full w-3/4 max-w-3/4 mx-auto">
             <video
               src="/images/solutions_triangle.webm"
-              title="革新的なソリューションのイメージ"
+              title="オフィス露木の事業領域"
               autoPlay
               muted
               playsInline

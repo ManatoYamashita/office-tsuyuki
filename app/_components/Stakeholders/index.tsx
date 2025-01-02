@@ -23,7 +23,7 @@ const Stakeholders: React.FC<StakeholdersProps> = ({
   logos = defaultLogos 
 }) => {
   return (
-    <div className="relative w-full overflow-hidden bg-white py-4 sm:py-6 md:py-8">
+    <div className="relative w-full max-w-[100vw] overflow-hidden bg-white py-4 sm:py-6 md:py-8">
       {/* Gradient Overlay - Left */}
       <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent" />
       

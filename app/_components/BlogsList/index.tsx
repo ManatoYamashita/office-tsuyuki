@@ -52,54 +52,40 @@ export default function BlogsList({ blogs }: Props) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4">
-      <div ref={containerRef} className="space-y-3">
-        {blogs.map((article) => (
-          <div
-            key={article.id}
-            className={`${styles.blogItem} bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300`}
-          >
-            <Link href={`/blogs/${article.id}`}>
-              <div className="flex items-center gap-3 p-2">
-                <div className="relative h-16 w-28 flex-shrink-0 overflow-hidden rounded-md">
-                  <Image
-                    src={article.thumbnail?.url || "/placeholder.webp"}
-                    alt={article.title}
-                    className="object-cover"
-                    fill
-                    sizes="64px"
-                    quality={70}
-                  />
+    <div className="w-full mx-auto"> {/* max-w-3xlとpx-4を削除 */}
+        <div ref={containerRef} className="space-y-4"> {/* space-yを少し広げる */}
+            {blogs.map((article) => (
+                <div
+                    key={article.id}
+                    className={`${styles.blogItem} bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300`}
+                >
+                    <Link href={`/blogs/${article.id}`}>
+                        <div className="flex items-center gap-3 p-3 sm:p-4">
+                            <div className="relative h-16 sm:h-20 w-24 sm:w-32 flex-shrink-0 overflow-hidden rounded-md">
+                                <Image
+                                    src={article.thumbnail?.url || "/placeholder.webp"}
+                                    alt={article.title}
+                                    className="object-cover"
+                                    fill
+                                    sizes="(max-width: 640px) 96px, 128px"
+                                    quality={70}
+                                />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex flex-col gap-2">
+                                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 line-clamp-2 sm:line-clamp-1">
+                                        {article.title}
+                                    </h2>
+                                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                                        <Date date={article.publishedAt ?? article.createdAt} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <h2 className="text-lg font-semibold text-gray-900 truncate pr-3">
-                      {article.title}
-                    </h2>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 flex-shrink-0">
-                      {/* カレンダーのSVG */}
-                      {/* <svg
-                        className="w-3.5 h-3.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg> */}
-                      <Date date={article.publishedAt ?? article.createdAt} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+            ))}
+        </div>
     </div>
   );
 }

@@ -85,7 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} max-w-[100vw] min-w-[330px] overflow-x-hidden`}>
         <Header />
         <section className="sidebarContainer">
           <NeumorphicSidebar />

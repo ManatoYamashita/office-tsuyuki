@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Building, Users, Calendar, Globe, MapPin, User } from 'lucide-react'
 import HeaderCard from '../HeaderCard'
 import Stakeholders from "@/app/_components/Stakeholders";

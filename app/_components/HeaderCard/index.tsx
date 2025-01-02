@@ -79,6 +79,7 @@ export default function HeaderCard() {
             height: '100%',
             objectFit: 'cover',
             zIndex: -1,
+            maxWidth: '100vw'
           }}
         >
           <source src="/images/tsuyuki-video.webm" type="video/webm" />

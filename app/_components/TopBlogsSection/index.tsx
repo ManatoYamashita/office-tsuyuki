@@ -11,9 +11,11 @@ export default async function TopBlogsSection() {
     });
 
     return (
-        <section className="py-12">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-6">最近の投稿</h2>
+        <section className="py-12 w-full max-w-4xl">
+            <div className="container mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center sm:text-left">
+                    最近の投稿
+                </h2>
                 <BlogsList blogs={blogs} />
                 <div className="mt-8 text-center">
                     <Btn label="もっと見る" url="/blog" />
