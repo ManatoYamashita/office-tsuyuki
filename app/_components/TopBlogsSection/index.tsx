@@ -18,7 +18,7 @@ export default async function TopBlogsSection() {
                 </h2>
                 <BlogsList blogs={blogs} />
                 <div className="mt-8 text-center">
-                    <Btn label="もっと見る" url="/blog" />
+                    <Btn label="もっと見る" url="/blogs" />
                 </div>
             </div>
         </section>

@@ -137,6 +137,16 @@ video::-webkit-media-controls-start-playback-button {
   display: none !important; /* Safariの再生ボタンを非表示 */
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -1,4 +1,4 @@
-import Hero from '@/app/_components/Hero';
+import WorksHero from '@/app/_components/WorksHero';
 import Sheet from '@/app/_components/Sheet';
 
 export const metadata = {
@@ -14,7 +14,7 @@ export const revalidate = 60;
 export default function WorksLayout({ children }: Props) {
   return (
     <>
-      <Hero title="Works" sub="事例・実績" />
+      <WorksHero />
       <Sheet>{children}</Sheet>
     </>
   );

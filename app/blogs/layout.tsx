@@ -14,7 +14,7 @@ export const revalidate = 60;
 export default function BlogsLayout({ children }: Props) {
   return (
     <>
-      <Hero title="Blogs" sub="記事" />
+      <Hero title="Blogs" sub="お知らせやブログ記事を一覧表示しています。" imageUrl='/images/architect.webp' />
       <Sheet>{children}</Sheet>
     </>
   );
