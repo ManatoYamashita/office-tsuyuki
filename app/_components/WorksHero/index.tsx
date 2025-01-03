@@ -1,76 +1,54 @@
-'use client'
+// app/components/HeroSection.tsx
+import Image from "next/image";
 
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { Button } from '@/components/ui/button'
-
-export default function WorksHero() {
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const descriptionRef = useRef<HTMLParagraphElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => {
-    const tl = gsap.timeline()
-
-    tl.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
-    .from(descriptionRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    }, '-=0.5')
-    .from(buttonRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    }, '-=0.5')
-  }, [])
-
+const HeroSection = () => {
   return (
-    <section className="relative h-screen overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/hero-background.mp4" type="video/mp4" />
-        お使いのブラウザは動画タグをサポートしていません。
-      </video>
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-      <div className="container relative z-10 mx-auto flex h-full items-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl text-white">
-          <h1 
-            ref={titleRef}
-            className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl"
-          >
-            <span className="block">未来を創造する</span>
-            <span className="block text-primary">革新的なソリューション</span>
+    <section className="relative w-full min-h-screen bg-white px-4 md:px-8 lg:px-16">
+
+      {/* Main content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-8">
+          <h1 className="text-6xl font-light text-black leading-tight">
+            The Fundamentals
           </h1>
-          <p 
-            ref={descriptionRef}
-            className="mt-6 max-w-lg text-xl sm:max-w-3xl"
-          >
-            最先端のテクノロジーと創造的なアイデアを組み合わせ、ビジネスの成長を加速させます。私たちと一緒に、新しい可能性を探求しましょう。
+          <h2 className="text-4xl font-light text-black leading-tight max-w-xl">
+            Re-imagining residential communities through feedback and thoughtful
+            programming.
+          </h2>
+          <p className="text-gray-600 max-w-xl">
+            We work to understand our customers and use feedback to provide a sense
+            of place. We weave brand into the small and large design details —
+            from our keychains to our interiors — so that our spaces tell
+            compelling stories.
           </p>
-          <div className="mt-10">
-            <Button
-              ref={buttonRef}
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              始めましょう
-            </Button>
+          <p className="text-sm text-gray-500 italic">
+            Branded element from Aker projects.
+          </p>
+        </div>
+
+        <div className="relative h-[600px] w-full">
+          <div className="relative w-full h-full rounded-lg overflow-hidden">
+            <Image
+              src="/images/placeholder.webp"
+              alt="Floor plan with landscape background"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
         </div>
       </div>
+
+      {/* Decorative elements */}
+      <div className="absolute bottom-8 right-8">
+        <div className="flex flex-col items-center space-y-2">
+          <div className="w-8 h-8 border-2 border-black rotate-45"></div>
+          <div className="w-8 h-8 border-2 border-black rotate-45"></div>
+        </div>
+      </div>
     </section>
-  )
-}
+  );
+};
+
+export default HeroSection;

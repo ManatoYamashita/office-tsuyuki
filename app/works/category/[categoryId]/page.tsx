@@ -29,14 +29,14 @@ export default async function Page({ params }: Props) {
   });
 
   if (works.length === 0) {
-    return <div>記事がありません。</div>;
+    return <div className={styles.err}>記事がありません。</div>;
   }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{category.name}の記事一覧</h1>
       <WorksList works={works} />
-      <div className={styles.footer}>
+      <div className={styles.foot}>
         <Link href="/works/category">カテゴリー一覧へ</Link>
       </div>
     </div>

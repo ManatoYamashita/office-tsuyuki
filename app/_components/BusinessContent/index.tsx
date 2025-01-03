@@ -1,104 +1,36 @@
-"use client";   
+// app/components/BusinessContent/index.tsx
+"use client";
 
 import { useEffect, useRef } from 'react';
-import Btn from '../Btn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Btn from '../Btn';
+import { AnimationRefs } from './types';
+import { createAnimationTimeline } from './animations';
 
-export default function BusinessContent() {
+interface BusinessContentProps {
+  title: string;
+  subtitle: string;
+}
+
+export default function BusinessContent({ title, subtitle }: BusinessContentProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subHeadingRef = useRef<HTMLHeadingElement>(null);
-  const textContentRef = useRef<HTMLDivElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLDivElement>(null);
+  
+  const refs: AnimationRefs = {
+    heading: useRef<HTMLHeadingElement>(null).current,
+    subHeading: useRef<HTMLHeadingElement>(null).current,
+    textContent: useRef<HTMLDivElement>(null).current,
+    buttons: useRef<HTMLDivElement>(null).current,
+    video: useRef<HTMLDivElement>(null).current,
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        // markers: true, // デバッグ用
-      }
-    });
-
-    // メインヘッディングのアニメーション
-    tl.fromTo(headingRef.current,
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
-
-    // サブヘッディングのアニメーション
-    tl.fromTo(subHeadingRef.current,
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      },
-      "-=0.6"
-    );
-
-    // テキストコンテンツのアニメーション
-    tl.fromTo(textContentRef.current,
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-
-    // ボタングループのアニメーション
-    tl.fromTo(buttonsRef.current,
-      {
-        y: 20,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-
-    // 動画セクションのアニメーション
-    // tl.fromTo(videoRef.current,
-    //   {
-    //     x: 50,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     x: 0,
-    //     opacity: 1,
-    //     duration: .5,
-    //     ease: "power3.out",
-    //   },
-    //   "-=0.8"
-    // );
+    
+    const timeline = createAnimationTimeline(sectionRef.current, refs);
 
     return () => {
+      timeline?.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -106,44 +38,55 @@ export default function BusinessContent() {
   return (
     <section 
       ref={sectionRef}
-      className="space-y-6 container mx-auto px-4 py-12 md:py-24"
+      className="container mx-auto space-y-6"
     >
       <h1 
-        ref={headingRef}
-        className="text-4xl md:text-5xl font-bold tracking-tighter"
-        style={{ opacity: 0 }}
+        ref={el => refs.heading = el}
+        className="text-4xl md:text-5xl font-bold tracking-tighter opacity-0"
       >
-        事業領域
+        {title}
       </h1>
+      
       <h2 
-        ref={subHeadingRef}
-        className="text-2xl md:text-3xl text-muted-foreground"
-        style={{ opacity: 0 }}
+        ref={el => refs.subHeading = el}
+        className="text-2xl md:text-3xl text-muted-foreground opacity-0"
       >
-        興味あることはなんでも徹底的に
+        { subtitle }
       </h2>
+      
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 space-y-6">
           <p 
-            ref={textContentRef}
+            ref={el => refs.textContent = el}
             className="text-lg text-muted-foreground opacity-0"
           >
             建築とコンピュータ利用を中心に幅広く「興味あることはなんでも徹底的にやってみよう」精神で活動しております。従いまして、その業務内容はバラエティに富んでいます。
           </p>
+          
           <div 
-            ref={buttonsRef}
+            ref={el => refs.buttons = el}
             className="flex flex-wrap gap-6 opacity-0"
           >
-            <Btn label="建築DX" url="/works/category/fm-dx" />
-            <Btn label="建築設計デザイン" url="/works/category/planning-design" />
-            <Btn label="建築研究開発コンサル" url="/works/category/research-dev-consulting" />
+            <Btn 
+              label="建築DX" 
+              url="/works/category/fm-dx" 
+            />
+            <Btn 
+              label="建築設計デザイン" 
+              url="/works/category/planning-design" 
+            />
+            <Btn 
+              label="建築研究開発コンサル" 
+              url="/works/category/research-dev-consulting" 
+            />
           </div>
         </div>
+
         <div 
-          ref={videoRef}
-          className="flex-1 w-full relative opacity-0"
+          ref={el => refs.video = el}
+          className="flex-1 w-full relative"
         >
-          <div className="aspect-w-1 aspect-h-1 lg:w-full lg:max-w-full w-3/4 max-w-3/4 mx-auto">
+          <div className="aspect-square lg:w-full w-3/4 mx-auto">
             <video
               src="/images/solutions_triangle.webm"
               title="オフィス露木の事業領域"
@@ -154,6 +97,21 @@ export default function BusinessContent() {
             />
           </div>
         </div>
+      </div>
+
+      <div className='direction-raw'>
+        <Btn 
+          label="事業内容の詳細" 
+          url="/works" 
+        />
+        <Btn
+          label="カテゴリ一覧"
+          url="/works/category"
+        />
+        <Btn
+          label="その他の事業"
+          url="/works/category/other"
+        />
       </div>
     </section>
   );
