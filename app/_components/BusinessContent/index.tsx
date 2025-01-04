@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Btn from '../Btn';
 import { AnimationRefs } from './types';
 import { createAnimationTimeline } from './animations';
+import SecoundaryBtn from '../SecoundaryBtn';
 
 interface BusinessContentProps {
   title: string;
@@ -40,12 +41,29 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
       ref={sectionRef}
       className="container mx-auto space-y-6"
     >
-      <h1 
-        ref={el => refs.heading = el}
-        className="text-4xl md:text-5xl font-bold tracking-tighter opacity-0"
-      >
-        {title}
-      </h1>
+      <div className='w-full flex	flex-col sm:flex-row gap-4'>
+        <h1 
+          ref={el => refs.heading = el}
+          className="whitespace-nowrap text-4xl md:text-5xl font-bold tracking-tighter opacity-0"
+        >
+          {title}
+        </h1>
+
+        <div className='w-full flex	flex-row justify-end gap-4'>
+          <SecoundaryBtn 
+            label="事業内容の詳細" 
+            url="/works" 
+          />
+          <SecoundaryBtn 
+            label="カテゴリ一覧"
+            url="/works/category"
+          />
+          <SecoundaryBtn 
+            label="その他の事業"
+            url="/works/category/other"
+          />
+        </div>
+      </div>
       
       <h2 
         ref={el => refs.subHeading = el}
@@ -97,21 +115,6 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
             />
           </div>
         </div>
-      </div>
-
-      <div className='direction-raw'>
-        <Btn 
-          label="事業内容の詳細" 
-          url="/works" 
-        />
-        <Btn
-          label="カテゴリ一覧"
-          url="/works/category"
-        />
-        <Btn
-          label="その他の事業"
-          url="/works/category/other"
-        />
       </div>
     </section>
   );
