@@ -1,23 +1,16 @@
+import Link from "next/link";
+
 type ButtonProps = {
   label: string;
   url: string;
 };
 
 const SecoundaryBtn = ({ label, url }: ButtonProps) => {
-  const handleClick = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      console.log('URL copied to clipboard');
-    } catch (err) {
-      console.error('Failed to copy URL:', err);
-    }
-  };
 
   return (
-    <div className="w-full md:w-auto">
+    <Link className="w-full md:w-auto" href={url} aria-label={label}>
       <button
         type="button"
-        onClick={handleClick}
         className="inline-flex min-h-12 w-full md:w-auto items-center justify-center rounded-[0.25rem] 
         border border-black/10 bg-white px-[calc(1.5rem-1px)] py-[calc(0.875rem-1px)] 
         font-sans text-base font-semibold leading-tight text-black/85 
@@ -31,7 +24,7 @@ const SecoundaryBtn = ({ label, url }: ButtonProps) => {
       >
         {label}
       </button>
-    </div>
+    </Link>
   );
 };
 

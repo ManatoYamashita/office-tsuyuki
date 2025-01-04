@@ -84,11 +84,11 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-black text-white border-t footer-section p-3">
+    <footer className="bg-black text-white border-t footer-section p-3 min-h-svh">
       <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center max-w-xl">
+            <Link href="/" className="flex items-center max-w-xl w-1/2 md:w-full">
               {/* <span className="text-2xl font-bold">ロゴ</span> */}
               <video title='オフィス露木' muted autoPlay playsInline poster='/logo.webp'>
                 <source src="/images/logo-white.mov" type="video/quicktime" />
@@ -100,7 +100,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-3">
-            <div>
+            <div className='flex flex-col justify-center'>
               <h3 className="mb-6 text-sm font-semibold uppercase">会社情報</h3>
               <ul className="space-y-4 pl-4">
                 <li>
@@ -120,7 +120,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className='flex flex-col justify-center'>
               <h3 className="mb-6 text-sm font-semibold uppercase">サービス</h3>
               <ul className="space-y-4 pl-4">
                 <li>
@@ -140,7 +140,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className='flex flex-col justify-center'>
               <h3 className="mb-6 text-sm font-semibold uppercase">法的情報</h3>
               <ul className="space-y-4 pl-4">
                 <li>

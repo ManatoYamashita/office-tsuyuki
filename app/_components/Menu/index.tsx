@@ -1,43 +1,65 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import cx from 'classnames';
-import styles from './index.module.scss';
+import { useEffect, useState } from 'react';
 
 export default function Menu() {
-  const [isOpen, setOpen] = useState<boolean>(false);
-  const open = () => setOpen(true);
-  const close = () => setOpen(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <div>
-      <nav className={cx(styles.nav, isOpen && styles.open)}>
-        <ul className={styles.items}>
-          <li>
-            <Link href="/works">事例・実績</Link>
+      <nav className="py-4">
+        <ul className={`flex flex-row items-center justify-center
+          opacity-0 transform translate-y-4
+          transition-all duration-700 ease-out
+          ${isVisible ? 'opacity-100 translate-y-0' : ''}`}
+        >
+          <li className="relative group">
+            <Link 
+              href="/works" 
+              className="inline-block px-6 text-gray-700 transition-colors duration-300
+              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-blue-600 
+              after:transition-all after:duration-300 
+              group-hover:after:w-full"
+            >
+              事例・実績
+            </Link>
           </li>
-          <li>
-            <Link href="/about">オフィス露木について</Link>
+          {/* 区切り線 */}
+          <div className="block h-6 w-px bg-gray-300 mx-2" />
+          <li className="relative group">
+            <Link 
+              href="/blogs" 
+              className="inline-block px-6 text-gray-700 transition-colors duration-300
+              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-blue-600 
+              after:transition-all after:duration-300 
+              group-hover:after:w-full"
+            >
+              お知らせ・ブログ
+            </Link>
           </li>
-          <li>
-            <Link href="http://www.pom.jp/hotbiz/hotbiz.cgi">社内連絡</Link>
+          {/* 区切り線 */}
+          <div className="block h-6 w-px bg-gray-300 mx-2" />
+          <li className="relative group">
+            <Link 
+              href="http://www.pom.jp/hotbiz/hotbiz.cgi" 
+              className="inline-block px-6 text-gray-700 transition-colors duration-300
+              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-blue-600 
+              after:transition-all after:duration-300 
+              group-hover:after:w-full"
+            >
+              社内連絡
+            </Link>
           </li>
         </ul>
-        <button type='button' className={cx(styles.button, styles.close)} onClick={close} aria-label="Close">
-          {/* <Image
-            src="/close.svg"
-            alt="閉じる"
-            width={24}
-            height={24}
-            priority
-          /> */}
-        </button>
       </nav>
-      <button type='button' className={styles.button} onClick={open} aria-label="Open">
-        {/* <Image src="/menu.svg" alt="メニュー" width={24} height={24} /> */}
-      </button>
     </div>
   );
 }

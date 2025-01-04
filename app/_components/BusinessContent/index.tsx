@@ -1,4 +1,3 @@
-// app/components/BusinessContent/index.tsx
 "use client";
 
 import { useEffect, useRef } from 'react';
