@@ -22,8 +22,8 @@ export default function Menu() {
             <Link 
               href="/works" 
               className="inline-block px-6 text-gray-700 transition-colors duration-300
-              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
-              after:h-0.5 after:w-0 after:bg-blue-600 
+              hover:text-primary after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-primary 
               after:transition-all after:duration-300 
               group-hover:after:w-full"
             >
@@ -36,8 +36,8 @@ export default function Menu() {
             <Link 
               href="/blogs" 
               className="inline-block px-6 text-gray-700 transition-colors duration-300
-              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
-              after:h-0.5 after:w-0 after:bg-blue-600 
+              hover:text-primary after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-primary 
               after:transition-all after:duration-300 
               group-hover:after:w-full"
             >
@@ -50,8 +50,8 @@ export default function Menu() {
             <Link 
               href="http://www.pom.jp/hotbiz/hotbiz.cgi" 
               className="inline-block px-6 text-gray-700 transition-colors duration-300
-              hover:text-blue-600 after:absolute after:bottom-0 after:left-0 
-              after:h-0.5 after:w-0 after:bg-blue-600 
+              hover:text-primary after:absolute after:bottom-0 after:left-0 
+              after:h-0.5 after:w-0 after:bg-primary 
               after:transition-all after:duration-300 
               group-hover:after:w-full"
             >

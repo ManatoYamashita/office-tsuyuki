@@ -9,6 +9,7 @@ import { Globe, Facebook } from 'lucide-react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import AutoPlayVideo from '../AutoPlayVideo';
 
 export default function ProfileComponent() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -112,18 +113,16 @@ export default function ProfileComponent() {
       <Card className="max-w-4xl mx-auto" ref={cardRef}>
         <CardHeader>
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-            <div className="relative w-full md:w-1/2 h-64 md:h-auto" ref={videoSectionRef}>
-              <video
-                title="露木博視イメージ動画"
-                playsInline
-                muted
-                autoPlay
-                loop
-                poster="/images/tsuyuki-hiromi-poster.webp"
-                className="w-full h-full object-cover rounded-lg"
-              >
-                <source src="/images/tsuyuki-video.webm" type="video/webm" />
-              </video>
+            <div className="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden" ref={videoSectionRef}>
+              <AutoPlayVideo 
+                videoSrcWebM="/images/tsuyuki-video.webm"
+                videoSrcMp4="/images/tsuyuki-video.mp4"
+                imgSrc="/images/tsuyuki-hiromi-poster.webp"
+                alt="露木博視"
+                width={640}
+                height={360}
+                loop={true}
+              />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
                 <h2 className="text-white text-4xl md:text-4xl font-bold">露木博視</h2>
                 <p className="text-white text-sm md:text-base mb-2">

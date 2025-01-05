@@ -14,6 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import AutoPlayVideo from "../AutoPlayVideo";
 
 export default function NeumorphicSidebar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -56,11 +57,14 @@ export default function NeumorphicSidebar() {
       >
         <SidebarHeader className="p-4">
           <Link href="http://www.pom.jp" aria-label="pomJP" className="logo-animation-container">
-            <video autoPlay muted playsInline className="w-full h-full object-cover" poster="/images/pomjp.svg">
-              <source src="/images/pomjp.webm" type="video/webm" />
-              <source src="/images/pomjp.mp4" type="video/mp4" />
-              お使いのブラウザはvideoタグをサポートしていません。
-            </video>
+            <AutoPlayVideo
+              videoSrcWebM="/images/pomjp.webm"
+              videoSrcMp4="/images/pomjp.mp4"
+              imgSrc="/images/pomjp.webp"
+              alt="pom.jp"
+              width={640}
+              height={360}
+            />
           </Link>
           <h2 className="text-lg font-semibold">Menu</h2>
         </SidebarHeader>

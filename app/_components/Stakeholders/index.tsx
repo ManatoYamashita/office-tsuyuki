@@ -30,7 +30,7 @@ const Stakeholders: React.FC<StakeholdersProps> = ({
       {/* Gradient Overlay - Right */}
       <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent" />
       
-      <div className="flex animate-scroll">
+      <div className="flex animate-scroll scale-200">
         {/* First set of logos */}
         <div className="flex min-w-full justify-around items-center">
           {logos.map((logo) => (

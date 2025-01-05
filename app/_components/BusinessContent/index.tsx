@@ -7,6 +7,7 @@ import Btn from '../Btn';
 import { AnimationRefs } from './types';
 import { createAnimationTimeline } from './animations';
 import SecoundaryBtn from '../SecoundaryBtn';
+import AutoPlayVideo from '../AutoPlayVideo';
 
 interface BusinessContentProps {
   title: string;
@@ -104,13 +105,13 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
           className="flex-1 w-full relative"
         >
           <div className="aspect-square lg:w-full w-3/4 mx-auto">
-            <video
-              src="/images/solutions_triangle.webm"
-              title="オフィス露木の事業領域"
-              autoPlay
-              muted
-              playsInline
-              className="w-full h-full object-cover"
+            <AutoPlayVideo
+              videoSrcWebM="/images/solution.webm"
+              videoSrcMp4="/images/solution.mp4"
+              imgSrc="/images/solution.webp"
+              alt="オフィス露木の事業領域"
+              width={800}
+              height={800}
             />
           </div>
         </div>

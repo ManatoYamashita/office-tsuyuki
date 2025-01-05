@@ -32,7 +32,7 @@ const HightLightWorks = [
 export default async function Home() {
 
   return (
-    <main className={`${styles.main} flex flex-col items-center`}>
+    <main className={`${styles.main} flex flex-col items-center gap-12`}>
       
       <Firstview />
 

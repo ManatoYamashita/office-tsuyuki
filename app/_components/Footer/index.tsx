@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import AutoPlayVideo from '../AutoPlayVideo';
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -89,11 +90,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <Link href="/" className="flex items-center max-w-xl w-1/2 md:w-full">
-              {/* <span className="text-2xl font-bold">ロゴ</span> */}
-              <video title='オフィス露木' muted autoPlay playsInline poster='/logo.webp'>
-                <source src="/images/logo-white.mov" type="video/quicktime" />
-                <source src='/images/logo-white.webm' type='video/webm' />
-              </video>
+              <AutoPlayVideo
+                videoSrcWebM="/images/logo-white.webm"
+                videoSrcMp4="/images/logo-white.mp4"
+                imgSrc="/images/logo-white.webp"
+                alt="オフィス露木"
+                width={640}
+                height={360}
+              />
             </Link>
             <p className="mt-4 text-sm">
               pom.jpにご興味をお持ちの方はぜひご連絡をお待ちしております。
