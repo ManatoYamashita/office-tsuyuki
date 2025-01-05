@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { ArticleContent, Category } from '@/app/_libs/microcms';
 import Date from '../Date';
 import styles from './index.module.scss';
+import SecoundryBtn from '@/app/_components/SecoundaryBtn';
 
 type Props = {
   data: ArticleContent;
@@ -15,7 +16,7 @@ const CategoryLabel = ({ category }: { category: Category }) => (
 
 export default function Article({ data, contentType }: Props) {
   return (
-    <main>
+    <main className='max-w-5xl px-6 mx-auto'>
       <h1 className={styles.title}>{data.title}</h1>
       <p className={styles.description}>{data.description}</p>
       <div className={styles.meta}>
@@ -49,6 +50,7 @@ export default function Article({ data, contentType }: Props) {
           __html: data.content,
         }}
       />
+      <SecoundryBtn label="記事一覧に戻る" url="/works" />
     </main>
   );
 }

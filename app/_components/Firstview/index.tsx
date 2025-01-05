@@ -71,8 +71,8 @@ export default function HeroSection() {
   const subText = "Solving everything related to architecture using digital tools.";
 
   return (
-    <section ref={sectionRef} className={`${styles.heroSection} min-h-screen flex items-center justify-center transition-colors duration-1000 mb-24`}>
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+    <section ref={sectionRef} className={`${styles.heroSection} min-h-[100dvh] py-16 transition-colors duration-1000 mb-24`}>
+      <div className="container mx-auto px-6 flex flex-col md:flex-row gap-4">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <div ref={imageRef} className="relative overflow-hidden rounded-lg shadow-2xl opacity-0">
             <Image 

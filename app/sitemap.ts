@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getAllCategoryList, getAllWorksList, getAllBlogsList } from './_libs/microcms';
 
-const buildUrl = (path?: string) => `http://localhost:3000${path ?? ''}`;
+const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+const buildUrl = (path?: string) => `${NEXT_PUBLIC_BASE_URL}${path ?? ''}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const worksContents = await getAllWorksList();

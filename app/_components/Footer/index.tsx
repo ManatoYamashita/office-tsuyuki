@@ -72,7 +72,7 @@ export default function Footer() {
       ".footer-section .text-8xl",
       { x: -1500 },
       {
-        delay: 1,
+        delay: .5,
         x: 0,
         duration: 2,
         ease: "power4.out",

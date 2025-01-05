@@ -41,9 +41,6 @@ export default async function Page({ params, searchParams }: Props) {
   return (
     <>
       <Article data={data} contentType="works" />
-      <div className={styles.footer}>
-        <Link href="/works">Works一覧へ</Link>
-      </div>
     </>
   );
 }

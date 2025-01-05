@@ -41,9 +41,6 @@ export default async function Page({ params, searchParams }: Props) {
   return (
     <>
       <Article data={data} contentType='blogs' />
-      <div className={styles.footer}>
-        <Link href="/blogs">Blogs一覧へ</Link>
-      </div>
     </>
   );
 }
