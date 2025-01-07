@@ -4,14 +4,21 @@ import WorksList from '@/app/_components/WorksList';
 import Pagination from '@/app/_components/Pagination';
 import { WORKS_LIST_LIMIT } from '@/app/_constants';
 
+// パラメータの型定義
+type Params = {
+  current: string;
+};
+
+// Promiseを含むProps型定義
 type Props = {
-  params: {
-    current: string;
-  };
+  params: Promise<Params>;
+  searchParams?: Promise<Record<string, string>>;
 };
 
 export default async function Page({ params }: Props) {
-  const current = parseInt(params.current as string, 10);
+  // paramsを解決
+  const resolvedParams = await params;
+  const current = parseInt(resolvedParams.current, 10);
 
   if (Number.isNaN(current) || current < 1) {
     notFound();

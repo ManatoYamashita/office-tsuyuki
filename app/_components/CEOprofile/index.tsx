@@ -10,6 +10,11 @@ import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AutoPlayVideo from '../AutoPlayVideo';
+import { Suspense } from 'react';
+
+import dynamic from 'next/dynamic';
+const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
+
 
 export default function ProfileComponent() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -197,6 +202,14 @@ export default function ProfileComponent() {
           </div>
         </CardContent>
       </Card>
+      <div className="relative -z-2 w-1/6">
+      <Suspense fallback={<div className="w-full h-20" />}>
+        <DotLottieAnimation
+          src="/lotties/stars.lottie"
+          className="w-full h-20"
+        />
+      </Suspense>
+    </div>
     </div>
   )
 }

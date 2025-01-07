@@ -1,5 +1,11 @@
-   // @types/dot-lottie-animation.d.ts
-   declare module '@/app/_components/DotLottieAnimation' {
-    const DotLottieAnimation: React.ComponentType;
+declare module '@/app/_components/DotLottieAnimation' {
+    interface DotLottieAnimationProps {
+      src: string;
+      loop?: boolean;
+      autoplay?: boolean;
+      className?: string;
+    }
+  
+    const DotLottieAnimation: React.ComponentType<DotLottieAnimationProps>;
     export default DotLottieAnimation;
-}
+  }

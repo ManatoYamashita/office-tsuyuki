@@ -1,43 +1,58 @@
 import { notFound } from 'next/navigation';
-import { getCategoryDetail, getWorksList } from '@/app/_libs/microcms';
-import WorksList from '@/app/_components/WorksList';
-import Pagination from '@/app/_components/Pagination';
-import { WORKS_LIST_LIMIT } from '@/app/_constants';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { getWorksDetail } from '@/app/_libs/microcms';
+import Article from '@/app/_components/Article';
 
-type Props = {
-  params: {
-    current: string;
-    id: string;
-  };
+// 基本となるパラメータ型の定義
+type Params = {
+  slug: string;
 };
 
-export default async function Page({ params }: Props) {
-  const current = parseInt(params.current as string, 10);
+type SearchParams = {
+  dk?: string;
+};
 
-  if (Number.isNaN(current) || current < 1) {
-    notFound();
-  }
+// ページコンポーネントのProps型
+type Props = {
+  params: Promise<Params>;
+  searchParams?: Promise<SearchParams>;
+};
 
-  const category = await getCategoryDetail(params.id).catch(notFound);
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // パラメータを解決
+  const params = await props.params;
+  const searchParams = props.searchParams ? await props.searchParams : {};
 
-  const { contents: works, totalCount } = await getWorksList({
-    filters: `category[contains]${params.id}`, // equals から contains に変更
-    limit: WORKS_LIST_LIMIT,
-    offset: WORKS_LIST_LIMIT * (current - 1),
+  const data = await getWorksDetail(params.slug, {
+    draftKey: searchParams.dk,
   });
 
-  if (works.length === 0) {
-    notFound();
-  }
+  return {
+    title: data.title,
+    description: data.description,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      images: [data?.thumbnail?.url ?? ''],
+    },
+  };
+}
+
+export default async function Page(props: Props) {
+  // パラメータを解決
+  const params = await props.params;
+  const searchParams = props.searchParams ? await props.searchParams : {};
+
+  const data = await getWorksDetail(params.slug, {
+    draftKey: searchParams.dk,
+  }).catch(notFound);
 
   return (
     <>
-      <WorksList works={works} />
-      <Pagination
-        totalCount={totalCount}
-        current={current}
-        basePath={`/works/category/${category.id}`}
-      />
+      <Article data={data} contentType="works" />
     </>
   );
 }

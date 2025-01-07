@@ -7,6 +7,8 @@ import NeumorphicSidebar from "@/app/_components/NeumorphicSidebar";
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 
 export function generateMetadata(): Metadatas {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-beta.vercel.app';
+
   return generateCommonMetadata({
     title: 'オフィス露木 - officeTSUYUKI',
     description: '株式会社オフィス露木は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。',
@@ -17,13 +19,13 @@ export function generateMetadata(): Metadatas {
     openGraph: {
       title: 'オフィス露木',
       description: '株式会社オフィス露木は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。',
-      url: 'https://pom.jp/o_tsuyuki',
+      url: baseUrl,
       siteName: 'オフィス露木 | 露木博視',
       locale: 'ja_JP',
       type: 'website',
       images: [
         {
-          url: '/ogp.jpg',
+          url: `${baseUrl}/ogp.jpg`,
           width: 1200,
           height: 600,
           alt: 'オフィス露木'
@@ -34,14 +36,17 @@ export function generateMetadata(): Metadatas {
       card: 'summary_large_image',
       title: 'オフィス露木',
       description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
-      images: ['/ogp.jpg'],
+      images: [`${baseUrl}/ogp.jpg`],
+    },
+    other: {
+      'format-detection': 'telephone=no',
     },
     jsonLD: {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "オフィス露木 | 露木博視",
       description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
-      url: "https://pom.jp/o_tsuyuki",
+      url: baseUrl,
       image: "/ogp.jpg",
       author: "露木博視, 山下マナト(東京都市大学)",
       publisher: "オフィス露木",
@@ -51,14 +56,14 @@ export function generateMetadata(): Metadatas {
       articleBody: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
       keywords: ["建築DX", "建築設計デザイン", "建築研究開発コンサル"],
       inLanguage: "ja",
-      license: "https://www.pom.jp/o_tsuyuki",
-      mainEntityOfPage: "https://pom.jp/o_tsuyuki",
+      license: baseUrl,
+      mainEntityOfPage: baseUrl,
       dateCreated: "2024-12-31",
     },
     author: '露木博視, 山下マナト(東京都市大学)',
     keywords: ['建築DX', '建築設計デザイン', '建築研究開発コンサル'],
     robots: 'index, follow',
-    canonicalUrl: 'https://pom.jp/o_tsuyuki',
+    canonicalUrl: baseUrl,
     publisher: 'オフィス露木',
     modifiedTime: '2024-12-31',
     publishedTime: '2024-12-31',

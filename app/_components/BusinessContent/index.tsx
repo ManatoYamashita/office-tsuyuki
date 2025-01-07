@@ -17,16 +17,24 @@ interface BusinessContentProps {
 export default function BusinessContent({ title, subtitle }: BusinessContentProps) {
   const sectionRef = useRef<HTMLElement>(null);
   
-  const refs: AnimationRefs = {
-    heading: useRef<HTMLHeadingElement>(null).current,
-    subHeading: useRef<HTMLHeadingElement>(null).current,
-    textContent: useRef<HTMLDivElement>(null).current,
-    buttons: useRef<HTMLDivElement>(null).current,
-    video: useRef<HTMLDivElement>(null).current,
-  };
+  // 各要素のrefを個別に作成
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subHeadingRef = useRef<HTMLHeadingElement>(null);
+  const textContentRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    
+    // refsオブジェクトを作成
+    const refs: AnimationRefs = {
+      heading: headingRef.current,
+      subHeading: subHeadingRef.current,
+      textContent: textContentRef.current,
+      buttons: buttonsRef.current,
+      video: videoRef.current,
+    };
     
     const timeline = createAnimationTimeline(sectionRef.current, refs);
 
@@ -41,15 +49,15 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
       ref={sectionRef}
       className="container mx-auto space-y-6"
     >
-      <div className='w-full flex	flex-col sm:flex-row gap-4'>
+      <div className='w-full flex flex-col sm:flex-row gap-4'>
         <h1 
-          ref={el => refs.heading = el}
+          ref={headingRef}
           className="whitespace-nowrap text-4xl md:text-5xl font-bold tracking-tighter opacity-0"
         >
           {title}
         </h1>
 
-        <div className='w-full flex	flex-row justify-end gap-4'>
+        <div className='w-full flex flex-row justify-end gap-4'>
           <SecoundaryBtn 
             label="事業内容の詳細" 
             url="/works" 
@@ -66,23 +74,23 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
       </div>
       
       <h2 
-        ref={el => refs.subHeading = el}
+        ref={subHeadingRef}
         className="text-2xl md:text-3xl text-muted-foreground opacity-0"
       >
-        { subtitle }
+        {subtitle}
       </h2>
       
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 space-y-6">
           <p 
-            ref={el => refs.textContent = el}
+            ref={textContentRef}
             className="text-lg text-muted-foreground opacity-0"
           >
             建築とコンピュータ利用を中心に幅広く「興味あることはなんでも徹底的にやってみよう」精神で活動しております。従いまして、その業務内容はバラエティに富んでいます。
           </p>
           
           <div 
-            ref={el => refs.buttons = el}
+            ref={buttonsRef}
             className="flex flex-wrap gap-6 opacity-0"
           >
             <Btn 
@@ -101,7 +109,7 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
         </div>
 
         <div 
-          ref={el => refs.video = el}
+          ref={videoRef}
           className="flex-1 w-full relative"
         >
           <div className="aspect-square lg:w-full w-3/4 mx-auto">

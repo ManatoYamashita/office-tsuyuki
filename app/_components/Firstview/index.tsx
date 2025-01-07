@@ -4,6 +4,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Btn from "@/app/_components/Btn";
 import Image from "next/image";
+import { Suspense } from "react";
+
+import dynamic from 'next/dynamic';
+const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
+
 
 const splitText = (text: string) => {
   return text.split('').map((char, index) => (
@@ -113,6 +118,14 @@ export default function Firstview() {
           </div>
         </div>
       </div>
+      <div className="relative -z-2 w-1/6">
+      <Suspense fallback={<div className="w-full h-20" />}>
+        <DotLottieAnimation
+          src="/lotties/down.lottie"
+          className="w-full h-20"
+        />
+      </Suspense>
+    </div>
     </section>
   );
 }

@@ -4,16 +4,23 @@ import { getWorksList, getCategoryDetail } from '@/app/_libs/microcms';
 import Link from 'next/link';
 import WorksList from '@/app/_components/WorksList';
 import styles from './page.module.scss';
+import { ResolvingMetadata } from 'next';
 
-type Props = {
-  params: {
-    categoryId: string;
-  };
+// パラメータの型定義
+type Params = {
+  categoryId: string;
 };
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+type Props = {
+  params: Promise<Params>;
+  searchParams?: Promise<Record<string, string>>;
+};
+
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const params = await props.params;
   const category = await getCategoryDetail(params.categoryId);
 
   return {
@@ -23,9 +30,10 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const category = await getCategoryDetail(params.categoryId).catch(notFound);
+  const resolvedParams = await params;
+  const category = await getCategoryDetail(resolvedParams.categoryId).catch(notFound);
   const { contents: works } = await getWorksList({
-    filters: `category[contains]${params.categoryId}`,
+    filters: `category[contains]${resolvedParams.categoryId}`,
   });
 
   if (works.length === 0) {

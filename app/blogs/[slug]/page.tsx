@@ -2,22 +2,30 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getBlogsDetail } from '@/app/_libs/microcms';
 import Article from '@/app/_components/Article';
-import Link from 'next/link';
-import styles from './page.module.scss';
+import { ResolvingMetadata } from 'next';
 
-type Props = {
-  params: {
-    slug: string;
-  };
-  searchParams: {
-    dk?: string;
-  };
+// パラメータの型定義
+type Params = {
+  slug: string;
 };
 
-export async function generateMetadata({
-  params,
-  searchParams,
-}: Props): Promise<Metadata> {
+type SearchParams = {
+  dk?: string;
+};
+
+// ページコンポーネントのProps型
+type Props = {
+  params: Promise<Params>;
+  searchParams?: Promise<SearchParams>;
+};
+
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const params = await props.params;
+  const searchParams = props.searchParams ? await props.searchParams : {};
+  
   const data = await getBlogsDetail(params.slug, {
     draftKey: searchParams.dk,
   });
@@ -33,7 +41,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
+  const searchParams = props.searchParams ? await props.searchParams : {};
+
   const data = await getBlogsDetail(params.slug, {
     draftKey: searchParams.dk,
   }).catch(notFound);
