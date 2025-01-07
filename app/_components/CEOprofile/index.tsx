@@ -173,7 +173,7 @@ export default function ProfileComponent() {
                   </li>
                 ))}
               </ul>
-              <Button asChild className="w-full mt-4">
+              <Button asChild className="w-full mt-4 text-white">
                 <a href="mailto:tsuyuki@pom.jp">メールを送る</a>
               </Button>
             </div>

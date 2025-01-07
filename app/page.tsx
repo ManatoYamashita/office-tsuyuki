@@ -8,6 +8,9 @@ import Book from "./_components/Book";
 import CompanyInfo from "./_components/CompanyInfo";
 import HightLight from "./_components/Highlight";
 
+import dynamic from 'next/dynamic';
+const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
+
 const HightLightWorks = [
   {
     imageUrl: "/images/matterport.webp",
@@ -32,9 +35,16 @@ const HightLightWorks = [
 export default async function Home() {
 
   return (
-    <main className={`${styles.main} flex flex-col items-center gap-12`}>
+    <main className={`${styles.main} relative flex flex-col items-center gap-12`}>
       
       <Firstview />
+
+      <div className="relative -z-2 w-1/6">
+        <DotLottieAnimation
+          src="/lotties/down.lottie"
+          className="w-full h-32"
+        />
+      </div>
 
       <Suspense fallback={<div>Loading...</div>}>
         {/* @ts-expect-error Server Component */}
@@ -66,6 +76,13 @@ export default async function Home() {
           <CEOProfile/>
         </div>
       </section>
+
+      <div className="relative -z-2 w-1/6">
+        <DotLottieAnimation
+          src="/lotties/stars.lottie"
+          className="w-full h-20"
+        />
+      </div>
 
       <section className="space-y-6 container mx-auto px-4 py-12 md:py-24">
         <div className="space-y-6 container mx-auto px-4 max-w-4xl">

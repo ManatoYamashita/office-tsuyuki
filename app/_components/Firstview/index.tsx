@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import styles from "./index.module.scss";
 import Btn from "@/app/_components/Btn";
 import Image from "next/image";
 
@@ -17,7 +16,7 @@ const splitText = (text: string) => {
   ));
 };
 
-export default function HeroSection() {
+export default function Firstview() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const mainTextRef = useRef<HTMLParagraphElement>(null);
@@ -27,6 +26,15 @@ export default function HeroSection() {
 
   useEffect(() => {
     const tl = gsap.timeline();
+
+    gsap.set(sectionRef.current, {
+      opacity: 0
+    })
+
+    tl.to(sectionRef.current, {
+      opacity: 1,
+      duration: .2,
+    })
 
     // 両方のアニメーションを同時に開始
     tl.fromTo(imageRef.current,
@@ -71,7 +79,7 @@ export default function HeroSection() {
   const subText = "Solving everything related to architecture using digital tools.";
 
   return (
-    <section ref={sectionRef} className={`${styles.heroSection} min-h-[100dvh] py-16 transition-colors duration-1000 mb-24`}>
+    <section ref={sectionRef} className="transition-colors duration-1000 opacity-0">
       <div className="container mx-auto px-6 flex flex-col md:flex-row gap-4">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <div ref={imageRef} className="relative overflow-hidden rounded-lg shadow-2xl opacity-0">

@@ -65,10 +65,10 @@ export interface Metadatas extends Metadata {
 }
 
 export function generateCommonMetadata(metadata: Metadatas): Metadatas {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     
     return {
         ...metadata,
-        metadataBase: new URL(baseUrl),
+        metadataBase: new URL(baseUrl || 'https://pomjp-beta.vercel.app'),
     };
 }
