@@ -7,6 +7,8 @@ const nextConfig = {
     // },
     images: {
         domains: ['images.microcms-assets.io'],
+        domains: ['pomjp-beta.vercel.app'],
+        domains: ['pom.jp'],
       },
 };
 
