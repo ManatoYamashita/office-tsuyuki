@@ -73,10 +73,13 @@ export default function CompanyInfo({
       <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
         <div className="w-full h-full lg:w-1/2 flex justify-center">
           <AutoPlayVideo
-            // videoSrcWebM="/images/tsuyuki-video.webm"
-            videoSrcMp4="/images/japan-room.mp4"
+            videoSrcWebM="/images/tsuyuki-video.webm"
+            videoSrcMp4="/images/tsuyuki-video.mp4"
             imgSrc="/images/office.webp"
-            alt="office"
+            alt="office TSUYUKI"
+            width={660}
+            height={500}
+            loop
             // className="rounded-lg shadow-md"
           />
         </div>
