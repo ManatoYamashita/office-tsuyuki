@@ -1,7 +1,13 @@
+"use client";
+
 import { Building, Users, Calendar, Globe, MapPin, User } from 'lucide-react'
-import HeaderCard from '../HeaderCard'
 import Stakeholders from "@/app/_components/Stakeholders";
-import AutoPlayVideo from "@/app/_components/AutoPlayVideo";
+import dynamic from 'next/dynamic';
+
+const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false,
+  loading: () => <div className="bg-grey" />
+});
 
 const logos = [
   { id: 1, src: "/images/stakeholders/belca.webp", alt: "公益社団法人 ロングライフビル推進協会(BELCA)" },

@@ -9,10 +9,14 @@ import { Globe, Facebook } from 'lucide-react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import AutoPlayVideo from '../AutoPlayVideo';
 import { Suspense } from 'react';
-
 import dynamic from 'next/dynamic';
+
+const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false,
+  loading: () => <div className="bg-grey" />
+});
+
 const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
 
 

@@ -3,86 +3,119 @@
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import AutoPlayVideo from '../AutoPlayVideo';
+import dynamic from 'next/dynamic';
 
-// Register ScrollTrigger plugin
+const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false,
+  loading: () => <div className="bg-grey" />
+});
+
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+// 現在の年を取得する関数
+const getCurrentYear = () => {
+  return new Date().getFullYear();
+};
+
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+  // サーバーサイドでは2024を使用し、クライアントサイドでのみ現在の年を使用
+  const [year] = useState("2024");
+
   useEffect(() => {
-    // Black background slides up
-    gsap.fromTo(
-      ".footer-section",
-      { y: 100 },
-      {
-        y: 0,
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".footer-section",
-          start: "top bottom",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    setMounted(true);
 
-    // Logo and h3 elements staggered appearance
-    gsap.fromTo(
-      [".footer-section .text-2xl", ".footer-section h3"],
-      { opacity: 0, y: 50 },
-      {
-        delay: .5,
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.4,
-        scrollTrigger: {
-          trigger: ".footer-section",
-          start: "top bottom",
-        },
-      }
-    );
+    const animation = () => {
+      // Black background slides up
+      gsap.fromTo(
+        ".footer-section",
+        { y: 100 },
+        {
+          y: 0,
+          duration: 1.2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: ".footer-section",
+            start: "top bottom",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-    // ul list items and SNS icons staggered appearance
-    gsap.fromTo(
-      [".footer-section ul li", ".footer-section .flex.space-x-6 button"],
-      { opacity: 0, y: 20 },
-      {
-        delay: .6,
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".footer-section",
-          start: "top bottom",
-        },
-      }
-    );
+      // Logo and h3 elements staggered appearance
+      gsap.fromTo(
+        [".footer-section .text-2xl", ".footer-section h3"],
+        { opacity: 0, y: 50 },
+        {
+          delay: .5,
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.4,
+          scrollTrigger: {
+            trigger: ".footer-section",
+            start: "top bottom",
+          },
+        }
+      );
 
-    // Peace of Mind slide in
-    gsap.fromTo(
-      ".footer-section .text-8xl",
-      { x: -1500 },
-      {
-        delay: .5,
-        x: 0,
-        duration: 2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".footer-section .text-8xl",
-          start: "top bottom",
-        },
-      }
-    );
+      // ul list items and SNS icons staggered appearance
+      gsap.fromTo(
+        [".footer-section ul li", ".footer-section .flex.space-x-6 button"],
+        { opacity: 0, y: 20 },
+        {
+          delay: .6,
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".footer-section",
+            start: "top bottom",
+          },
+        }
+      );
+
+      // Peace of Mind slide in
+      gsap.fromTo(
+        ".footer-section .text-8xl",
+        { x: -1500 },
+        {
+          delay: .5,
+          x: 0,
+          duration: 2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: ".footer-section .text-8xl",
+            start: "top bottom",
+          },
+        }
+      );
+    };
+
+    animation();
+
+    // クリーンアップ関数
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
+
+  // コピーライトの年を生成
+  const copyrightYear = mounted ? getCurrentYear() : year;
+
+  // 初期レンダリング時はnullを返す
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <footer className="bg-black text-white border-t footer-section p-3 min-h-svh">
@@ -183,8 +216,9 @@ export default function Footer() {
               <span className="sr-only">LinkedIn</span>
             </Button>
           </div>
+
           <p className="text-sm">
-            &copy; 2024-{new Date().getFullYear()} pom.jp - オフィス露木 / 露木博視. All rights reserved.
+            &copy; 2024{copyrightYear !== "2024" ? `-${copyrightYear}` : ''} pom.jp - オフィス露木 / 露木博視. All rights reserved.
           </p>
         </div>
       </div>

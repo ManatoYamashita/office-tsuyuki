@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { getWorksDetail } from '@/app/_libs/microcms';
 import Article from '@/app/_components/Article';
+import PageAnimation from '@/app/components/PageAnimation';
 
 // 基本となるパラメータの型定義
 type Params = {
@@ -51,8 +52,8 @@ export default async function Page(props: Props) {
   }).catch(notFound);
 
   return (
-    <>
+    <PageAnimation>
       <Article data={data} contentType="works" />
-    </>
+    </PageAnimation>
   );
 }

@@ -1,6 +1,5 @@
-import localFont from "next/font/local";
 import './globals.css';
-
+import { StrictMode } from 'react';
 import Header from '@/app/_components/Header';
 import Footer from '@/app/_components/Footer';
 import NeumorphicSidebar from "@/app/_components/NeumorphicSidebar";
@@ -72,17 +71,6 @@ export function generateMetadata(): Metadatas {
   });
 }
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -90,13 +78,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable} max-w-[100vw] min-w-[330px] overflow-x-hidden`}>
-        <Header />
-        <section className="sidebarContainer">
-          <NeumorphicSidebar />
-        </section>
-        {children}
-        <Footer />
+      <body className="max-w-[100vw] min-w-[330px] overflow-x-hidden">
+        <StrictMode>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <div className="flex flex-1">
+              <aside className="sidebarContainer w-72 shrink-0">
+                <NeumorphicSidebar />
+              </aside>
+              <main className="flex-1 transition-all duration-300">
+                {children}
+              </main>
+            </div>
+            <Footer />
+          </div>
+        </StrictMode>
       </body>
     </html>
   );

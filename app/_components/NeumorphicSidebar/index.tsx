@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import * as React from "react"
+import { useEffect, useState, useCallback } from 'react'
 import { Menu, X, ChevronsLeft, ChevronsRight, Home, Tent, Brush, CodeXml } from 'lucide-react'
 import { cn } from "@/app/_libs/utils"
 import {
@@ -14,29 +14,43 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import AutoPlayVideo from "../AutoPlayVideo";
+import dynamic from 'next/dynamic'
+import SbToggleButton from './sbToggleButton'
+
+const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false // サーバーサイドレンダリングを無効化
+})
 
 export default function NeumorphicSidebar() {
-  const [isOpen, setIsOpen] = React.useState(false)
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-//   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen)
+  const toggleSidebar = useCallback(() => {
+    setIsOpen(prev => !prev)
+  }, [])
+
+  if (!mounted) {
+    return null // 初期レンダリング時はnullを返して hydration mismatchを防ぐ
   }
 
   return (
     <SidebarProvider defaultOpen={false}>
+      <div className='relative'>
       {/* ハンバーガーメニューボタン（モバイル用） */}
-      <button
-        type="button"
-        onClick={toggleSidebar}
-        className="fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      {typeof window !== 'undefined' && (
+          <button
+          type="button"
+          onClick={toggleSidebar}
+          className="fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      )}
 
       {/* オーバーレイ（モバイル用） */}
       {isOpen && (
@@ -93,7 +107,12 @@ export default function NeumorphicSidebar() {
         >
           {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}
         </SidebarTrigger>
+        <SbToggleButton 
+            isOpen={isOpen} 
+            toggleSidebar={toggleSidebar} 
+          />
       </Sidebar>
+      </div>
     </SidebarProvider>
   )
 }

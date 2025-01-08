@@ -7,7 +7,12 @@ import Btn from '../Btn';
 import { AnimationRefs } from './types';
 import { createAnimationTimeline } from './animations';
 import SecoundaryBtn from '../SecoundaryBtn';
-import AutoPlayVideo from '../AutoPlayVideo';
+import dynamic from 'next/dynamic';
+
+const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false,
+  loading: () => <div className="bg-grey" />
+});
 
 interface BusinessContentProps {
   title: string;
