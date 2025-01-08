@@ -1,6 +1,7 @@
 import { Building, Users, Calendar, Globe, MapPin, User } from 'lucide-react'
 import HeaderCard from '../HeaderCard'
 import Stakeholders from "@/app/_components/Stakeholders";
+import AutoPlayVideo from "@/app/_components/AutoPlayVideo";
 
 const logos = [
   { id: 1, src: "/images/stakeholders/belca.webp", alt: "公益社団法人 ロングライフビル推進協会(BELCA)" },
@@ -70,8 +71,14 @@ export default function CompanyInfo({
   return (
     <div className="w-full max-w-6xl mx-auto py-8">
       <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <HeaderCard />
+        <div className="w-full h-full lg:w-1/2 flex justify-center">
+          <AutoPlayVideo
+            // videoSrcWebM="/images/tsuyuki-video.webm"
+            videoSrcMp4="/images/japan-room.mp4"
+            imgSrc="/images/office.webp"
+            alt="office"
+            // className="rounded-lg shadow-md"
+          />
         </div>
 
         <div className="w-full lg:w-1/2 space-y-6">
