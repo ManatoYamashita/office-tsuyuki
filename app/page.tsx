@@ -24,7 +24,7 @@ const HightLightWorks = [
     name: "建築研究開発コンサル - 除去法",
     subName: "note.com",
     title: "除去法コンサルティング",
-    description: "校友会で活躍する役員や卒業生のインタビューを掲載しています。",
+    description: "建物のリノベーションの際に、除去法に関するコンサルティングを行い税金による損益を減らします。",
     href: "https://note.com/tcu_alumni/m/m729119dab099"
   }
 ];
