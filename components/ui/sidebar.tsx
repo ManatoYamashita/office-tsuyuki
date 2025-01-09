@@ -126,6 +126,9 @@ const SidebarTrigger = React.forwardRef<
       className
     )}
     {...props}
+    aria-label="Toggle sidebar"
+    aria-controls="sidebar"
+    aria-expanded="false"
   />
 ))
 SidebarTrigger.displayName = "SidebarTrigger"
