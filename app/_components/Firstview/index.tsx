@@ -94,7 +94,9 @@ export default function Firstview() {
               width={600} 
               height={400}
               loading="eager"
+              priority
               className="object-cover w-full h-full"
+              quality={80}
               ref={imageContentRef}
             />
           </div>

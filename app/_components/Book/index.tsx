@@ -38,6 +38,7 @@ export default function Book({
                 width={200}
                 height={300}
                 className="w-full h-64 md:h-full md:w-48 object-cover object-top"
+                quality={80}
             />
             </div>
             <div className="p-8">

@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 interface StakeholdersProps {
   logos?: Array<{
@@ -38,10 +39,13 @@ const Stakeholders: React.FC<StakeholdersProps> = ({
               key={logo.id} 
               className="mx-4 sm:mx-6 md:mx-8 flex items-center"
             >
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.alt}
                 className="h-8 sm:h-10 md:h-12 w-auto object-contain transition-all duration-300"
+                width={100}
+                height={100}
+                quality={65}
               />
             </div>
           ))}
@@ -53,10 +57,13 @@ const Stakeholders: React.FC<StakeholdersProps> = ({
               key={`duplicate-${logo.id}`} 
               className="mx-4 sm:mx-6 md:mx-8 flex items-center"
             >
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.alt}
                 className="h-8 sm:h-10 md:h-12 w-auto object-contain transition-all duration-300"
+                width={100}
+                height={100}
+                quality={65}
               />
             </div>
           ))}

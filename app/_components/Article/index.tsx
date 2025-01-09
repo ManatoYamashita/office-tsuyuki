@@ -103,6 +103,7 @@ export default function Article({ data, contentType }: Props) {
                     key={cat.id}
                     href={`/${contentType}/category/${cat.id}`}
                     className="hover:transform hover:scale-105 transition-transform"
+                    aria-label='カテゴリー'
                   >
                     <CategoryLabel category={cat} />
                   </Link>
@@ -120,7 +121,7 @@ export default function Article({ data, contentType }: Props) {
           <div className="article-thumbnail relative w-full aspect-video mb-12 overflow-hidden">
             <Image
               src={data.thumbnail.url}
-              alt=""
+              alt={data.title}
               fill
               className="object-cover transition-transform duration-700 hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"

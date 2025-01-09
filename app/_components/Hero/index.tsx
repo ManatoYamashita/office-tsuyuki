@@ -81,6 +81,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           width={4000} 
           height={1200} 
           priority
+          quality={70}
         />
         :
         <Image
@@ -91,6 +92,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           width={4000}
           height={1200}
           priority
+          quality={70}
         />
       }
     </section>

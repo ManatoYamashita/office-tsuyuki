@@ -28,6 +28,7 @@ function SearchFieldComponent() {
           width={16}
           height={16}
           loading="eager"
+          quality={50}
         />
         <input
           type="text"

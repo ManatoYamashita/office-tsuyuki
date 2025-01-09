@@ -45,7 +45,7 @@ export default async function Page({ params }: Props) {
       <h1 className={styles.title}>{category.name}の記事一覧</h1>
       <WorksList works={works} />
       <div className={styles.foot}>
-        <Link href="/works/category">カテゴリーの一覧へ</Link>
+        <Link href="/works/category" aria-label='カテゴリー一覧'>カテゴリーの一覧へ</Link>
       </div>
     </div>
   );

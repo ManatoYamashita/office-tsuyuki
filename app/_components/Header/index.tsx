@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link href="/" className={styles.logoAnime}>
+        <Link href="/" className={styles.logoAnime} aria-label='オフィス露木のロゴアニメーション'>
           <AutoPlayVideo
             videoSrcWebM="/images/logo.webm"
             videoSrcMp4="/images/logo.mp4"

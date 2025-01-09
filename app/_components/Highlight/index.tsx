@@ -24,6 +24,7 @@ export default function Highlight({
     <Link 
       className="group relative block rounded-xl focus:outline-none transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" 
       href={href}
+      aria-label="highlight link"
     >
       <div className="shrink-0 relative rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-gray-900/70 before:transition-all before:duration-300 group-hover:before:from-gray-900/90">
         <Image
@@ -32,6 +33,7 @@ export default function Highlight({
           alt="Blog Image"
           width={350}
           height={350}
+          quality={70}
         />
       </div>
 
@@ -46,12 +48,13 @@ export default function Highlight({
                 alt="Avatar"
                 width={46}
                 height={46}
+                quality={50}
               />
             </div>
             <div className="ms-2.5 sm:ms-4">
-              <h4 className="font-semibold text-white transition-colors duration-300 group-hover:text-white/90">
+              <h2 className="font-semibold text-white transition-colors duration-300 group-hover:text-white/90">
                 {name}
-              </h4>
+              </h2>
               <p className="text-xs text-white/80 transition-colors duration-300 group-hover:text-white/70">
                 {subName}
               </p>

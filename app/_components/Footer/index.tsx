@@ -122,7 +122,7 @@ export default function Footer() {
       <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center max-w-xl w-1/2 md:w-full">
+            <Link href="/" className="flex items-center max-w-xl w-1/2 md:w-full" aria-label='office-tsuyuki logo'>
               <AutoPlayVideo
                 videoSrcWebM="/images/logo-white.webm"
                 videoSrcMp4="/images/logo-white.mp4"
@@ -138,41 +138,46 @@ export default function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-3">
             <div className='flex flex-col justify-center'>
-              <h3 className="mb-6 text-sm font-semibold uppercase">会社情報</h3>
+              <h3 className="mb-6 text-sm font-semibold uppercase">内部リンク</h3>
               <ul className="space-y-4 pl-4">
                 <li>
-                  <Link href="/about" className="text-sm hover:text-muted-foreground">
-                    会社概要
+                  <Link href="/home" className="text-sm hover:text-muted-foreground" aria-label='homeへ'>
+                    ホーム
                   </Link>
                 </li>
                 <li>
-                  <Link href="/team" className="text-sm hover:text-muted-foreground">
-                    チーム
+                  <Link href="/works" className="text-sm hover:text-muted-foreground" aria-label='worksへ'>
+                    実例・実績
                   </Link>
                 </li>
                 <li>
-                  <Link href="/careers" className="text-sm hover:text-muted-foreground">
-                    採用情報
+                  <Link href="/blogs" className="text-sm hover:text-muted-foreground" aria-label='blogsへ'>
+                    ブログ
                   </Link>
                 </li>
               </ul>
             </div>
             <div className='flex flex-col justify-center'>
-              <h3 className="mb-6 text-sm font-semibold uppercase">サービス</h3>
+              <h3 className="mb-6 text-sm font-semibold uppercase">外部リンク</h3>
               <ul className="space-y-4 pl-4">
                 <li>
-                  <Link href="/services" className="text-sm hover:text-muted-foreground">
-                    サービス一覧
+                  <Link href="https://pom.jp/" className="text-sm hover:text-muted-foreground" aria-label='pom.jpトップページ'>
+                    pom.jp
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="text-sm hover:text-muted-foreground">
-                    料金プラン
+                  <Link href="https://pom.jp/kan/top_kan.html" className="text-sm hover:text-muted-foreground" aria-label='環コラボレイトデザインのサイト'>
+                    環コラボレイトデザイン
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-sm hover:text-muted-foreground">
-                    お問い合わせ
+                  <Link href="https://pom.jp/nakano/top_nakano.html" className="text-sm hover:text-muted-foreground" aria-label='なかののサイト'>
+                    なかの
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://pom.jp/fm/top_fm.html" className="text-sm hover:text-muted-foreground" aria-label='FMデータサポートのサイト'>
+                    FMデータサポート
                   </Link>
                 </li>
               </ul>
@@ -181,12 +186,12 @@ export default function Footer() {
               <h3 className="mb-6 text-sm font-semibold uppercase">法的情報</h3>
               <ul className="space-y-4 pl-4">
                 <li>
-                  <Link href="/privacy" className="text-sm hover:text-muted-foreground">
+                  <Link href="/privacy" className="text-sm hover:text-muted-foreground" aria-label='プライバシーポリシー'>
                     プライバシーポリシー
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-sm hover:text-muted-foreground">
+                  <Link href="/terms" className="text-sm hover:text-muted-foreground" aria-label='利用規約'>
                     利用規約
                   </Link>
                 </li>

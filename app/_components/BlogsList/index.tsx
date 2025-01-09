@@ -59,7 +59,7 @@ export default function BlogsList({ blogs }: Props) {
                     key={article.id}
                     className={`${styles.blogItem} bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300`}
                 >
-                    <Link href={`/blogs/${article.id}`}>
+                    <Link href={`/blogs/${article.id}`} aria-label={article.title}>
                         <div className="flex items-center gap-3 p-3 sm:p-4">
                             <div className="relative h-16 sm:h-20 w-24 sm:w-32 flex-shrink-0 overflow-hidden rounded-md">
                                 <Image

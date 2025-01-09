@@ -55,6 +55,7 @@ export function WorksListItem({ work, index }: Props) {
       <Link 
         href={`/works/${work.id}`} 
         className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+        aria-label='work item'
       >
         <article className="overflow-hidden">
           <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden">
@@ -65,6 +66,7 @@ export function WorksListItem({ work, index }: Props) {
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               priority={index < 2}
+              quality={70}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>

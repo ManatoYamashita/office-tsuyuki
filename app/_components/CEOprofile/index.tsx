@@ -150,6 +150,7 @@ export default function ProfileComponent() {
                   width={300}
                   height={200}
                   className="rounded-lg object-cover object-top w-full h-40"
+                  quality={70}
                 />
                 <Image
                   src="/images/mt-fuji.webp"
@@ -157,6 +158,7 @@ export default function ProfileComponent() {
                   width={300}
                   height={200}
                   className="rounded-lg object-cover w-full h-40"
+                  quality={70}
                 />
               </div>
             </div>
@@ -191,13 +193,13 @@ export default function ProfileComponent() {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold">SNS</h3>
                 <div className="flex space-x-4">
-                  <Link href="https://www.facebook.com/hiromi.tsuyuki.5" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.facebook.com/hiromi.tsuyuki.5" target="_blank" rel="noopener noreferrer" aria-label='facebook link'>
                     <Facebook size={24} />
                   </Link>
-                  <Link href="https://example2.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://example2.com" target="_blank" rel="noopener noreferrer" aria-label='SNS Link2'>
                     <Globe size={24} />
                   </Link>
-                  <Link href="https://example3.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://example3.com" target="_blank" rel="noopener noreferrer" aria-label='SNS Link3'>
                     <Globe size={24} />
                   </Link>
                 </div>
@@ -211,6 +213,7 @@ export default function ProfileComponent() {
         <DotLottieAnimation
           src="/lotties/stars.lottie"
           className="w-full h-20"
+          autoplay={true}
           loop={true}
         />
       </Suspense>

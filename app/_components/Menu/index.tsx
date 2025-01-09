@@ -76,6 +76,7 @@ export default function Menu() {
                     "group-hover:shadow-lg group-hover:scale-105",
                     isActive && "bg-gray-50 dark:bg-gray-800/50"
                   )}
+                  aria-label='menu item'
                 >
                   <Icon
                     className={cn(

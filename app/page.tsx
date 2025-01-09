@@ -1,12 +1,14 @@
 import styles from "./page.module.scss";
 import Firstview from "./_components/Firstview";
 import { Suspense } from 'react';
-import TopBlogsSection from "./_components/TopBlogsSection";
-import CEOProfile from "./_components/CEOprofile";
-import BusinessContent from "./_components/BusinessContent";
-import Book from "./_components/Book";
 import CompanyInfo from "./_components/CompanyInfo";
-import HightLight from "./_components/Highlight";
+import dynamic from "next/dynamic";
+
+const TopBlogsSection = dynamic(() => import("./_components/TopBlogsSection"), { loading: () => <div className="h-40 bg-grey" /> });
+const CEOProfile = dynamic(() => import("./_components/CEOprofile"), { loading: () => <div className="h-40 bg-grey" /> });
+const BusinessContent = dynamic(() => import("./_components/BusinessContent"), { loading: () => <div className="h-40 bg-grey" /> });
+const Book = dynamic(() => import("./_components/Book"), { loading: () => <div className="h-40 bg-grey" /> });
+const HightLight = dynamic(() => import("./_components/Highlight"), { loading: () => <div className="h-40 bg-grey" /> });
 
 const HightLightWorks = [
   {

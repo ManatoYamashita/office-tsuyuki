@@ -6,10 +6,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Btn from '../Btn';
 import { AnimationRefs } from './types';
 import { createAnimationTimeline } from './animations';
-import SecoundaryBtn from '../SecoundaryBtn';
 import dynamic from 'next/dynamic';
 
 const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
+  ssr: false,
+  loading: () => <div className="bg-grey" />
+});
+const SecoundaryBtn = dynamic(() => import('../SecoundaryBtn'), {
   ssr: false,
   loading: () => <div className="bg-grey" />
 });

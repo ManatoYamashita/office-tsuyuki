@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 interface AutoPlayVideoProps {
@@ -23,9 +23,17 @@ export default function AutoPlayVideo({
   loop = false,
 }: AutoPlayVideoProps) {
   const [hasWindow, setHasWindow] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setHasWindow(true);
+  }, []);
+
+  useEffect(() => {
+    // 動画の遅延読み込み
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
   }, []);
 
   if (!hasWindow) {
@@ -36,12 +44,15 @@ export default function AutoPlayVideo({
         width={width}
         height={height}
         className="w-full h-auto"
+        quality={75}
       />
     );
   }
 
   return (
     <video
+      preload="none"
+      ref={videoRef}
       autoPlay
       muted
       loop={loop}
@@ -53,7 +64,7 @@ export default function AutoPlayVideo({
     >
       <source src={videoSrcWebM} type="video/webm" />
       <source src={videoSrcMp4} type="video/mp4" />
-      <Image src={imgSrc} alt={alt} width={width} height={height} />
+      <Image src={imgSrc} alt={alt} width={width} height={height} quality={70} />
     </video>
   );
 }

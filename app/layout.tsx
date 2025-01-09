@@ -1,13 +1,59 @@
 import './globals.css';
 import { StrictMode } from 'react';
-import Header from '@/app/_components/Header';
-import Footer from '@/app/_components/Footer';
-import NeumorphicSidebar from "@/app/_components/NeumorphicSidebar";
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 import PageTransition from '@/app/components/PageTransition';
+import dynamic from 'next/dynamic';
+
+const NeumorphicSidebar = dynamic(() => import('@/app/_components/NeumorphicSidebar'));
+const Header = dynamic(() => import('@/app/_components/Header'), { loading: () => <div className="h-40" /> });
+const Footer = dynamic(() => import('@/app/_components/Footer'), { loading: () => <div className="h-40" />});
 
 export function generateMetadata(): Metadatas {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-beta.vercel.app';
+
+  const jsonLD = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${baseUrl}/#organization`,
+    name: "株式会社オフィス露木",
+    alternateName: "officeTSUYUKI",
+    description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
+    url: baseUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: `${baseUrl}/logo.webp`,
+      width: 512,
+      height: 512
+    },
+    image: `${baseUrl}/ogp.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "JP",
+      addressRegion: "東京都",
+      addressLocality: "新宿区",
+      postalCode: "160-0022"
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "info@officetsuyuki.com"
+    },
+    founder: {
+      "@type": "Person",
+      name: "露木博視",
+      jobTitle: "代表取締役",
+      sameAs: ["https://www.linkedin.com/in/hiroshi-tsuyuki/"]
+    },
+    sameAs: [
+      "https://twitter.com/officeTSUYUKI",
+      "https://www.facebook.com/officeTSUYUKI"
+    ],
+    keywords: ["建築DX", "建築設計デザイン", "建築研究開発コンサル"],
+    offers: {
+      "@type": "Offer",
+      serviceType: ["建築DX", "建築設計デザイン", "建築研究開発コンサル"]
+    }
+  };
 
   return generateCommonMetadata({
     title: 'オフィス露木 - officeTSUYUKI',
@@ -41,36 +87,20 @@ export function generateMetadata(): Metadatas {
     other: {
       'format-detection': 'telephone=no',
     },
-    jsonLD: {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "オフィス露木 | 露木博視",
-      description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
-      url: baseUrl,
-      image: "/ogp.jpg",
-      author: "露木博視, 山下マナト(東京都市大学)",
-      publisher: "オフィス露木",
-      datePublished: "2024-12-31",
-      dateModified: "2024-12-31",
-      headline: "オフィス露木",
-      articleBody: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
-      keywords: ["建築DX", "建築設計デザイン", "建築研究開発コンサル"],
-      inLanguage: "ja",
-      license: baseUrl,
-      mainEntityOfPage: baseUrl,
-      dateCreated: "2024-12-31",
-    },
-    author: '露木博視, 山下マナト(東京都市大学)',
+    jsonLD,
+    author: '露木博視',
     keywords: ['建築DX', '建築設計デザイン', '建築研究開発コンサル'],
     robots: 'index, follow',
     canonicalUrl: baseUrl,
-    publisher: 'オフィス露木',
-    modifiedTime: '2024-12-31',
-    publishedTime: '2024-12-31',
+    publisher: '株式会社オフィス露木',
+    modifiedTime: new Date().toISOString(),
+    publishedTime: '2024-01-01T00:00:00+09:00',
     section: 'オフィス露木',
     tags: ['建築DX', '建築設計デザイン', '建築研究開発コンサル'],
   });
 }
+
+export const revalidate = 360;
 
 export default function RootLayout({
   children,
@@ -84,10 +114,10 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <div className="flex flex-1">
-              <aside className="sidebarContainer">
+              <aside className="sidebarContainer" id="sidebar">
                 <NeumorphicSidebar />
               </aside>
-              <main className="flex-1 transition-all duration-300">
+              <main className="flex-1 transition-all duration-300" id="main-content" role="main">
                 <PageTransition>
                   {children}
                 </PageTransition>

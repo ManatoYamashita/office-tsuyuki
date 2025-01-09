@@ -15,10 +15,14 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import dynamic from 'next/dynamic'
-import SbToggleButton from './sbToggleButton'
 
 const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
-  ssr: false // サーバーサイドレンダリングを無効化
+  ssr: false, // サーバーサイドレンダリングを無効化
+  loading: () => <div className="bg-grey" />
+})
+const SbToggleButton = dynamic(() => import('./sbToggleButton'), {
+  ssr: false, // サーバーサイドレンダリングを無効化
+  loading: () => <div className="bg-grey" />
 })
 
 export default function NeumorphicSidebar() {
@@ -40,14 +44,19 @@ export default function NeumorphicSidebar() {
   return (
     <SidebarProvider defaultOpen={false}>
       <div className='relative'>
-      {/* ハンバーガーメニューボタン（モバイル用） */}
+      {/* モバイル用ハンバーガーメニューボタン */}
       {typeof window !== 'undefined' && (
-          <button
+        <button
           type="button"
           onClick={toggleSidebar}
           className="fixed top-4 left-4 z-10 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
-          aria-label="Toggle menu"
+          aria-expanded={isOpen ? "true" : "false"}  // 文字列として渡す
+          aria-controls="sidebar"
+          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
         >
+          <span className="sr-only">
+            {isOpen ? "メニューを閉じる" : "メニューを開く"}
+          </span>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       )}

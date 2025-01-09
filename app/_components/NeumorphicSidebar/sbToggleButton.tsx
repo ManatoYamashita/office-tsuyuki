@@ -9,6 +9,7 @@ interface sbToggleButtonProps {
 }
 
 export default function sbToggleButton({ isOpen, toggleSidebar }: sbToggleButtonProps) {
+  // デスクトップ用サイドバートグルボタン
   return (
     <button
       type="button"
@@ -22,9 +23,13 @@ export default function sbToggleButton({ isOpen, toggleSidebar }: sbToggleButton
         "hover:bg-gray-100 dark:hover:bg-gray-600",
         "hidden md:flex"
       )}
-      aria-label='Toggle Sidebar'
+      aria-expanded={isOpen ? true : false}
+      aria-controls="sidebar"
+      aria-label={isOpen ? "サイドバーを閉じる" : "サイドバーを開く"}
     >
-      {/* >> */}
+      <span className="sr-only">
+        {isOpen ? "サイドバーを閉じる" : "サイドバーを開く"}
+      </span>
       {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}
     </button>
   );
