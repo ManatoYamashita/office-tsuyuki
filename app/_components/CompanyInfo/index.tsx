@@ -3,12 +3,6 @@
 import { Building, Users, Calendar, Globe, MapPin, User } from 'lucide-react'
 import Stakeholders from "@/app/_components/Stakeholders";
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
-
-const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
-  ssr: false,
-  loading: () => <div className="bg-grey" />
-});
 
 const logos = [
   { id: 1, src: "/images/stakeholders/belca.webp", alt: "公益社団法人 ロングライフビル推進協会(BELCA)" },
@@ -78,12 +72,12 @@ export default function CompanyInfo({
   return (
     <div className="w-full max-w-6xl mx-auto py-8">
       <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
-        <div className="relative w-full lg:w-1/2 lg:h-[500px] h-[350px] lg:rounded-lg">
+        <div className="relative w-full lg:w-1/2 lg:h-[500px] h-[350px]">
           <Image
             src="/images/officetsuyuki.webp"
             alt={name}
             fill
-            className="object-cover"
+            className="object-cover lg:rounded-lg"
             priority
           />
         </div>
@@ -91,7 +85,7 @@ export default function CompanyInfo({
         <div className="w-full lg:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold lg:mt-0 px-6">{name}</h1>
           
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-white sm:rounded-lg shadow-md p-6">
             <ul className="divide-y divide-gray-200">
               {profileItems.map((item, index) => (
                 <li 

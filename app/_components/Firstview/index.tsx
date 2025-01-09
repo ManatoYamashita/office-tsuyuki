@@ -114,7 +114,7 @@ export default function Firstview() {
             </small>
           </p>
           <div ref={btnRef}>
-            <Btn label="詳しくみる" url="/about" />
+            <Btn label="詳しくみる" url="#about" />
           </div>
         </div>
       </div>
@@ -123,6 +123,7 @@ export default function Firstview() {
         <DotLottieAnimation
           src="/lotties/down.lottie"
           className="w-full h-20"
+          loop={true}
         />
       </Suspense>
     </div>

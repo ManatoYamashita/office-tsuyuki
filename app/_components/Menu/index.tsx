@@ -12,13 +12,13 @@ const menuItems = [
     href: '/works',
     label: '事例・実績',
     icon: Building2,
-    description: '弊社の実績とプロジェクト事例をご覧いただけます'
+    description: '行ってきたプロジェクトの実例をご覧いただけます'
   },
   {
     href: '/blogs',
     label: 'お知らせ・ブログ',
     icon: BookOpen,
-    description: '最新のお知らせと技術ブログ'
+    description: '最新のお知らせとブログ'
   },
   {
     href: 'http://www.pom.jp/hotbiz/hotbiz.cgi',
@@ -59,8 +59,8 @@ export default function Menu() {
 
   return (
     <nav className="relative bg-white/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
-        <ul ref={menuRef} className="flex items-center justify-center space-x-1 py-4 md:space-x-2">
+      <div className="container mx-auto sm:px-4 px-0">
+        <ul ref={menuRef} className="flex items-center justify-center space-x-1 sm:py-4 md:space-x-2">
           {menuItems.map((item, index) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -70,7 +70,7 @@ export default function Menu() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "relative flex items-center px-4 py-2 rounded-lg",
+                    "relative flex items-center sm:px-4 px-2 py-2 rounded-lg",
                     "transition-all duration-300 ease-in-out",
                     "hover:bg-gray-50 dark:hover:bg-gray-800/50",
                     "group-hover:shadow-lg group-hover:scale-105",
@@ -79,14 +79,14 @@ export default function Menu() {
                 >
                   <Icon
                     className={cn(
-                      "w-4 h-4 mr-2 transition-colors duration-300",
+                      "w-4 h-4 sm:mr-2 mr-1 transition-colors duration-300",
                       isActive ? "text-primary" : "text-gray-500",
                       "group-hover:text-primary"
                     )}
                   />
                   <span
                     className={cn(
-                      "text-sm font-medium transition-colors duration-300",
+                      "sm:text-sm text-xs font-medium transition-colors duration-300",
                       isActive ? "text-primary" : "text-gray-700 dark:text-gray-200",
                       "group-hover:text-primary"
                     )}

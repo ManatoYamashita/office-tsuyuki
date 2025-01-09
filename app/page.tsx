@@ -40,7 +40,7 @@ export default async function Home() {
         <TopBlogsSection />
       </Suspense>
 
-      <section className="relative h-full max-w-4xl mx-auto bg-background py-12 sm:pl-12">
+      <section className="relative h-full max-w-4xl mx-auto bg-background py-12 lg:pl-12" id="about">
         <div className="flex items-center justify-center">
           <CompanyInfo
             name="株式会社オフィス露木"

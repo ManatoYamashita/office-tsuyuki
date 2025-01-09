@@ -18,7 +18,7 @@ const DotLottieAnimation: FC<DotLottieAnimationProps> = ({
   className,
 }) => {
   if (typeof window === 'undefined') {
-    return <div className={className} />; // サーバーサイドでのプレースホルダー
+    return <div className={`${className} bg-grey `} />; // サーバーサイドでのプレースホルダー
   }
 
   return (
