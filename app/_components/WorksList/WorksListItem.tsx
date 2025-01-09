@@ -73,7 +73,7 @@ export function WorksListItem({ work, index }: Props) {
 
             <Date date={work.publishedAt ?? work.createdAt} />
 
-            <h3 className="text-xl font-medium leading-tight mb-2 group-hover:text-blue-600 transition-colors duration-300">
+            <h3 className="text-xl font-bold leading-tight mb-2 group-hover:text-blue-600 transition-colors duration-300">
               {work.title}
             </h3>
 

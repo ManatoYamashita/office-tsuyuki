@@ -58,7 +58,7 @@ export default function Menu() {
   if (!mounted) return null;
 
   return (
-    <nav className="relative z-10 bg-white/80 backdrop-blur-sm">
+    <nav className="relative bg-white/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <ul ref={menuRef} className="flex items-center justify-center space-x-1 py-4 md:space-x-2">
           {menuItems.map((item, index) => {
@@ -106,7 +106,7 @@ export default function Menu() {
                 <div className={cn(
                   "absolute left-1/2 -translate-x-1/2 -top-12 w-48",
                   "opacity-0 invisible group-hover:opacity-100 group-hover:visible",
-                  "transition-all duration-300 z-50"
+                  "transition-all duration-300 z-30"
                 )}>
                   <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-2">
                     <p className="text-xs text-gray-600 dark:text-gray-300">

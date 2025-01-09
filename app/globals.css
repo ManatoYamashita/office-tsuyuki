@@ -34,7 +34,7 @@ body {
   justify-content: flex-start; /* 左側に配置 */
   align-items: center; /* 垂直方向に中央に配置 */
   height: 100svh; /* ビューポートの高さに合わせる */
-  z-index: 3;
+  z-index: 60;
 }
 
 * {

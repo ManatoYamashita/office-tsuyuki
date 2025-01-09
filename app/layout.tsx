@@ -4,6 +4,7 @@ import Header from '@/app/_components/Header';
 import Footer from '@/app/_components/Footer';
 import NeumorphicSidebar from "@/app/_components/NeumorphicSidebar";
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
+import PageTransition from '@/app/components/PageTransition';
 
 export function generateMetadata(): Metadatas {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-beta.vercel.app';
@@ -83,11 +84,13 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <div className="flex flex-1">
-              <aside className="sidebarContainer w-72 shrink-0">
+              <aside className="sidebarContainer">
                 <NeumorphicSidebar />
               </aside>
               <main className="flex-1 transition-all duration-300">
-                {children}
+                <PageTransition>
+                  {children}
+                </PageTransition>
               </main>
             </div>
             <Footer />

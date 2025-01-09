@@ -2,6 +2,7 @@
 
 import { Building, Users, Calendar, Globe, MapPin, User } from 'lucide-react'
 import Stakeholders from "@/app/_components/Stakeholders";
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
@@ -77,16 +78,13 @@ export default function CompanyInfo({
   return (
     <div className="w-full max-w-6xl mx-auto py-8">
       <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
-        <div className="w-full h-full lg:w-1/2 flex justify-center">
-          <AutoPlayVideo
-            videoSrcWebM="/images/tsuyuki-video.webm"
-            videoSrcMp4="/images/tsuyuki-video.mp4"
-            imgSrc="/images/office.webp"
-            alt="office TSUYUKI"
-            width={660}
-            height={500}
-            loop
-            // className="rounded-lg shadow-md"
+        <div className="relative w-full lg:w-1/2 lg:h-[500px] h-[350px] lg:rounded-lg">
+          <Image
+            src="/images/officetsuyuki.webp"
+            alt={name}
+            fill
+            className="object-cover"
+            priority
           />
         </div>
 
@@ -119,7 +117,7 @@ export default function CompanyInfo({
           </div>
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-full mt-2">
         <Stakeholders logos={logos} />
       </div>
     </div>

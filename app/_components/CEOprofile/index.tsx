@@ -211,6 +211,7 @@ export default function ProfileComponent() {
         <DotLottieAnimation
           src="/lotties/stars.lottie"
           className="w-full h-20"
+          loop={true}
         />
       </Suspense>
     </div>

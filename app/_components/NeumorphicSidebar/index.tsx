@@ -45,7 +45,7 @@ export default function NeumorphicSidebar() {
           <button
           type="button"
           onClick={toggleSidebar}
-          className="fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
+          className="fixed top-4 left-4 z-10 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -55,7 +55,7 @@ export default function NeumorphicSidebar() {
       {/* オーバーレイ（モバイル用） */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-1 md:hidden"
           onClick={toggleSidebar}
         />
       )}
@@ -63,7 +63,7 @@ export default function NeumorphicSidebar() {
       {/* サイドバー */}
       <Sidebar
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen w-72 transform transition-all duration-300 ease-in-out p-4",
+          "fixed left-0 top-0 z-2 h-screen w-72 transform transition-all duration-300 ease-in-out p-4",
           "bg-white dark:bg-gray-800",
           "shadow-neumorphic dark:shadow-neumorphic-dark",
           isOpen ? "translate-x-0" : "-translate-x-full md:left-4"
@@ -96,7 +96,7 @@ export default function NeumorphicSidebar() {
         <SidebarTrigger
           onClick={toggleSidebar}
           className={cn(
-            "absolute -right-4 top-1/2 transform -translate-y-1/2 z-50",
+            "absolute -right-4 top-1/2 transform -translate-y-1/2 z-10",
             "flex h-8 w-8 items-center justify-center",
             "rounded-full bg-white text-gray-600",
             "shadow-neumorphic dark:shadow-neumorphic-dark",

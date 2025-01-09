@@ -14,7 +14,7 @@ export default function sbToggleButton({ isOpen, toggleSidebar }: sbToggleButton
       type="button"
       onClick={toggleSidebar}
       className={cn(
-        "absolute -right-4 top-1/2 transform -translate-y-1/2 z-50",
+        "absolute -right-4 top-1/2 transform -translate-y-1/2",
         "flex h-8 w-8 items-center justify-center",
         "rounded-full bg-white text-gray-600",
         "shadow-neumorphic dark:shadow-neumorphic-dark",
@@ -24,6 +24,7 @@ export default function sbToggleButton({ isOpen, toggleSidebar }: sbToggleButton
       )}
       aria-label='Toggle Sidebar'
     >
+      {/* >> */}
       {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}
     </button>
   );

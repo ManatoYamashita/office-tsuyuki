@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface AutoPlayVideoProps {
   videoSrcWebM: string;
@@ -29,7 +30,7 @@ export default function AutoPlayVideo({
 
   if (!hasWindow) {
     return (
-      <img
+      <Image
         src={imgSrc}
         alt={alt}
         width={width}
@@ -45,14 +46,14 @@ export default function AutoPlayVideo({
       muted
       loop={loop}
       playsInline
-      className="w-full h-auto"
+      className="w-full h-auto object-cover"
       width={width}
       height={height}
       poster={imgSrc}
     >
       <source src={videoSrcWebM} type="video/webm" />
       <source src={videoSrcMp4} type="video/mp4" />
-      <img src={imgSrc} alt={alt} width={width} height={height} />
+      <Image src={imgSrc} alt={alt} width={width} height={height} />
     </video>
   );
 }

@@ -20,7 +20,6 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    optimizeCss: true
   }
 };
 
