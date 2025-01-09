@@ -15,7 +15,10 @@
 - モダンなウェブ技術を活用した高パフォーマンスなウェブサイト
 - レスポンシブデザインによる最適なユーザーエクスペリエンス
 
-![officetsuyuki-pc](https://github.com/user-attachments/assets/1c4f841a-bad5-4e43-a2b3-90b4d0ee5d83)
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/1c4f841a-bad5-4e43-a2b3-90b4d0ee5d83" height="400" />
+  <img src="https://github.com/user-attachments/assets/efee6b1c-4763-4226-9d3c-3f7a4e70cf1b" height="400" /> 
+</p>
 
 ## 技術スタック
 
@@ -61,10 +64,12 @@ npm run start
 
 ## 主な機能
 
+<img width="700" alt="スクリーンショット 2025-01-09 17 27 36" src="https://github.com/user-attachments/assets/9efec165-79f0-4c52-b9e1-fd690a91b3c8" />
+
 - 企業情報の提供
 - microCMSによるコンテンツ管理
 - 動的なページ生成
-- SEO対策（JSON-LD, メタデータの最適化）
+- SEO対策（JSON-LD, メタデータの最適化, Lighthouse最適化）
 - モダンなアニメーションとインタラクション
 
 ## ライセンス
