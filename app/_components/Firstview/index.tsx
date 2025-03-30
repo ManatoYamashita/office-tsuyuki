@@ -84,51 +84,57 @@ export default function Firstview() {
   const subText = "Solving everything related to architecture using digital tools.";
 
   return (
-    <section ref={sectionRef} className="transition-colors duration-1000 opacity-0">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row gap-4">
-        <div className="md:w-1/2 mb-8 md:mb-0">
-          <div ref={imageRef} className="relative overflow-hidden rounded-lg shadow-2xl opacity-0">
+    <section ref={sectionRef} className="transition-colors duration-1000 opacity-0 min-h-screen flex flex-col items-center">
+      <div className="container mx-auto px-6 flex flex-col items-center">
+        <div className="text-center max-w-3xl mx-auto relative">
+          <div ref={imageRef} className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden rounded-xl shadow-2xl w-32 h-32 bg-gradient-to-br from-primary/40 via-blue-400/30 to-primary/20">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-blue-500/30 rounded-xl"></div>
             <Image 
               src="/images/fuji.webp" 
               alt="hero image" 
-              width={600} 
-              height={400}
+              width={128}
+              height={128}
               loading="eager"
               priority
-              className="object-cover w-full h-full"
-              quality={80}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                mixBlendMode: 'overlay'
+              }}
               ref={imageContentRef}
             />
           </div>
-        </div>
-        <div className="md:w-1/2 md:pl-12 cpacity-0 y-50">
+          
           <h1 
             ref={headingRef}
-            className="text-5xl md:text-6xl font-bold mb-6 text-gray-900"
+            className="text-6xl md:text-9xl font-extrabold mb-6 text-gray-900 leading-tight"
           >
-            オフィス露木
+            OFFICE<br /><span className="text-primary">TSUYUKI.</span>
           </h1>
-          <p ref={mainTextRef} className="text-xl md:text-2xl mb-8 text-gray-700">
+          <p ref={mainTextRef} className="text-xl md:text-2xl mb-8 text-gray-700 leading-relaxed mx-auto">
             {splitText(mainText)}
             <br />
-            <small className="text-sm md:text-base text-gray-500 mt-2 block">
+            <small className="text-sm md:text-base text-gray-500 mt-4 block">
               {splitText(subText)}
             </small>
           </p>
-          <div ref={btnRef}>
+          
+          <div ref={btnRef} className="flex justify-center mt-10">
             <Btn label="詳しくみる" url="#about" />
           </div>
         </div>
       </div>
-      <div className="relative -z-2 w-1/6">
-      <Suspense fallback={<div className="w-full h-20" />}>
-        <DotLottieAnimation
-          src="/lotties/down.lottie"
-          className="w-full h-20"
-          loop={true}
-        />
-      </Suspense>
-    </div>
+      
+      <div className="relative -z-2 w-1/6 mx-auto mt-16">
+        <Suspense fallback={<div className="w-full h-20" />}>
+          <DotLottieAnimation
+            src="/lotties/down.lottie"
+            className="w-full h-20"
+            loop={true}
+          />
+        </Suspense>
+      </div>
     </section>
   );
 }
