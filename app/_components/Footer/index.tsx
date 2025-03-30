@@ -18,15 +18,10 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// 現在の年を取得する関数
-const getCurrentYear = () => {
-  return new Date().getFullYear();
-};
-
 export default function Footer() {
   const [mounted, setMounted] = useState(false);
-  // サーバーサイドでは2024を使用し、クライアントサイドでのみ現在の年を使用
-  const [year] = useState("2024");
+  // 年を固定値として設定
+  const currentYear = "2024";
 
   useEffect(() => {
     setMounted(true);
@@ -108,9 +103,6 @@ export default function Footer() {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
-  // コピーライトの年を生成
-  const copyrightYear = mounted ? getCurrentYear() : year;
 
   // 初期レンダリング時はnullを返す
   if (!mounted) {
@@ -223,7 +215,7 @@ export default function Footer() {
           </div>
 
           <p className="text-sm">
-            &copy; 2024{copyrightYear !== "2024" ? `-${copyrightYear}` : ''} pom.jp - オフィス露木 / 露木博視. All rights reserved.
+            &copy; {currentYear} pom.jp - オフィス露木 / 露木博視. All rights reserved.
           </p>
         </div>
       </div>

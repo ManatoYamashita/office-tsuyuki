@@ -45,7 +45,7 @@ export default function NeumorphicSidebar() {
     <SidebarProvider defaultOpen={false}>
       <div className='relative'>
       {/* モバイル用ハンバーガーメニューボタン */}
-      {typeof window !== 'undefined' && (
+      {mounted && (
         <button
           type="button"
           onClick={toggleSidebar}

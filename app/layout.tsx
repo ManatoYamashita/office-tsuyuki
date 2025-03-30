@@ -93,7 +93,7 @@ export function generateMetadata(): Metadatas {
     robots: 'index, follow',
     canonicalUrl: baseUrl,
     publisher: '株式会社オフィス露木',
-    modifiedTime: new Date().toISOString(),
+    modifiedTime: '2025-03-31T00:00:00+09:00',
     publishedTime: '2024-01-01T00:00:00+09:00',
     section: 'オフィス露木',
     tags: ['建築DX', '建築設計デザイン', '建築研究開発コンサル'],
