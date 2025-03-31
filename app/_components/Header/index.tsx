@@ -12,7 +12,7 @@ const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
 
 export default function Header() {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} bg-slate-50`}>
       <div className={styles.headerInner}>
         <Link href="/" className={styles.logoAnime} aria-label='オフィス露木のロゴアニメーション'>
           <AutoPlayVideo

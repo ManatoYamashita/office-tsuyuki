@@ -21,7 +21,7 @@ const menuItems = [
     description: '最新のお知らせとブログ'
   },
   {
-    href: 'http://www.pom.jp/hotbiz/hotbiz.cgi',
+    href: 'https://asp11.hotbiz.jp/hbu3202/hb_login.cgi',
     label: '社内連絡',
     icon: Mail,
     description: '社員専用の連絡ページです'
@@ -58,7 +58,7 @@ export default function Menu() {
   if (!mounted) return null;
 
   return (
-    <nav className="relative bg-white/80 backdrop-blur-sm">
+    <nav className="relative bg-slate-50 backdrop-blur-sm">
       <div className="container mx-auto sm:px-4 px-0">
         <ul ref={menuRef} className="flex items-center justify-center space-x-1 sm:py-4 md:space-x-2">
           {menuItems.map((item, index) => {

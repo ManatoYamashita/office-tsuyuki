@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import '@dotlottie/player-component';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 interface DotLottieAnimationProps {
   src: string;
@@ -11,14 +11,20 @@ interface DotLottieAnimationProps {
   className?: string;
 }
 
-const DotLottieAnimation: FC<DotLottieAnimationProps> = ({
+const DotLottiePlayer: FC<DotLottieAnimationProps> = ({
   src,
   loop = true,
   autoplay = true,
   className,
 }) => {
-  if (typeof window === 'undefined') {
-    return <div className={`${className} bg-grey `} />; // サーバーサイドでのプレースホルダー
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className={`${className} bg-grey`} />;
   }
 
   return (
@@ -32,6 +38,8 @@ const DotLottieAnimation: FC<DotLottieAnimationProps> = ({
 };
 
 // SSRを無効化してクライアントサイドのみでレンダリング
-export default dynamic(() => Promise.resolve(DotLottieAnimation), {
+const DotLottieAnimation = dynamic(() => Promise.resolve(DotLottiePlayer), {
   ssr: false
 });
+
+export default DotLottieAnimation;

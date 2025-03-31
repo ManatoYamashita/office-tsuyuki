@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Btn from "@/app/_components/Btn";
 import Image from "next/image";
 import { Suspense } from "react";
+import styles from './index.module.scss';
 
 import dynamic from 'next/dynamic';
 const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
@@ -28,20 +29,18 @@ export default function Firstview() {
   const imageRef = useRef<HTMLDivElement>(null);
   const imageContentRef = useRef<HTMLImageElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     const tl = gsap.timeline();
-
-    gsap.set(sectionRef.current, {
-      opacity: 0
-    })
 
     tl.to(sectionRef.current, {
       opacity: 1,
       duration: .2,
-    })
+    });
 
-    // 両方のアニメーションを同時に開始
     tl.fromTo(imageRef.current,
       { scale: 1.2, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out" }
@@ -49,17 +48,15 @@ export default function Firstview() {
     tl.fromTo(imageContentRef.current,
       { scale: 1.5 },
       { scale: 1, duration: 1, ease: "power3.out" },
-      "<" // "<" は直前のアニメーションと同時に開始することを示します
+      "<"
     );
 
-    // h1のアニメーション
     tl.fromTo(headingRef.current,
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
       "-=0.5"
     );
 
-    // テキストの文字ごとのアニメーション
     const chars = mainTextRef.current?.querySelectorAll('span');
     if (chars) {
       chars.forEach((char, index) => {
@@ -72,7 +69,6 @@ export default function Firstview() {
       });
     }
 
-    // ボタンのアニメーション
     tl.fromTo(btnRef.current,
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
@@ -84,7 +80,10 @@ export default function Firstview() {
   const subText = "Solving everything related to architecture using digital tools.";
 
   return (
-    <section ref={sectionRef} className="transition-colors duration-1000 opacity-0 min-h-screen flex flex-col items-center">
+    <section 
+      ref={sectionRef} 
+      className={`bg-slate-50 transition-colors duration-1000 min-h-screen flex flex-col items-center ${!mounted ? styles.hidden : ''}`}
+    >
       <div className="container mx-auto px-6 flex flex-col items-center">
         <div className="text-center max-w-3xl mx-auto relative">
           <div ref={imageRef} className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden rounded-xl shadow-2xl w-32 h-32 bg-gradient-to-br from-primary/40 via-blue-400/30 to-primary/20">

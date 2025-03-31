@@ -24,8 +24,8 @@ const HightLightWorks = [
     name: "建築研究開発コンサル - 除去法",
     subName: "note.com",
     title: "除去法コンサルティング",
-    description: "校友会で活躍する役員や卒業生のインタビューを掲載しています。",
-    href: "https://note.com/tcu_alumni/m/m729119dab099"
+    description: "建築物の一部を取り除くことで、建築物の構造を変更する際の過払金を軽減します。",
+    href: "/works/jokyohou"
   }
 ];
 
@@ -36,7 +36,11 @@ export default async function Page() {
 
   return (
     <>
-      <Hero title="Works" sub="オフィス露木の幅広い仕事内容についてご紹介します。" imageUrl="/images/architect.webp" />
+      <Hero 
+        title="Works" 
+        sub="オフィス露木の幅広い仕事内容についてご紹介します。" 
+        imageUrl="/images/fm-consul.webp"
+      />
       <section className='max-w-4xl mx-auto my-12'>
         <BusinessContent title='事例・実績' subtitle='/Works' />
         <div className="container mx-auto px-4 py-12">

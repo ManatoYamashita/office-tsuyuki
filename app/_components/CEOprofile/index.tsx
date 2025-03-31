@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Globe, Facebook } from 'lucide-react'
+import { Globe, Facebook, Book } from 'lucide-react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -177,6 +177,7 @@ export default function ProfileComponent() {
                   "認定ファシリティマネージャー（CFMJ）資格者",
                   "第二種情報処理技術者",
                   "空気調和衛生工学会会員",
+                  "東京都市大学 校友会 副会長(2024~2027)"
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <Badge variant="outline" className="w-2 h-2 p-0 rounded-full" />
@@ -196,10 +197,10 @@ export default function ProfileComponent() {
                   <Link href="https://www.facebook.com/hiromi.tsuyuki.5" target="_blank" rel="noopener noreferrer" aria-label='facebook link'>
                     <Facebook size={24} />
                   </Link>
-                  <Link href="https://example2.com" target="_blank" rel="noopener noreferrer" aria-label='SNS Link2'>
-                    <Globe size={24} />
+                  <Link href="https://www.biz-book.jp/books/author/2493" target="_blank" rel="noopener noreferrer" aria-label='SNS Link2'>
+                    <Book size={24} />
                   </Link>
-                  <Link href="https://example3.com" target="_blank" rel="noopener noreferrer" aria-label='SNS Link3'>
+                  <Link href="https://pom.jp" target="_blank" rel="noopener noreferrer" aria-label='SNS Link3'>
                     <Globe size={24} />
                   </Link>
                 </div>

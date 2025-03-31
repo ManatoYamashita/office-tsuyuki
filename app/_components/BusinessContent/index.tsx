@@ -55,7 +55,7 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
   return (
     <section 
       ref={sectionRef}
-      className="container mx-auto space-y-6"
+      className="container mx-auto space-y-6 bg-white p-8 rounded-xl"
     >
       <div className='w-full flex flex-col sm:flex-row gap-4'>
         <h1 

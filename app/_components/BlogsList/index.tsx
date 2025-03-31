@@ -14,6 +14,13 @@ type Props = {
   blogs: Blogs[];
 };
 
+// ブログタイプのラベルコンポーネント
+const BlogTypeLabel = ({ type }: { type: string }) => (
+  <span className={`${styles.blogTypeLabel} text-xs font-medium py-1 px-2 rounded`}>
+    {type}
+  </span>
+);
+
 export default function BlogsList({ blogs }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +28,7 @@ export default function BlogsList({ blogs }: Props) {
     gsap.registerPlugin(ScrollTrigger);
     
     if (containerRef.current) {
-      const items = containerRef.current.querySelectorAll(`.${styles.blogItem}`);
+      const items = containerRef.current.querySelectorAll(`.${styles.blogCard}`);
       
       gsap.fromTo(items, 
         {
@@ -51,41 +58,53 @@ export default function BlogsList({ blogs }: Props) {
     );
   }
 
+  // ブログタイプをランダムに生成する関数
+  const getBlogType = (index: number) => {
+    const types = ['ブログ・お知らせ: '];
+    const blogtype = types[0] + index;
+    return blogtype;
+  };
+
   return (
-    <div className="w-full mx-auto"> {/* max-w-3xlとpx-4を削除 */}
-        <div ref={containerRef} className="space-y-4"> {/* space-yを少し広げる */}
-            {blogs.map((article) => (
-                <div
-                    key={article.id}
-                    className={`${styles.blogItem} bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300`}
-                >
-                    <Link href={`/blogs/${article.id}`} aria-label={article.title}>
-                        <div className="flex items-center gap-3 p-3 sm:p-4">
-                            <div className="relative h-16 sm:h-20 w-24 sm:w-32 flex-shrink-0 overflow-hidden rounded-md">
-                                <Image
-                                    src={article.thumbnail?.url || "/placeholder.webp"}
-                                    alt={article.title}
-                                    className="object-cover"
-                                    fill
-                                    sizes="(max-width: 640px) 96px, 128px"
-                                    quality={70}
-                                />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <div className="flex flex-col gap-2">
-                                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 line-clamp-2 sm:line-clamp-1">
-                                        {article.title}
-                                    </h2>
-                                    <div className="flex items-center gap-1 text-xs text-gray-500">
-                                        <Date date={article.publishedAt ?? article.createdAt} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
+    <div className="w-full mx-auto">
+      <div 
+        ref={containerRef}
+        className={`${styles.blogGrid} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6`}
+      >
+        {blogs.map((blog, index) => (
+          <div
+            key={blog.id}
+            className={`${styles.blogCard} bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-all duration-300`}
+          >
+            <Link href={`/blogs/${blog.id}`} className="block h-full">
+              <div className={`${styles.imageContainer} relative w-full pt-[60%]`}>
+                <Image
+                  src={blog.thumbnail?.url || "/placeholder.webp"}
+                  alt={blog.title}
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
+                />
+                <div className={`${styles.blogTypeWrapper} absolute top-3 left-3`}>
+                  <BlogTypeLabel type={getBlogType(index)} />
                 </div>
-            ))}
-        </div>
+              </div>
+              <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-900 line-clamp-2 mb-2">
+                  {blog.title}
+                </h2>
+                <p className="text-sm text-gray-600 line-clamp-3 mb-3">
+                  {blog.description}
+                </p>
+                <div className="flex items-center text-xs text-gray-500">
+                  <Date date={blog.publishedAt ?? blog.createdAt} />
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

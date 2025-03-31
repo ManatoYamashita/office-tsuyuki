@@ -28,11 +28,11 @@ export default function Highlight({
     >
       <div className="shrink-0 relative rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-gray-900/70 before:transition-all before:duration-300 group-hover:before:from-gray-900/90">
         <Image
-          className="size-full absolute top-0 start-0 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="absolute top-0 start-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           src={imageUrl}
           alt="Blog Image"
-          width={350}
-          height={350}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           quality={70}
         />
       </div>

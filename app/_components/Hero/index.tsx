@@ -65,8 +65,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
       {/* オーバーレイ要素 */}
       <div 
         ref={overlayRef}
-        className="absolute inset-0 bg-primary z-10"
-        style={{ clipPath: 'inset(0 0 0 0)' }}
+        className={`${styles.overlay} absolute inset-0 bg-primary z-10`}
       />
       <div className="relative z-20">
         <h1 ref={titleRef} className={styles.title}>{title}</h1>

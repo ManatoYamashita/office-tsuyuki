@@ -1,9 +1,8 @@
-import styles from "./page.module.scss";
 import Firstview from "./_components/Firstview";
 import { Suspense } from 'react';
 import CompanyInfo from "./_components/CompanyInfo";
 import dynamic from "next/dynamic";
-
+import Hero from "./_components/Hero";
 const TopBlogsSection = dynamic(() => import("./_components/TopBlogsSection"), { loading: () => <div className="h-40 bg-grey" /> });
 const CEOProfile = dynamic(() => import("./_components/CEOprofile"), { loading: () => <div className="h-40 bg-grey" /> });
 const BusinessContent = dynamic(() => import("./_components/BusinessContent"), { loading: () => <div className="h-40 bg-grey" /> });
@@ -34,13 +33,19 @@ const HightLightWorks = [
 export default async function Home() {
 
   return (
-    <main className={`${styles.main} relative flex flex-col items-center gap-12`}>
+    <main className="relative flex flex-col items-center gap-12 bg-slate-50">
       
       <Firstview />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<p>Loading...</p>}>
         <TopBlogsSection />
       </Suspense>
+
+      <Hero 
+        title="株式会社オフィス露木とは" 
+        sub="about us" 
+        imageUrl="/images/fuji.webp"
+      />
 
       <section className="relative h-full max-w-4xl mx-auto bg-background py-12 lg:pl-12" id="about">
         <div className="flex items-center justify-center">
@@ -56,7 +61,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-background py-12 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 px-4 sm:px-6 lg:px-8 rounded-xl">
         <div className="max-w-4xl mx-auto">
           <BusinessContent title='お仕事領域' subtitle='興味あることはなんでも徹底的に' />
         </div>
