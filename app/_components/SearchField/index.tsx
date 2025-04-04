@@ -19,6 +19,9 @@ function SearchFieldComponent() {
     }
   };
 
+  // searchParamsからクエリパラメータを安全に取得
+  const queryParam = searchParams ? searchParams.get('q') : null;
+
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <label className={styles.search}>
@@ -33,7 +36,7 @@ function SearchFieldComponent() {
         <input
           type="text"
           name="q"
-          defaultValue={searchParams.get('q') ?? undefined}
+          defaultValue={queryParam ?? undefined}
           placeholder="キーワードを入力"
           className={styles.searchInput}
         />
