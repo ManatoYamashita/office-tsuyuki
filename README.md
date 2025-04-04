@@ -30,7 +30,6 @@
   - Styled Components
 - **アニメーション**:
   - GSAP
-  - Lottie
 - **UI コンポーネント**:
   - Radix UI
   - Lucide React

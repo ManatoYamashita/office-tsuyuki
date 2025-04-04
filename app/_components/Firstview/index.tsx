@@ -7,10 +7,6 @@ import Image from "next/image";
 import { Suspense } from "react";
 import styles from './index.module.scss';
 
-import dynamic from 'next/dynamic';
-const DotLottieAnimation = dynamic(() => import('@/app/_components/DotLottieAnimation'), { ssr: false });
-
-
 const splitText = (text: string) => {
   return text.split('').map((char, index) => (
     <span 
@@ -123,16 +119,6 @@ export default function Firstview() {
             <Btn label="詳しくみる" url="#about" />
           </div>
         </div>
-      </div>
-      
-      <div className="relative -z-2 w-1/6 mx-auto mt-16">
-        <Suspense fallback={<div className="w-full h-20" />}>
-          <DotLottieAnimation
-            src="/lotties/down.lottie"
-            className="w-full h-20"
-            loop={true}
-          />
-        </Suspense>
       </div>
     </section>
   );
