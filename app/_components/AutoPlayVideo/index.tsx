@@ -31,21 +31,23 @@ export default function AutoPlayVideo({
 
   useEffect(() => {
     // 動画の遅延読み込み
-    if (videoRef.current) {
+    if (hasWindow && videoRef.current) {
       videoRef.current.load();
     }
-  }, []);
+  }, [hasWindow]);
 
   if (!hasWindow) {
     return (
-      <Image
-        src={imgSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        className="w-full h-auto"
-        quality={75}
-      />
+      <div className="w-full h-auto relative">
+        <Image
+          src={imgSrc}
+          alt={alt}
+          width={width}
+          height={height}
+          className="w-full h-auto"
+          quality={75}
+        />
+      </div>
     );
   }
 

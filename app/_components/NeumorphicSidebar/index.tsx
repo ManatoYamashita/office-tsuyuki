@@ -45,21 +45,19 @@ export default function NeumorphicSidebar() {
     <SidebarProvider defaultOpen={false}>
       <div className='relative'>
       {/* モバイル用ハンバーガーメニューボタン */}
-      {mounted && (
-        <button
-          type="button"
-          onClick={toggleSidebar}
-          className="fixed top-4 left-4 z-10 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
-          aria-expanded={isOpen ? "true" : "false"}  // 文字列として渡す
-          aria-controls="sidebar"
-          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
-        >
-          <span className="sr-only">
-            {isOpen ? "メニューを閉じる" : "メニューを開く"}
-          </span>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={toggleSidebar}
+        className="fixed top-4 left-4 z-10 p-2 bg-white rounded-md shadow-neumorphic md:hidden"
+        aria-expanded={isOpen ? "true" : "false"}
+        aria-controls="sidebar"
+        aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+      >
+        <span className="sr-only">
+          {isOpen ? "メニューを閉じる" : "メニューを開く"}
+        </span>
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
 
       {/* オーバーレイ（モバイル用） */}
       {isOpen && (
@@ -80,14 +78,16 @@ export default function NeumorphicSidebar() {
       >
         <SidebarHeader className="p-4">
           <Link href="http://www.pom.jp" aria-label="pomJP" className="logo-animation-container">
-            <AutoPlayVideo
-              videoSrcWebM="/images/pomjp.webm"
-              videoSrcMp4="/images/pomjp.mp4"
-              imgSrc="/images/pomjp.webp"
-              alt="pom.jp"
-              width={640}
-              height={360}
-            />
+            {mounted && (
+              <AutoPlayVideo
+                videoSrcWebM="/images/pomjp.webm"
+                videoSrcMp4="/images/pomjp.mp4"
+                imgSrc="/images/pomjp.webp"
+                alt="pom.jp"
+                width={640}
+                height={360}
+              />
+            )}
           </Link>
           <h2 className="text-lg font-semibold">Menu</h2>
         </SidebarHeader>
@@ -116,10 +116,12 @@ export default function NeumorphicSidebar() {
         >
           {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={30} />}
         </SidebarTrigger>
-        <SbToggleButton 
+        {mounted && (
+          <SbToggleButton 
             isOpen={isOpen} 
             toggleSidebar={toggleSidebar} 
           />
+        )}
       </Sidebar>
       </div>
     </SidebarProvider>

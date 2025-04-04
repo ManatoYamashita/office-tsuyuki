@@ -3,18 +3,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     overflow: hidden;
-    padding: 100px;
+    padding: 100px 0;
+    min-height: 400px;
+    width: 100%;
 }
 
 .overlay {
     position: absolute;
-    inset: 0;
-    background-color: var(--primary-pomjp);
-    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
     clip-path: inset(0 0 0 0);
+    opacity: 1;
+    pointer-events: none;
+}
+
+.initOverlay {
+    composes: overlay;
+    background-color: #0070f3;
+    z-index: 10;
 }
 
 .title {
@@ -22,6 +36,8 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 30;
 }
 
 .sub {
@@ -30,6 +46,8 @@
     gap: 20px;
     margin-bottom: 40px;
     justify-content: center;
+    position: relative;
+    z-index: 30;
 }
 
 .sub::before {
@@ -37,7 +55,7 @@
     display: block;
     height: 1px;
     width: 20px;
-    background-color: var(--color-text-unpainted);
+    background-color: white;
 }
 
 .sub::after {
@@ -45,26 +63,26 @@
     display: block;
     height: 1px;
     width: 20px;
-    background-color: var(--color-text-unpainted);
+    background-color: white;
 }
 
 .bgimg {
-    position: absolute;
+    position: absolute !important;
     top: 0;
+    left: 0;
     right: 0;
-    height: 600px;
+    bottom: 0;
+    height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: right;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: -1;
+    object-position: center;
+    z-index: 1;
 }
 
 @media (max-width: var(--breakpoint-md)) {
     .container {
-        padding: 100px 0 60px;
+        padding: 80px 0;
+        min-height: 300px;
     }
 
     .title {

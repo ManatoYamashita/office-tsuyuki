@@ -29,6 +29,10 @@ export default function Firstview() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     
     const tl = gsap.timeline();
 
@@ -41,7 +45,7 @@ export default function Firstview() {
       { scale: 1.2, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out" }
     );
-    tl.fromTo(imageContentRef.current,
+    tl.fromTo(".hero-image",
       { scale: 1.5 },
       { scale: 1, duration: 1, ease: "power3.out" },
       "<"
@@ -70,7 +74,7 @@ export default function Firstview() {
       { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
       "-=0.3"
     );
-  }, []);
+  }, [mounted]);
 
   const mainText = "建築に関するあらゆることをデジタルツールで解決する。";
   const subText = "Solving everything related to architecture using digital tools.";
@@ -79,6 +83,7 @@ export default function Firstview() {
     <section 
       ref={sectionRef} 
       className={`bg-slate-50 transition-colors duration-1000 min-h-screen flex flex-col items-center ${!mounted ? styles.hidden : ''}`}
+      style={{ opacity: mounted ? 1 : 0 }}
     >
       <div className="container mx-auto px-6 flex flex-col items-center">
         <div className="text-center max-w-3xl mx-auto relative">
@@ -91,13 +96,7 @@ export default function Firstview() {
               height={128}
               loading="eager"
               priority
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                mixBlendMode: 'overlay'
-              }}
-              ref={imageContentRef}
+              className="hero-image w-full h-full object-cover mix-blend-overlay"
             />
           </div>
           
@@ -108,10 +107,10 @@ export default function Firstview() {
             OFFICE<br /><span className="text-primary">TSUYUKI.</span>
           </h1>
           <p ref={mainTextRef} className="text-xl md:text-2xl mb-8 text-gray-700 leading-relaxed mx-auto">
-            {splitText(mainText)}
+            {mounted ? splitText(mainText) : <span className="opacity-0">建築に関するあらゆることをデジタルツールで解決する。</span>}
             <br />
             <small className="text-sm md:text-base text-gray-500 mt-4 block">
-              {splitText(subText)}
+              {mounted ? splitText(subText) : <span className="opacity-0">Solving everything related to architecture using digital tools.</span>}
             </small>
           </p>
           
