@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import styles from './index.module.scss';
 
@@ -15,65 +15,111 @@ export default function Hero({ title, sub, imageUrl }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const initAnimationOverlayRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [animationStarted, setAnimationStarted] = useState(false);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-  
-    tl.set(sectionRef.current, {
-        visibility: 'visible'
-      })
-      // 2枚のオーバーレイを使用する場合
-      .to(overlayRef.current, {
-        clipPath: 'inset(0 0 0 100%)',
-        duration: 1.4,
-        opacity: 0,
-        ease: 'power4.inOut',
-      })
-      .fromTo(imageRef.current, {
-        scale: 1.1,
-        opacity: 0,
-        duration: 1.2,
-      }, {
-        scale: 1,
-        opacity: 1,
-      }, "-=0.8")
-      .fromTo(titleRef.current, {
-        y: 50,
-        opacity: 0,
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-      }, "-=0.8")
-      .fromTo(subRef.current, {
-        x: 50,
-        opacity: 0,
-        duration: 0.8,
-      }, {
-        x: 0,
-        opacity: 1,
-      }, "-=0.6");
+    setMounted(true);
+    
+    // 少し遅延させてから後のアニメーションを開始
+    const timer = setTimeout(() => {
+      setAnimationStarted(true);
+    }, 2000); // 2秒間オーバーレイを表示
+    
+    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!animationStarted || !mounted) return;
+    
+    const tl = gsap.timeline();
+    
+    // initAnimationOverlayのスライドアウト
+    tl.to(initAnimationOverlayRef.current, {
+      clipPath: 'inset(0 0 0 100%)',
+      duration: 1.4,
+      ease: 'power4.inOut',
+    });
+
+    // メインオーバーレイのフェードイン (opacity: 1 → 0.5)
+    tl.to(overlayRef.current, {
+      opacity: 0.5,
+      duration: 2,
+      ease: 'power4.inOut',
+    }, "-=1"); // 少し重ねる
+    
+    // 画像のフェードイン
+    tl.to("#hero-image", {
+      opacity: 1,
+      scale: 1,
+      duration: 1.2,
+    }, "-=1.8");
+    
+    // タイトルのフェードイン
+    tl.to(titleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    }, "-=1.2");
+    
+    // サブタイトルのフェードイン
+    tl.to(subRef.current, {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+    }, "-=0.6");
+    
+  }, [animationStarted, mounted]);
 
   return (
     <section 
       ref={sectionRef} 
-      className={`${styles.container} relative invisible`}
+      className={`${styles.container} relative`}
     >
-      {/* オーバーレイ要素 */}
+      {/* 青色の初期アニメーション用オーバーレイ */}
+      <div 
+        ref={initAnimationOverlayRef}
+        className={styles.initOverlay}
+      />
+      
+      {/* 黒色の背景オーバーレイ */}
       <div 
         ref={overlayRef}
-        className={`${styles.overlay} absolute inset-0 bg-primary z-10`}
+        className={styles.overlay}
+        style={{
+          backgroundColor: 'rgba(0, 0, 0, 0.8)', // 黒色で明示的に設定
+          opacity: 1 // 初期は完全に不透明
+        }}
       />
+      
       <div className="relative z-20">
-        <h1 ref={titleRef} className={styles.title}>{title}</h1>
-        <p ref={subRef} className={styles.sub}>{sub}</p>
+        <h1 
+          ref={titleRef} 
+          className={styles.title} 
+          style={{ 
+            opacity: 0, 
+            transform: 'translateY(50px)' 
+          }}
+        >
+          {title}
+        </h1>
+        <p 
+          ref={subRef} 
+          className={styles.sub} 
+          style={{ 
+            opacity: 0, 
+            transform: 'translateX(50px)' 
+          }}
+        >
+          {sub}
+        </p>
       </div>
+      
       {imageUrl ? 
         <Image 
-          ref={imageRef}
+          id="hero-image"
           className={styles.bgimg} 
           src={imageUrl} 
           alt="heroImage" 
@@ -81,10 +127,11 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           height={1200} 
           priority
           quality={70}
+          style={{ opacity: 0, scale: '1.1' }} 
         />
         :
         <Image
-          ref={imageRef}
+          id="hero-image"
           className={styles.bgimg}
           src="/images/placeholder.webp"
           alt="backgground"
@@ -92,6 +139,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           height={1200}
           priority
           quality={70}
+          style={{ opacity: 0, scale: '1.1' }}
         />
       }
     </section>

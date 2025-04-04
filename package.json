@@ -10,7 +10,6 @@
     "build": "next build"
   },
   "dependencies": {
-    "@dotlottie/player-component": "^2.7.12",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/prop-types": "^15.7.14",
@@ -22,7 +21,6 @@
     "critters": "^0.0.23",
     "dayjs": "^1.11.13",
     "gsap": "^3.12.5",
-    "lottie-react": "^2.4.0",
     "lucide-react": "^0.468.0",
     "microcms-js-sdk": "^3.1.0",
     "next": "^15.1.3",

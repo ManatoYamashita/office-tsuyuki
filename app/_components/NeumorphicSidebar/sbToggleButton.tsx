@@ -23,7 +23,7 @@ export default function sbToggleButton({ isOpen, toggleSidebar }: sbToggleButton
         "hover:bg-gray-100 dark:hover:bg-gray-600",
         "hidden md:flex"
       )}
-      aria-expanded={isOpen ? true : false}
+      aria-expanded={isOpen ? "true" : "false"}
       aria-controls="sidebar"
       aria-label={isOpen ? "サイドバーを閉じる" : "サイドバーを開く"}
     >
