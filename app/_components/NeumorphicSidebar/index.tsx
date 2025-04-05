@@ -73,7 +73,7 @@ export default function NeumorphicSidebar() {
           "fixed left-0 top-0 z-2 h-screen w-72 transform transition-all duration-300 ease-in-out p-4",
           "bg-white dark:bg-gray-800",
           "shadow-neumorphic dark:shadow-neumorphic-dark",
-          isOpen ? "translate-x-0" : "-translate-x-full md:left-4"
+          isOpen ? "translate-x-0" : "-translate-x-full md:left-6 md:bg-slate-300"
         )}
       >
         <SidebarHeader className="p-4">

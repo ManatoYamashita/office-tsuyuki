@@ -63,7 +63,7 @@ export function generateMetadata(): Metadatas {
       apple: '/apple-touch-icon.png',
     },
     openGraph: {
-      title: 'オフィス露木',
+      title: 'pom.jp - オフィス露木',
       description: '株式会社オフィス露木は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。',
       url: baseUrl,
       siteName: 'オフィス露木 | 露木博視',
@@ -111,7 +111,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className="max-w-[100vw] min-w-[330px] overflow-x-hidden">
         <StrictMode>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col overflow-hidden">
             <Header />
             <div className="flex flex-1">
               <aside className="sidebarContainer" id="sidebar">

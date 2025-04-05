@@ -26,7 +26,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
     // 少し遅延させてから後のアニメーションを開始
     const timer = setTimeout(() => {
       setAnimationStarted(true);
-    }, 2000); // 2秒間オーバーレイを表示
+    }, 750); // 0.75秒間オーバーレイを表示
     
     return () => clearTimeout(timer);
   }, []);
@@ -48,7 +48,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
       opacity: 0.5,
       duration: 2,
       ease: 'power4.inOut',
-    }, "-=1"); // 少し重ねる
+    }, "-=1.5"); // 少し重ねる
     
     // 画像のフェードイン
     tl.to("#hero-image", {
@@ -127,7 +127,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           height={1200} 
           priority
           quality={70}
-          style={{ opacity: 0, scale: '1.1' }} 
+          style={{ opacity: 0, scale: '1.3' }} 
         />
         :
         <Image
@@ -139,7 +139,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
           height={1200}
           priority
           quality={70}
-          style={{ opacity: 0, scale: '1.1' }}
+          style={{ opacity: 0, scale: '1.3' }}
         />
       }
     </section>

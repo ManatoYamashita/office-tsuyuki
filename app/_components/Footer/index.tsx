@@ -129,7 +129,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-3">
-            <div className='flex flex-col justify-center'>
+            <div className='flex flex-col justify-start'>
               <h3 className="mb-6 text-sm font-semibold uppercase">内部リンク</h3>
               <ul className="space-y-4 pl-4">
                 <li>
@@ -149,7 +149,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className='flex flex-col justify-center'>
+            <div className='flex flex-col justify-start'>
               <h3 className="mb-6 text-sm font-semibold uppercase">外部リンク</h3>
               <ul className="space-y-4 pl-4">
                 <li>
@@ -174,7 +174,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className='flex flex-col justify-center'>
+            <div className='flex flex-col justify-start'>
               <h3 className="mb-6 text-sm font-semibold uppercase">法的情報</h3>
               <ul className="space-y-4 pl-4">
                 <li>
@@ -192,7 +192,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="text-end mt-12">
-          <h2 className="text-8xl md:text-10xl lg:text-12xl font-bold text-white">Peace of Mind</h2>
+          <h2 className="text-8xl md:text-10xl lg:text-12xl font-bold text-slate-300 opacity-50 font-serif">Peace of Mind</h2>
         </div>
         <div className="flex flex-col items-center justify-between pt-8 mt-8 border-t border-border lg:flex-row">
           <div className="flex space-x-6 mb-4 lg:mb-0">

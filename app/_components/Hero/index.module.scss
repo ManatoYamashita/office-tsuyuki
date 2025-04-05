@@ -27,7 +27,7 @@
 
 .initOverlay {
     composes: overlay;
-    background-color: #0070f3;
+    background-color: var(--primary-pomjp);
     z-index: 10;
 }
 

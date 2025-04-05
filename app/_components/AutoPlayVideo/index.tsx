@@ -59,7 +59,7 @@ export default function AutoPlayVideo({
       muted
       loop={loop}
       playsInline
-      className="w-full h-auto object-cover"
+      className="w-full h-full object-cover"
       width={width}
       height={height}
       poster={imgSrc}
