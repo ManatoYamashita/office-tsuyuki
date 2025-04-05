@@ -22,11 +22,11 @@ const HightLightWorks = [
   {
     imageUrl: "/images/fm-consul.webp",
     avatarUrl: "/favicon.ico",
-    name: "建築研究開発コンサル - 除去法",
-    subName: "note.com",
-    title: "除去法コンサルティング",
-    description: "建物のリノベーションの際に、除去法に関するコンサルティングを行い税金による損益を減らします。",
-    href: "https://note.com/tcu_alumni/m/m729119dab099"
+    name: "建築研究開発コンサル - 固定資産税・償却資産税",
+    subName: "2025/01/02",
+    title: "固定資産税・償却資産税コンサルティング",
+    description: "建物のリノベーションの際に、固定資産税に関するコンサルティングを行い税金による損益を減らします。",
+    href: "/works/tax-consul"
   }
 ];
 
