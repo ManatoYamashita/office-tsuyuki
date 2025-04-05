@@ -9,7 +9,7 @@ const Header = dynamic(() => import('@/app/_components/Header'), { loading: () =
 const Footer = dynamic(() => import('@/app/_components/Footer'), { loading: () => <div className="h-40" />});
 
 export function generateMetadata(): Metadatas {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-beta.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-tsuyuki.vercel.app';
 
   const jsonLD = {
     "@context": "https://schema.org",

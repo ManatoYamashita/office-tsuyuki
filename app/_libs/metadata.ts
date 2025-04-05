@@ -69,6 +69,6 @@ export function generateCommonMetadata(metadata: Metadatas): Metadatas {
     
     return {
         ...metadata,
-        metadataBase: new URL(baseUrl || 'https://pomjp-beta.vercel.app'),
+        metadataBase: new URL(baseUrl || 'https://pomjp-tsuyuki.vercel.app'),
     };
 }

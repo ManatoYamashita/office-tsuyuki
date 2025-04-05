@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'pomjp-beta.vercel.app'
+        hostname: 'pomjp-tsuyuki.vercel.app'
       },
       {
         protocol: 'https',
