@@ -14,7 +14,7 @@ export function generateMetadata(): Metadatas {
   const jsonLD = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${baseUrl}/#organization`,
+    "@id": `${baseUrl}/#organizogp.jpgation`,
     name: "株式会社オフィス露木",
     alternateName: "officeTSUYUKI",
     description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
@@ -25,7 +25,7 @@ export function generateMetadata(): Metadatas {
       width: 512,
       height: 512
     },
-    image: `${baseUrl}/ogp.webp`,
+    image: `${baseUrl}/ogp.jpg`,
     address: {
       "@type": "PostalAddress",
       addressCountry: "JP",
@@ -71,7 +71,7 @@ export function generateMetadata(): Metadatas {
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/ogp.webp`,
+          url: `${baseUrl}/ogp.jpg`,
           width: 1200,
           height: 600,
           alt: 'オフィス露木'
@@ -82,7 +82,7 @@ export function generateMetadata(): Metadatas {
       card: 'summary_large_image',
       title: 'オフィス露木',
       description: "露木博視の『株式会社オフィス露木』は新宿区に位置し、建築DX, 建築設計デザイン, 建築研究開発コンサルなどを行う会社です。",
-      images: [`${baseUrl}/ogp.webp`],
+      images: [`${baseUrl}/ogp.jpg`],
     },
     other: {
       'format-detection': 'telephone=no',
