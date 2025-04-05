@@ -82,8 +82,8 @@ SidebarNav.displayName = "SidebarNav"
 
 const SidebarNavItem = React.forwardRef<
   HTMLLIElement,
-  React.LiHTMLAttributes<HTMLLIElement> & { icon?: React.ReactNode }
->(({ className, children, icon, ...props }, ref) => (
+  React.LiHTMLAttributes<HTMLLIElement> & { icon?: React.ReactNode, href?: string | "#" }
+>(({ className, children, icon, href, ...props }, ref) => (
   <li ref={ref} className={cn("", className)} {...props}>
     <a
       className={cn(
@@ -94,7 +94,7 @@ const SidebarNavItem = React.forwardRef<
         "shadow-[5px_5px_10px_rgba(0,0,0,0.05),-5px_-5px_10px_rgba(255,255,255,0.5)]",
         "dark:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.1)]"
       )}
-      href="#"
+      href={href}
     >
       {icon && <span className="mr-3">{icon}</span>}
       {children}
