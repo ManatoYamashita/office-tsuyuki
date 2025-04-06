@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { getWorksList } from '@/app/_libs/microcms';
 import WorksList from '@/app/_components/WorksList';
 import Pagination from '@/app/_components/Pagination';
-import SearchField from '@/app/_components/SearchField';
+// import SearchField from '@/app/_components/SearchField';
 import { WORKS_LIST_LIMIT } from '@/app/_constants';
 import BusinessContent from '../_components/BusinessContent';
 import HightLight from '../_components/Highlight';
@@ -49,7 +49,7 @@ export default async function Page() {
             <h1 className="text-4xl font-bold mb-4">事例・実績</h1>
             <p className="text-gray-600">これまでに手がけた主な事例をご紹介します。</p>
           </div>
-          <SearchField />
+          {/* <SearchField /> */}
           <Suspense fallback={<div>Loading...</div>}>
             <WorksList works={works} />
           </Suspense>

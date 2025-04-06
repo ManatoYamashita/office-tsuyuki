@@ -70,7 +70,7 @@ export default function PageTransition({
       {/* トランジションオーバーレイ */}
       <div 
         ref={overlayRef}
-        className="fixed inset-0 bg-black pointer-events-none z-50"
+        className="fixed inset-0 bg-primary pointer-events-none z-50"
         style={{ transform: 'scaleY(0)', transformOrigin: 'bottom' }}
       />
       

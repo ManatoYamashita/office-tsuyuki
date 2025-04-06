@@ -26,13 +26,21 @@ const proseStyles = {
     [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-6
     [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-6
     [&>li]:text-gray-600 [&>li]:mb-2
-    [&>figure>img]:rounded-lg [&>figure>img]:my-12 [&>figure>img]:mx-auto [&>figure>img]:block [&>figure>img]:max-w-full [&>figure>img]:w-full [&>figure>img]:max-h-[480px] [&>figure>img]:object-contain
+    [&>figure]:my-8 [&>figure]:text-center
+    [&>figure>img]:rounded-lg [&>figure>img]:my-4 [&>figure>img]:mx-auto [&>figure>img]:block [&>figure>img]:max-w-full [&>figure>img]:w-full [&>figure>img]:max-h-[480px] [&>figure>img]:object-contain
+    [&>figure>figcaption]:text-sm [&>figure>figcaption]:text-gray-500 [&>figure>figcaption]:mt-2
     [&>blockquote]:border-l-4 [&>blockquote]:border-gray-300 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:my-6
-    [&>pre]:bg-gray-100 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:my-6
+    [&>pre]:bg-gray-100 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:my-6 [&>pre]:overflow-x-auto
     [&>code]:bg-gray-100 [&>code]:px-1 [&>code]:rounded
+    [&>table]:w-full [&>table]:my-8 [&>table]:border-collapse
+    [&>table>thead]:bg-gray-50
+    [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:p-3 [&>table>thead>tr>th]:border-b [&>table>thead>tr>th]:border-gray-200
+    [&>table>tbody>tr>td]:p-3 [&>table>tbody>tr>td]:border-b [&>table>tbody>tr>td]:border-gray-200
+    [&>table>tbody>tr:last-child>td]:border-b-0
+    [&>hr]:my-8 [&>hr]:border-t [&>hr]:border-gray-200
   `,
   links: `
-    [&>a]:text-primary [&>a]:no-underline hover:[&>a]:underline
+    [&>a]:text-primary [&>a]:no-underline hover:[&>a]:underline [&>a]:transition-colors [&>a]:duration-200
   `,
 };
 
@@ -80,7 +88,7 @@ export default function Article({ data, contentType }: Props) {
   }, []);
 
   return (
-    <main 
+    <section 
       ref={articleRef}
       className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12"
     >
@@ -153,6 +161,6 @@ export default function Article({ data, contentType }: Props) {
           url={`/${contentType}`} 
         />
       </div>
-    </main>
+    </section>
   );
 }

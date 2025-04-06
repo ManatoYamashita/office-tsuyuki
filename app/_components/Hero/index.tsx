@@ -52,7 +52,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
     }, "-=1.5"); // 少し重ねる
     
     // 画像のフェードイン
-    tl.to("#hero-image", {
+    tl.to(imageRef.current, {
       opacity: 1,
       scale: 1,
       duration: 1.2,

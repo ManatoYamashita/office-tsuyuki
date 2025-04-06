@@ -16,7 +16,7 @@ type Props = {
 
 // ブログタイプのラベルコンポーネント
 const BlogTypeLabel = ({ type }: { type: string }) => (
-  <span className={`${styles.blogTypeLabel} text-xs font-medium py-1 px-2 rounded`}>
+  <span className="text-xs font-medium py-1 px-2 rounded bg-gray-200 text-gray-500">
     {type}
   </span>
 );
