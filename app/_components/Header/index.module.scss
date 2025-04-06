@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   height: 30svh;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 85%, rgba(248, 250, 252, 0.8) 100%);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
   
 .headerInner {

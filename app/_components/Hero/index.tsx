@@ -19,6 +19,7 @@ export default function Hero({ title, sub, imageUrl }: Props) {
   const initAnimationOverlayRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -119,27 +120,27 @@ export default function Hero({ title, sub, imageUrl }: Props) {
       
       {imageUrl ? 
         <Image 
-          id="hero-image"
+          ref={imageRef}
           className={styles.bgimg} 
           src={imageUrl} 
           alt="heroImage" 
-          width={4000} 
-          height={1200} 
+          width={1920} 
+          height={600} 
           priority
           quality={70}
-          style={{ opacity: 0, scale: '1.3' }} 
+          sizes="100vw"
         />
         :
         <Image
-          id="hero-image"
+          ref={imageRef}
           className={styles.bgimg}
           src="/images/placeholder.webp"
           alt="backgground"
-          width={4000}
-          height={1200}
+          width={1920}
+          height={600}
           priority
           quality={70}
-          style={{ opacity: 0, scale: '1.3' }}
+          sizes="100vw"
         />
       }
     </section>

@@ -23,7 +23,7 @@ export default function Firstview() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const mainTextRef = useRef<HTMLParagraphElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const imageContentRef = useRef<HTMLImageElement>(null);
+  // const imageContentRef = useRef<HTMLImageElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 

@@ -65,7 +65,7 @@ export default function BusinessContent({ title, subtitle }: BusinessContentProp
           {title}
         </h1>
 
-        <div className='w-full flex flex-row justify-end gap-4'>
+        <div className='w-full flex flex-row flex-wrap justify-end gap-4 md:no-wrap'>
           <SecoundaryBtn 
             label="事業内容の詳細" 
             url="/works" 

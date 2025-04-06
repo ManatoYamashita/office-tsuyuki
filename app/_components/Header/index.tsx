@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`${styles.header} bg-slate-50`}>
+    <header className={`${styles.header} bg-white`}>
       <div className={styles.headerInner}>
         <Link href="/" className={styles.logoAnime} aria-label='オフィス露木のロゴアニメーション'>
           {mounted ? (

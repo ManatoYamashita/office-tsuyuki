@@ -134,7 +134,7 @@ export default function Menu() {
   };
 
   return (
-    <nav className="relative bg-slate-50 backdrop-blur-sm">
+    <nav className="relative bg-white backdrop-blur-sm">
       <div className="container mx-auto sm:px-4 px-0" style={{ opacity: mounted ? 1 : 0.8 }}>
         {renderMenu()}
       </div>
