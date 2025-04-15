@@ -158,12 +158,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://pom.jp/kan/top_kan.html" className="text-sm hover:text-muted-foreground" aria-label='環コラボレイトデザインのサイト'>
+                  <Link href="https://pom.jp/kan/kan" className="text-sm hover:text-muted-foreground" aria-label='環コラボレイトデザインのサイト'>
                     環コラボレイトデザイン
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://pom.jp/nakano/top_nakano.html" className="text-sm hover:text-muted-foreground" aria-label='なかののサイト'>
+                  <Link href="https://pom.jp/nakano/nakano" className="text-sm hover:text-muted-foreground" aria-label='なかののサイト'>
                     なかの
                   </Link>
                 </li>

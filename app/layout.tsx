@@ -11,6 +11,8 @@ const Footer = dynamic(() => import('@/app/_components/Footer'), { loading: () =
 export function generateMetadata(): Metadatas {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pomjp-tsuyuki.vercel.app';
 
+  // JSONLDオブジェクトをサーバーサイドでのみ生成する
+  // typeof windowでチェックせずに、Next.jsのサーバーサイドレンダリング環境のみで使用
   const jsonLD = {
     "@context": "https://schema.org",
     "@type": "Organization",

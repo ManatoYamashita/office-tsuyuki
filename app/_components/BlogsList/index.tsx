@@ -16,7 +16,7 @@ type Props = {
 
 // ブログタイプのラベルコンポーネント
 const BlogTypeLabel = ({ type }: { type: string }) => (
-  <span className="text-xs font-medium py-1 px-2 rounded bg-gray-200 text-gray-500">
+  <span className="inline-block bg-primary text-white text-xs px-2 py-1 rounded">
     {type}
   </span>
 );
@@ -58,11 +58,10 @@ export default function BlogsList({ blogs }: Props) {
     );
   }
 
-  // ブログタイプをランダムに生成する関数
-  const getBlogType = (index: number) => {
-    const types = ['ブログ・お知らせ: '];
-    const blogtype = types[0] + index;
-    return blogtype;
+  // ブログタイプを安定した方法で生成する関数
+  const getBlogType = (blogId: string) => {
+    // ランダム値ではなく、blogIdを使って決定論的に値を生成
+    return 'ブログ・お知らせ';
   };
 
   return (
@@ -71,7 +70,7 @@ export default function BlogsList({ blogs }: Props) {
         ref={containerRef}
         className={`${styles.blogGrid} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6`}
       >
-        {blogs.map((blog, index) => (
+        {blogs.map((blog) => (
           <div
             key={blog.id}
             className={`${styles.blogCard} bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-all duration-300`}
@@ -87,7 +86,7 @@ export default function BlogsList({ blogs }: Props) {
                   quality={75}
                 />
                 <div className={`${styles.blogTypeWrapper} absolute top-3 left-3`}>
-                  <BlogTypeLabel type={getBlogType(index)} />
+                  <BlogTypeLabel type={getBlogType(blog.id)} />
                 </div>
               </div>
               <div className="p-4">

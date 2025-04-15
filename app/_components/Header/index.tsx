@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import Menu from '../Menu';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const AutoPlayVideo = dynamic(() => import('../AutoPlayVideo'), {
   ssr: false,
@@ -32,7 +33,15 @@ export default function Header() {
               height={360}
             />
           ) : (
-            <div className={styles.logoPlaceholder} />
+            <div className={styles.logoPlaceholder}>
+              <Image 
+                src="/logo.webp" 
+                alt="オフィス露木" 
+                width={640} 
+                height={360} 
+                priority 
+              />
+            </div>
           )}
         </Link>
         <Menu />
