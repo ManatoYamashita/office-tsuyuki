@@ -93,10 +93,10 @@ export default function NeumorphicSidebar() {
         </SidebarHeader>
         <SidebarContent>
           <SidebarNav>
-            <SidebarNavItem icon={<Tent size={20} />} href="https://pom.jp/fm/top_fm.html">FMデータサポート</SidebarNavItem>
+            <SidebarNavItem icon={<Tent size={20} />} href="https://pom.jp/fm">FMデータサポート</SidebarNavItem>
             <SidebarNavItem icon={<Home size={20} />} href="/">株式会社オフィス露木</SidebarNavItem>
-            <SidebarNavItem icon={<Brush size={20} />} href="https://pom.jp/kan/top_kan.html">環コラボレイトデザイン</SidebarNavItem>
-            <SidebarNavItem icon={<CodeXml size={20} />} href="https://pom.jp/nakano/top_nakano.html">なかの</SidebarNavItem>
+            <SidebarNavItem icon={<Brush size={20} />} href="https://pom.jp/kan">環コラボレイトデザイン</SidebarNavItem>
+            <SidebarNavItem icon={<CodeXml size={20} />} href="https://pom.jp/nakano">なかの</SidebarNavItem>
           </SidebarNav>
         </SidebarContent>
         <SidebarFooter className="p-4">
