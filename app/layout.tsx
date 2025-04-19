@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import { Metadatas, generateCommonMetadata } from '@/app/_libs/metadata';
 import PageTransition from '@/app/components/PageTransition';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 
 const NeumorphicSidebar = dynamic(() => import('@/app/_components/NeumorphicSidebar'));
 const Header = dynamic(() => import('@/app/_components/Header'), { loading: () => <div className="h-40" /> });
@@ -111,6 +112,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-87K96KN935" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-87K96KN935');
+          `}
+        </Script>
+      </head>
       <body className="max-w-[100vw] min-w-[330px] overflow-x-hidden">
         <StrictMode>
           <div className="flex min-h-screen flex-col overflow-hidden">
