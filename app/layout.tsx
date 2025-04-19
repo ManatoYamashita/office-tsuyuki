@@ -113,6 +113,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        <meta name="google-site-verification" content="Enq8awqmOaYwjikCHaQY29h9JUnpyxVvtqaHwkKpTfw" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-87K96KN935" />
         <Script id="google-analytics">
           {`
