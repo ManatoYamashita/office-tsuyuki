@@ -1,4 +1,3 @@
-// lib/metadata.ts
 import { Metadata } from 'next'
 export interface OpenGraphImage {
     url: string;
