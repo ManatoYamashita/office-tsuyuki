@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { getWorksDetail } from '@/app/_libs/microcms';
+import { getWorksDetail, getAllWorksList } from '@/app/_libs/microcms';
+import { getDraftKey } from '@/app/_libs/draft';
 import Article from '@/app/_components/Article';
 import PageAnimation from '@/app/components/PageAnimation';
 
@@ -12,6 +13,15 @@ type Params = {
 type SearchParams = {
   dk?: string;
 };
+
+// 静的に生成し、60 秒ごとに再生成する（下書きのプレビューは Draft Mode のときだけ動的に描く）
+export const revalidate = 60;
+
+// 公開中の記事はビルド時にすべて生成する（新しい記事は初回アクセス時に生成される）
+export async function generateStaticParams() {
+  const contents = await getAllWorksList();
+  return contents.map((content) => ({ slug: content.id }));
+}
 
 // ページコンポーネントのProps型
 type Props = {
@@ -25,10 +35,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // パラメータを解決
   const params = await props.params;
-  const searchParams = props.searchParams ? await props.searchParams : {};
+  const draftKey = await getDraftKey(props.searchParams);
 
   const data = await getWorksDetail(params.slug, {
-    draftKey: searchParams.dk,
+    draftKey,
   });
 
   return {
@@ -45,10 +55,10 @@ export async function generateMetadata(
 export default async function Page(props: Props) {
   // パラメータを解決
   const params = await props.params;
-  const searchParams = props.searchParams ? await props.searchParams : {};
+  const draftKey = await getDraftKey(props.searchParams);
 
   const data = await getWorksDetail(params.slug, {
-    draftKey: searchParams.dk,
+    draftKey,
   }).catch(notFound);
 
   return (
