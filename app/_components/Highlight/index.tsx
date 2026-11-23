@@ -9,6 +9,8 @@ interface HightLightProps {
   title: string;
   description: string;
   href: string;
+  // 置かれるページで表示幅が違うため、使う側から渡す（省略時は従来の値）
+  sizes?: string;
 }
 
 export default function Highlight({
@@ -18,7 +20,8 @@ export default function Highlight({
   subName,
   title,
   description,
-  href
+  href,
+  sizes = "(max-width: 768px) 100vw, 50vw"
 }: HightLightProps): JSX.Element {
   return (
     <Link 
@@ -32,7 +35,7 @@ export default function Highlight({
           src={imageUrl}
           alt="Blog Image"
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes={sizes}
           quality={70}
         />
       </div>

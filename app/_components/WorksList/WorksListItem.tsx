@@ -64,7 +64,8 @@ export function WorksListItem({ work, index }: Props) {
               alt={work.title}
               fill
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              // 実測: md 未満 1 列、lg 未満 2 列、lg 以上 3 列で 267px
+              sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 2rem), 267px"
               priority={index < 2}
               quality={70}
             />

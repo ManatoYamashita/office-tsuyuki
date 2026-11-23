@@ -146,6 +146,8 @@ export default function ProfileComponent() {
                   alt="露木博視"
                   width={300}
                   height={200}
+                  // 実測: md 未満は 2 列で約 50vw - 70px、md 以上は最大 190px
+                  sizes="(max-width: 767px) calc(50vw - 70px), 190px"
                   className="rounded-lg object-cover object-top w-full h-40"
                   quality={70}
                 />
@@ -154,6 +156,8 @@ export default function ProfileComponent() {
                   alt="富士山"
                   width={300}
                   height={200}
+                  // 実測: md 未満は 2 列で約 50vw - 70px、md 以上は最大 190px
+                  sizes="(max-width: 767px) calc(50vw - 70px), 190px"
                   className="rounded-lg object-cover w-full h-40"
                   quality={70}
                 />
