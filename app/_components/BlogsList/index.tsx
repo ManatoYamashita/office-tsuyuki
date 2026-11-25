@@ -12,6 +12,8 @@ import styles from './index.module.scss';
 
 type Props = {
   blogs: Blogs[];
+  // 置かれるページで表示幅が違うため、使う側から渡す（省略時は従来の値）
+  sizes?: string;
 };
 
 // ブログタイプのラベルコンポーネント
@@ -21,7 +23,7 @@ const BlogTypeLabel = ({ type }: { type: string }) => (
   </span>
 );
 
-export default function BlogsList({ blogs }: Props) {
+export default function BlogsList({ blogs, sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,7 +84,7 @@ export default function BlogsList({ blogs }: Props) {
                   alt={blog.title}
                   className="object-cover"
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes={sizes}
                   quality={75}
                 />
                 <div className={`${styles.blogTypeWrapper} absolute top-3 left-3`}>

@@ -4,6 +4,14 @@ import BlogsList from '@/app/_components/BlogsList';
 import Pagination from '@/app/_components/Pagination';
 import { BLOGS_LIST_LIMIT } from '@/app/_constants';
 
+// 60 秒ごとに再生成する静的ページにする（以前は可変の経路のため毎回動的に描かれていた）
+export const revalidate = 60;
+
+// 事前には生成せず、初回アクセス時に生成してキャッシュする（generateStaticParams が無いと、Next.js 15 では revalidate を付けても動的に描かれる）
+export async function generateStaticParams() {
+  return [];
+}
+
 // パラメータの型定義
 type Params = {
   current: string;
@@ -34,7 +42,11 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <BlogsList blogs={Blogs} />
+      <BlogsList
+        blogs={Blogs}
+        // 実測: sm 未満 1 列、lg 未満 2 列、lg 以上 3 列で 258px
+        sizes="(max-width: 639px) calc(100vw - 100px), (max-width: 1023px) calc(50vw - 62px), 258px"
+      />
       <Pagination totalCount={totalCount} current={current} />
     </>
   );

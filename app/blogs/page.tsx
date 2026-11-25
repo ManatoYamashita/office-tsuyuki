@@ -10,7 +10,11 @@ export default async function Page() {
 
   return (
     <>
-      <BlogsList blogs={Blogs} />
+      <BlogsList
+        blogs={Blogs}
+        // 実測: sm 未満 1 列、lg 未満 2 列、lg 以上 3 列で 258px
+        sizes="(max-width: 639px) calc(100vw - 100px), (max-width: 1023px) calc(50vw - 62px), 258px"
+      />
       <Pagination totalCount={totalCount} />
     </>
   );

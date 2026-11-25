@@ -133,7 +133,7 @@ export default function Footer() {
               <h3 className="mb-6 text-sm font-semibold uppercase">内部リンク</h3>
               <ul className="space-y-4 pl-4">
                 <li>
-                  <Link href="/home" className="text-sm hover:text-muted-foreground" aria-label='homeへ'>
+                  <Link href="/" className="text-sm hover:text-muted-foreground" aria-label='homeへ'>
                     ホーム
                   </Link>
                 </li>

@@ -21,7 +21,7 @@ const HightLightWorks = [
   },
   {
     imageUrl: "/images/fm-consul.webp",
-    avatarUrl: "/favicon.ico",
+    avatarUrl: "/images/avatar-office-tsuyuki.webp",
     name: "建築研究開発コンサル - 固定資産税・償却資産税",
     subName: "2025/01/02",
     title: "固定資産税・償却資産税コンサルティング",
@@ -84,6 +84,8 @@ export default async function Home() {
               <HightLight
                 key={index}
                 {...post}
+                // 実測: lg 未満は 1 列（左右の余白 4rem〜5rem）、lg 以上は 2 列で最大 636px
+                sizes="(max-width: 639px) calc(100vw - 4rem), (max-width: 1023px) calc(100vw - 5rem), min(calc(50vw - 3.75rem), 636px)"
               />
             ))}
           </div>
