@@ -11,6 +11,9 @@ import { getBlogsDetail, getWorksDetail } from '@/app/_libs/microcms';
  *
  * draftKey でその記事の下書きを取得できたときだけ Draft Mode を有効にし、記事ページへ移す。
  * 記事ページは Draft Mode のときだけ ?dk= を読むので、通常の閲覧は静的なまま保たれる。
+ *
+ * 下書きの無い公開中の記事では、microCMS は {DRAFT_KEY} を空文字に置き換える。
+ * そのときは Draft Mode を有効にせず、公開中の記事ページへそのまま移す。
  */
 const fetchers = {
   blogs: getBlogsDetail,
@@ -26,8 +29,12 @@ export async function GET(request: Request) {
   const slug = searchParams.get('slug');
   const draftKey = searchParams.get('dk');
 
-  if ((endpoint !== 'blogs' && endpoint !== 'works') || !slug || !CONTENT_ID_PATTERN.test(slug) || !draftKey) {
+  if ((endpoint !== 'blogs' && endpoint !== 'works') || !slug || !CONTENT_ID_PATTERN.test(slug)) {
     return new Response('Invalid preview request', { status: 400 });
+  }
+
+  if (!draftKey) {
+    redirect(`/${endpoint}/${slug}`);
   }
 
   try {
